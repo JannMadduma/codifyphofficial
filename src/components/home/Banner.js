@@ -12,6 +12,7 @@ const Banner = ({}) => {
       }}
     >
       <div className="col">
+        <img src={"/img/logoRoof.png"} />
         <h2>Estate Window Shopping</h2>
         <p>Find your new home.</p>
       </div>
