@@ -1,0 +1,26 @@
+{
+  "user": [
+    {
+      "name": "MarkoChange",
+      "email": "alfren@kodego.ph",
+      "title": "test",
+      "mobile": "1857326529",
+      "photo": "https://th.bing.com/th/id/OIP.Iq1QXifXgyi6fmdPBA3bjAHaHa?pid=ImgDet&rs=1",
+      "companyName": "kodego",
+      "department": "Executive",
+      "id": 1
+    }
+  ],
+  "user": [
+    {
+      "name": "MarkoChange",
+      "email": "alfren@kodego.ph",
+      "title": "test",
+      "mobile": "1857326529",
+      "photo": "https://th.bing.com/th/id/OIP.Iq1QXifXgyi6fmdPBA3bjAHaHa?pid=ImgDet&rs=1",
+      "companyName": "kodego",
+      "department": "Executive",
+      "id": 1
+    }
+  ]
+}
