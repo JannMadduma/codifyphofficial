@@ -16,25 +16,26 @@
     },
     {
       "id": 2,
-      "name": "",
-      "email": "admin2@project.com",
-      "password": "admin2",
-      "role": "admin"
+      "name": "user1",
+      "email": "user1@project.com",
+      "password": "user1",
+      "role": "user",
+      "likes": [1, 2, 3]
     }
   ],
-  "Properties": [
+  "properties": [
     {
       "id": 1,
       "propertyName": "SUMMERVILLE SUBDIVISION CARCAR - ONE STOREY SOCIALIZED HOUSING",
       "location": "Can-asujan, City Of Carcar, Cebu, Region VII (Central Visayas)",
       "developer": "Abq & Sons Realty & Development Corporation",
       "projectType": "Pre-selling",
-      "monthly": "Php 3,248",
-      "TCP": "Php 980,000",
+      "monthly": "3248",
+      "TCP": "980000",
       "Bedrooms": "1",
       "Bathrooms": "1",
-      "LotArea": "35 sqm",
-      "FlorArea": "43 sqm"
+      "LotArea": "35",
+      "FlorArea": "43"
     }
   ]
 }
