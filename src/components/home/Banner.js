@@ -63,16 +63,15 @@ const Banner = ({}) => {
             <h1
               style={{
                 fontFamily: "'Rasputin', sans-serif",
-                paddingTop: 120,
+                paddingTop: "120px",
+                paddingBottom: "20px",
                 fontSize: "50px",
                 lineHeight: "45px",
               }}
             >
               Estate
               <br />
-              Window
-              <br />
-              Shopping
+              Windows
             </h1>
             <Button
               type="submit"
