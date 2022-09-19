@@ -1,13 +1,13 @@
-import axios from "axios";
+import axios from 'axios';
 
-const urlUser = "http://127.0.0.1:8000/user";
+const urlUser = 'http://127.0.0.1:8000/users';
 
 export const loginUser = async (email, password) => {
   return await axios.get(`${urlUser}?email=${email}&password=${password}`);
 };
 
 export const getAllUsers = async (id) => {
-  id = id || "";
+  id = id || '';
   return await axios.get(`${urlUser}/${id}`);
 };
 
