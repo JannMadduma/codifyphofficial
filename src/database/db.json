@@ -20,7 +20,18 @@
       "email": "user1@project.com",
       "password": "user1",
       "role": "user",
-      "likes": [1, 2, 3]
+      "likes": [
+        1,
+        2,
+        3
+      ]
+    },
+
+    {
+      "name": "Ton",
+      "email": "j.anton.salingua@gmail.com",
+      "password": "123",
+      "id": 5
     }
   ],
   "properties": [

@@ -11,8 +11,7 @@ export const getAllUsers = async (id) => {
   return await axios.get(`${urlUser}/${id}`);
 };
 
-export const getUserEmail = async (id) => {
-  id = id || "";
+export const getUserEmail = async (email) => {
   return await axios.get(`${urlUser}?email=${email}`);
 };
 

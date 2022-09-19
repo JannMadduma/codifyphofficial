@@ -10,24 +10,41 @@ import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
+// import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { addUser } from '../../service/userService';
 
 
 const pages = ['Buy', 'Home Loans'];
 
+const userCapturedVal = {
+    name: "",
+    email: "",
+    password: ""
+  };
 
-
-  
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const [user, setUser] = React.useState(userCapturedVal);
+
+  const onValueChange = (e) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+    console.log(user);
+  };
+
+  const addUserDetails = async () => {
+    const userToSave = { ...user};
+
+    await addUser(userToSave);
+    
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -126,33 +143,60 @@ const ResponsiveAppBar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-         
+          <Button variant="contained" sx={{marginRight: 1}}>
+                Login
+            </Button>
             <Button variant="contained" onClick={handleClickOpen}>
-                Sign In
+               Register
             </Button>
           </Box>
         </Toolbar>
       </Container>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>Sign Up</DialogTitle>
         <DialogContent>
-          <DialogContentText>
+          {/* <DialogContentText>
             To subscribe to this website, please enter your email address here. We
             will send updates occasionally.
-          </DialogContentText>
+          </DialogContentText> */}
           <TextField
             autoFocus
             margin="dense"
-            id="name"
+            label="Name"
+            type="email"
+            fullWidth
+            variant="standard"
+            onChange={(e) => onValueChange(e)}
+            name='name'
+
+          />
+          <TextField
+            autoFocus
+            margin="dense"
             label="Email Address"
             type="email"
             fullWidth
             variant="standard"
+            onChange={(e) => onValueChange(e)}
+            name='email'
+
+          />
+             <TextField
+            autoFocus
+            margin="dense"
+            label="Password"
+            type="email"
+            fullWidth
+            variant="standard"
+            onChange={(e) => onValueChange(e)}
+            name='password'
+            
           />
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Subscribe</Button>
+          <Button onClick={addUserDetails} disabled={!user.email || !user.password || !user.name}>Sign Up</Button>
+
         </DialogActions>
       </Dialog>
     </AppBar>
