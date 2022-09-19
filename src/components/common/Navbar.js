@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -14,44 +15,76 @@ import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-// import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from "@mui/material/DialogTitle";
-import { addUser } from "../../service/userService";
+import { addUser, getUserEmail, loginUser } from "../../service/userService";
 import { AccountCircle } from "@mui/icons-material";
+import { Alert } from "@mui/material";
+import { setLoggedIn } from "../../actions/loggedInActions";
 
 const pages = ["Buy", "Home Loans"];
 
-const userCapturedVal = {
+const userDefaultValue = {
   name: "",
   email: "",
   password: "",
+  likes: [],
 };
 
 const ResponsiveAppBar = () => {
+  const dispatch = useDispatch();
+  const loggedIn = useSelector((state) => state.loggedIn);
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [userMenuAnchorEl, setUserMenuAnchorEl] = React.useState(null);
   const [signUpIn, setSignUpIn] = React.useState(null);
-  const loggedIn = {};
 
-  const [user, setUser] = React.useState(userCapturedVal);
+  const [user, setUser] = React.useState(userDefaultValue);
+  const [error, setError] = React.useState("");
 
   const onValueChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
-    console.log(user);
   };
 
-  const handleSignup = async () => {
+  const handleSignup = () => {
     const userToSave = { ...user };
 
-    await addUser(userToSave);
+    setError("");
+    getUserEmail(user.email)
+      .then((res) => {
+        if (res?.data?.length) {
+          setError("This email is already been used");
+        } else {
+          addUser(userToSave);
+          handleDialogClose();
+        }
+      })
+      .catch(() => setError("Something went wrong. Please try later"));
+  };
+
+  const handleSignin = () => {
+    setError("");
+    loginUser(user.email, user.password)
+      .then((res) => {
+        console.log(res);
+        if (!res?.data?.length) {
+          setError("Incorrect email or password");
+        } else {
+          dispatch(setLoggedIn(res.data[0]));
+          handleDialogClose();
+        }
+      })
+      .catch((err) => {
+        setError("Something went wrong. Please try later");
+      });
+  };
+
+  const handleLogout = () => {
+    handleUserMenuClose();
+    dispatch(setLoggedIn({}));
   };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
   };
 
   const handleCloseNavMenu = () => {
@@ -60,11 +93,11 @@ const ResponsiveAppBar = () => {
 
   const [open, setOpen] = React.useState(false);
 
-  const handleClickOpen = () => {
+  const handleDialogOpen = () => {
     setOpen(true);
   };
 
-  const handleClose = () => {
+  const handleDialogClose = () => {
     setOpen(false);
   };
 
@@ -162,7 +195,7 @@ const ResponsiveAppBar = () => {
                 id="menu-appbar"
                 anchorEl={userMenuAnchorEl}
                 anchorOrigin={{
-                  vertical: "top",
+                  vertical: "bottom",
                   horizontal: "right",
                 }}
                 keepMounted
@@ -173,8 +206,7 @@ const ResponsiveAppBar = () => {
                 open={Boolean(userMenuAnchorEl)}
                 onClose={handleUserMenuClose}
               >
-                <MenuItem onClick={handleUserMenuClose}>Profile</MenuItem>
-                <MenuItem onClick={handleUserMenuClose}>My account</MenuItem>
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </div>
           ) : (
@@ -184,7 +216,7 @@ const ResponsiveAppBar = () => {
                 sx={{ marginRight: 1 }}
                 onClick={() => {
                   setSignUpIn("in");
-                  handleClickOpen();
+                  handleDialogOpen();
                 }}
               >
                 Login
@@ -193,7 +225,7 @@ const ResponsiveAppBar = () => {
                 variant="contained"
                 onClick={() => {
                   setSignUpIn("up");
-                  handleClickOpen();
+                  handleDialogOpen();
                 }}
               >
                 Register
@@ -203,9 +235,10 @@ const ResponsiveAppBar = () => {
         </Toolbar>
       </Container>
 
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleDialogClose}>
         <DialogTitle>{signUpIn === "up" ? "Sign Up" : "Sign In"}</DialogTitle>
         <DialogContent>
+          {error && <Alert severity="error">{error}</Alert>}
           {signUpIn === "up" && (
             <TextField
               autoFocus
@@ -240,11 +273,14 @@ const ResponsiveAppBar = () => {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
+          <Button onClick={handleDialogClose}>Cancel</Button>
           <Button
-            onClick={signUpIn === "up" ? handleSignup : handleSignup}
+            onClick={signUpIn === "up" ? handleSignup : handleSignin}
             disabled={
-              (!user.email && signUpIn === "in") || !user.password || !user.name
+              (signUpIn === "up" &&
+                (!user.name || !user.password || !user.email)) ||
+              !user.password ||
+              !user.email
             }
           >
             {signUpIn === "up" ? "Sign Up" : "Sign In"}

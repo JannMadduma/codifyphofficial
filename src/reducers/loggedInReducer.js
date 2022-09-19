@@ -1,4 +1,4 @@
-import { actionTypes } from '../actions/loggedInActions';
+import { actionTypes } from "../actions/loggedInActions";
 
 const loggedIn = {};
 
