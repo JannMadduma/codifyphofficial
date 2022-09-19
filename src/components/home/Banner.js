@@ -43,8 +43,6 @@ const Banner = ({}) => {
         sm={12}
         md={6}
         sx={{
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
           mt: 1,
           display: "flex",
           flexDirection: "column",
