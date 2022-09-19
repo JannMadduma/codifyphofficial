@@ -102,18 +102,55 @@
     },
     {
       "id": 6,
-      "propertyName": "ALBERLYN HIGHLANDS - APHRODITE 68 2 STOREY SINGLE ATTACHED",
-      "location": "Pitalo, San Fernando, Cebu, Region VII (Central Visayas)",
+      "propertyName": "ST. FRANCIS HILLS - PICA ATTACHED",
+      "location": "Tolotolo, Consolacion, Cebu, Region VII (Central Visayas)",
       "developer": " ",
       "projectType": "Pre-selling",
-      "monthly": "24148",
-      "TCP": "4388000",
+      "monthly": "23834",
+      "TCP": "4330994",
       "Bedrooms": "3",
       "Bathrooms": "2",
-      "LotArea": "75",
-      "FlorArea": "68"
+      "LotArea": "84",
+      "FlorArea": "65"
+    },
+    {
+      "id": 7,
+      "propertyName": "MINGLANILLA HIGHLANDS - MINI SERIES - JADE 2 STOREY SINGLE ATTACHED",
+      "location": "Tubod, Minglanilla, Cebu, Region VII (Central Visayas)",
+      "developer": " ",
+      "projectType": "Pre-selling",
+      "monthly": "27392",
+      "TCP": "4977600",
+      "Bedrooms": "3",
+      "Bathrooms": "2",
+      "LotArea": "80",
+      "FlorArea": "62"
+    },
+    {
+      "id": 8,
+      "propertyName": "MAZARI COVE - SUMIYA",
+      "location": "City Of Naga, Cebu, Region VII (Central Visayas)",
+      "developer": " ",
+      "projectType": "Pre-selling",
+      "monthly": "20599",
+      "TCP": "3327304",
+      "Bedrooms": "2",
+      "Bathrooms": "1",
+      "LotArea": "60",
+      "FlorArea": "46"
+    },
+    {
+      "id": 9,
+      "propertyName": "ALMONDS LANE RESIDENCES - 2 STOREY TOWNHOUSE",
+      "location": "Poblacion, City Of Talisay - Cebu, Cebu, Region VII (Central Visayas)",
+      "developer": " ",
+      "projectType": "Pre-selling",
+      "monthly": "25469",
+      "TCP": "3950000",
+      "Bedrooms": "3",
+      "Bathrooms": "1",
+      "LotArea": "40",
+      "FlorArea": "60"
     }
   ]
-
-
 }
