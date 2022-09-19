@@ -47,6 +47,73 @@
       "Bathrooms": "1",
       "LotArea": "35",
       "FlorArea": "43"
+    },
+    {
+      "id": 2,
+      "propertyName": "ANIKA HOMES CARCAR - 2 STOREY DUPLEX",
+      "location": "Ocaña, City Of Carcar, Cebu, Region VII (Central Visayas)",
+      "developer": " ",
+      "projectType": "Pre-selling",
+      "monthly": "21957",
+      "TCP": "3990000",
+      "Bedrooms": "4",
+      "Bathrooms": "3",
+      "LotArea": "78",
+      "FlorArea": "79"
+    },
+    {
+      "id": 3,
+      "propertyName": "WELLINGTON GREENS - SHERA 1 STOREY BUNGALOW",
+      "location": "Compostela, Cebu, Region VII (Central Visayas)",
+      "developer": " ",
+      "projectType": "Pre-selling",
+      "monthly": "28267",
+      "TCP": "4565864",
+      "Bedrooms": "2",
+      "Bathrooms": "1",
+      "LotArea": "130",
+      "FlorArea": "40"
+    },
+    {
+      "id": 4,
+      "propertyName": "CASA MIRA-BACOLOD - MODEL B1",
+      "location": "Granada, Bacolod City, Negros Occidental, Region VI (Western Visayas)",
+      "developer": " ",
+      "projectType": "Pre-selling",
+      "monthly": "22588",
+      "TCP": "2895008 ",
+      "Bedrooms": "2",
+      "Bathrooms": "1",
+      "LotArea": "66",
+      "FlorArea": "48"
+    },
+    {
+      "id": 5,
+      "propertyName": "ALBERLYN HIGHLANDS - APHRODITE 68 2 STOREY SINGLE ATTACHED",
+      "location": "Pitalo, San Fernando, Cebu, Region VII (Central Visayas)",
+      "developer": " ",
+      "projectType": "Pre-selling",
+      "monthly": "24148",
+      "TCP": "4388000",
+      "Bedrooms": "3",
+      "Bathrooms": "2",
+      "LotArea": "75",
+      "FlorArea": "68"
+    },
+    {
+      "id": 6,
+      "propertyName": "ALBERLYN HIGHLANDS - APHRODITE 68 2 STOREY SINGLE ATTACHED",
+      "location": "Pitalo, San Fernando, Cebu, Region VII (Central Visayas)",
+      "developer": " ",
+      "projectType": "Pre-selling",
+      "monthly": "24148",
+      "TCP": "4388000",
+      "Bedrooms": "3",
+      "Bathrooms": "2",
+      "LotArea": "75",
+      "FlorArea": "68"
     }
   ]
+
+
 }

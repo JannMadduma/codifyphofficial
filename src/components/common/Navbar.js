@@ -196,7 +196,6 @@ const ResponsiveAppBar = () => {
         <DialogActions>
           <Button onClick={handleClose}>Cancel</Button>
           <Button onClick={addUserDetails} disabled={!user.email || !user.password || !user.name}>Sign Up</Button>
-
         </DialogActions>
       </Dialog>
     </AppBar>

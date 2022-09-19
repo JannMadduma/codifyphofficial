@@ -56,18 +56,18 @@ export default function StickyFooter() {
         </Typography>
          <br />
         <Typography variant="body1" >
-        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>About us |</Link>
-        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Careers |</Link>
-        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Accessibility |</Link>
-        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Feedback |</Link>
-        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Media room |</Link>
-        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Ad Choises |</Link>
-        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Advertise with us |</Link>
-        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Agent Support |</Link>
-        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Privacy |</Link>
-        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Terms |</Link>
-        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Home Made |</Link>
-        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Tech Blog |</Link>
+        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>About us /</Link>
+        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Careers /</Link>
+        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Accessibility /</Link>
+        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Feedback /</Link>
+        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Media room /</Link>
+        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Ad Choises /</Link>
+        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Advertise with us /</Link>
+        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Agent Support /</Link>
+        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Privacy /</Link>
+        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Terms /</Link>
+        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Home Made /</Link>
+        <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Tech Blog /</Link>
         <Link href="#" sx={{color: 'inherit', textDecoration: 'none'}}>Sitemap </Link>
         </Typography>
           <br />
