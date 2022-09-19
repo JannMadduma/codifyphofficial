@@ -1,5 +1,5 @@
 {
-  "user": [
+  "users": [
     {
       "id": 1,
       "name": "admin",
@@ -21,13 +21,6 @@
       "password": "user1",
       "role": "user",
       "likes": [1, 2, 3]
-    },
-
-    {
-      "name": "Ton",
-      "email": "j.anton.salingua@gmail.com",
-      "password": "123",
-      "id": 5
     }
   ],
   "properties": [
@@ -43,110 +36,6 @@
       "Bathrooms": "1",
       "LotArea": "35",
       "FlorArea": "43"
-    },
-    {
-      "id": 2,
-      "propertyName": "ANIKA HOMES CARCAR - 2 STOREY DUPLEX",
-      "location": "Ocaña, City Of Carcar, Cebu, Region VII (Central Visayas)",
-      "developer": "K&a Prime Realty And Residences Inc.",
-      "projectType": "Pre-selling",
-      "monthly": "21957",
-      "TCP": "3990000",
-      "Bedrooms": "4",
-      "Bathrooms": "3",
-      "LotArea": "78",
-      "FlorArea": "79"
-    },
-    {
-      "id": 3,
-      "propertyName": "WELLINGTON GREENS - SHERA 1 STOREY BUNGALOW",
-      "location": "Compostela, Cebu, Region VII (Central Visayas)",
-      "developer": "Paramount Property Ventures Incorporated",
-      "projectType": "Pre-selling",
-      "monthly": "28267",
-      "TCP": "4565864",
-      "Bedrooms": "2",
-      "Bathrooms": "1",
-      "LotArea": "130",
-      "FlorArea": "40"
-    },
-    {
-      "id": 4,
-      "propertyName": "Casa Mira Linao - 2 Storey Single Detached Uphill A",
-      "location": "Minglanilla, Cebu, 6046",
-      "developer": "Cebu Landmasters Inc",
-      "projectType": "Pre-selling",
-      "monthly": " 17965",
-      "TCP": "2967720",
-      "Bedrooms": "2",
-      "Bathrooms": "1",
-      "LotArea": "100",
-      "FlorArea": "49.59"
-    },
-    {
-      "id": 5,
-      "propertyName": "ALBERLYN HIGHLANDS - APHRODITE 68 2 STOREY SINGLE ATTACHED",
-      "location": "Pitalo, San Fernando, Cebu, Region VII (Central Visayas)",
-      "developer": "Ae International Construction And Development Corp.",
-      "projectType": "Pre-selling",
-      "monthly": "24148",
-      "TCP": "4388000",
-      "Bedrooms": "3",
-      "Bathrooms": "2",
-      "LotArea": "75",
-      "FlorArea": "68"
-    },
-    {
-      "id": 6,
-      "propertyName": "ST. FRANCIS HILLS - PICA ATTACHED",
-      "location": "Tolotolo, Consolacion, Cebu, Region VII (Central Visayas)",
-      "developer": "Castille Resources Realty Development Inc.  ",
-      "projectType": "Pre-selling",
-      "monthly": "23834",
-      "TCP": "4330994",
-      "Bedrooms": "3",
-      "Bathrooms": "2",
-      "LotArea": "84",
-      "FlorArea": "65"
-    },
-    {
-      "id": 7,
-      "propertyName": "MINGLANILLA HIGHLANDS - MINI SERIES - JADE 2 STOREY SINGLE ATTACHED",
-      "location": "Tubod, Minglanilla, Cebu, Region VII (Central Visayas)",
-      "developer": "Sterling Land Residences And Development Inc.",
-      "projectType": "Pre-selling",
-      "monthly": "27392",
-      "TCP": "4977600",
-      "Bedrooms": "3",
-      "Bathrooms": "2",
-      "LotArea": "80",
-      "FlorArea": "62"
-    },
-    {
-      "id": 8,
-      "propertyName": "MAZARI COVE - SUMIYA",
-      "location": "City Of Naga, Cebu, Region VII (Central Visayas)",
-      "developer": "Paramount Property Ventures Incorporated",
-      "projectType": "Pre-selling",
-      "monthly": "20599",
-      "TCP": "3327304",
-      "Bedrooms": "2",
-      "Bathrooms": "1",
-      "LotArea": "60",
-      "FlorArea": "46"
-    },
-    {
-      "id": 9,
-      "propertyName": "ALMONDS LANE RESIDENCES - 2 STOREY TOWNHOUSE",
-      "location": "Poblacion, City Of Talisay - Cebu, Cebu, Region VII (Central Visayas)",
-      "developer": "Csmichael Development Corp.",
-      "projectType": "Pre-selling",
-      "monthly": "25469",
-      "TCP": "3950000",
-      "Bedrooms": "3",
-      "Bathrooms": "1",
-      "LotArea": "40",
-      "FlorArea": "60"
     }
   ]
 }
