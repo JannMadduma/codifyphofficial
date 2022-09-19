@@ -31,7 +31,7 @@ const Banner = ({}) => {
       component="main"
       sx={{
         backgroundImage: "url(/img/bannerBackground.png)",
-        height: "80vh",
+        height: "auto",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -39,15 +39,64 @@ const Banner = ({}) => {
     >
       <Grid
         item
-        xs={false}
-        sm={4}
-        md={7}
+        xs={12}
+        sm={12}
+        md={6}
         sx={{
-          backgroundImage: "url(/img/logoRoof.png)",
-          height: "50vh",
-          backgroundSize: "300px 200px",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <Box
+          sx={{
+            my: 8,
+            mx: 4,
+          }}
+        >
+          <img
+            src="/img/logoRoof.png"
+            style={{ height: "100px", width: "300px" }}
+          />
+          <Box component="form" noValidate sx={{ mt: 1 }}>
+            <h1
+              style={{
+                fontFamily: "'Rasputin', sans-serif",
+                fontSize: "50px",
+                lineHeight: "45px",
+              }}
+            >
+              Estate
+              <br />
+              Windows
+            </h1>
+            <Box display={{ xs: "none" }}>
+              <Button
+                type="submit"
+                color="inherit"
+                fullWidth
+                variant="outlined"
+                sx={{ mt: 3, mb: 2, borderRadius: "100px", opacity: "60%" }}
+              >
+                Find your home.
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+      </Grid>
+      <Grid
+        item
+        display={{ xs: "none", md: "initial", lg: "initial" }}
+        square
+        md={6}
+        xs={12}
+        sx={{
+          mt: 1,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
         }}
       >
         <Box
@@ -57,54 +106,14 @@ const Banner = ({}) => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            borderRadius: "100px",
+            margin: {
+              xs: 0,
+              md: "200px 0px",
+            },
           }}
         >
           <Box component="form" noValidate sx={{ mt: 1 }}>
-            <h1
-              style={{
-                fontFamily: "'Rasputin', sans-serif",
-                paddingTop: "120px",
-                paddingBottom: "20px",
-                fontSize: "50px",
-                lineHeight: "45px",
-              }}
-            >
-              Estate
-              <br />
-              Windows
-            </h1>
-            <Button
-              type="submit"
-              color="inherit"
-              fullWidth
-              variant="outlined"
-              sx={{ mt: 3, mb: 2, borderRadius: "100px", opacity: "60%" }}
-            >
-              Find your home.
-            </Button>
-          </Box>
-        </Box>
-      </Grid>
-
-      <Grid item xs={12} sm={8} md={5} square>
-        <Box
-          sx={{
-            my: 8,
-            mx: 4,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            borderRadius: "100px",
-          }}
-        >
-          <Box
-            component="form"
-            noValidate
-            sx={{ mt: 1 }}
-            style={{
-              paddingTop: 120,
-            }}
-          >
             <TextField
               margin="normal"
               fullWidth
