@@ -95,7 +95,7 @@ export default function StickyFooter() {
           {/* <Typography variant="body1">
             Capstone two
           </Typography> */}
-          <img src="/" alt="Photo" />
+          <img src="/img/houses.png" alt="Photo" />
           <Copyright />
         </Container>
       </Box>
