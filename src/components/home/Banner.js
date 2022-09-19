@@ -45,15 +45,20 @@ const Banner = ({}) => {
         sx={{
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          mt: 1,
           display: "flex",
           flexDirection: "column",
-          alignItems: "center",
+          justifyContent: "center",
         }}
       >
         <Box
           sx={{
             my: 8,
             mx: 4,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            m: "0px",
           }}
         >
           <img
@@ -72,7 +77,7 @@ const Banner = ({}) => {
               <br />
               Windows
             </h1>
-            <Box display={{ xs: "none" }}>
+            <Box display={{ xs: "none", md: "initial" }}>
               <Button
                 type="submit"
                 color="inherit"
