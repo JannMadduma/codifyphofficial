@@ -29,7 +29,6 @@ const userDefaultValue = {
   name: "",
   email: "",
   password: "",
-  likes: [],
 };
 
 const ResponsiveAppBar = () => {
@@ -55,7 +54,7 @@ const ResponsiveAppBar = () => {
     if (!user.name || !user.email || !user.password) {
       setError("Please fill up necessary fields");
     } else {
-      const userToSave = { ...user };
+      const userToSave = { ...user, likes: [], role: "user" };
 
       getUserEmail(user.email)
         .then((res) => {
