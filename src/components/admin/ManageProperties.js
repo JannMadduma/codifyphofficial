@@ -3,20 +3,25 @@ import { styled, createTheme, ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import MuiDrawer from "@mui/material/Drawer";
 import Box from "@mui/material/Box";
-import MuiAppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import Link from "@mui/material/Link";
 import { mainListItems } from "./listItems";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllProperties } from "../../service/propertyService";
 import { setProperties } from "../../actions/propertiesActions";
-import { Table } from "react-bootstrap";
-import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
+import {
+  Button,
+  ButtonGroup,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material";
+import AddHomeIcon from "@mui/icons-material/AddHome";
 
 const drawerWidth = 240;
 
@@ -100,19 +105,22 @@ function DashboardContent() {
                     <TableHead>
                       <TableRow>
                         <TableCell>Properties</TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell align="right">
+                          <Button variant="text">
+                            Add Property <AddHomeIcon />
+                          </Button>
+                        </TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell>ID</TableCell>
                         <TableCell>Property Name</TableCell>
                         <TableCell>Location</TableCell>
                         <TableCell>Developer</TableCell>
-                        <TableCell>Project Type</TableCell>
-                        <TableCell>Monthly Payment</TableCell>
                         <TableCell>TCP</TableCell>
-                        <TableCell>BedRooms</TableCell>
-                        <TableCell>BathRooms</TableCell>
-                        <TableCell>LotArea</TableCell>
-                        <TableCell>FloorArea</TableCell>
                         <TableCell align="right">Actions</TableCell>
                       </TableRow>
                     </TableHead>
@@ -123,14 +131,30 @@ function DashboardContent() {
                           <TableCell>{row.propertyName}</TableCell>
                           <TableCell>{row.location}</TableCell>
                           <TableCell>{row.developer}</TableCell>
-                          <TableCell>{row.projectType}</TableCell>
-                          <TableCell>{row.monthly}</TableCell>
                           <TableCell>{row.tcp}</TableCell>
-                          <TableCell>{row.bedRooms}</TableCell>
-                          <TableCell>{row.bathRooms}</TableCell>
-                          <TableCell>{row.lotArea}</TableCell>
-                          <TableCell>{row.floorArea}</TableCell>
-                          <TableCell align="right"></TableCell>
+
+                          <TableCell align="right">
+                            <div
+                              sx={{
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                "& > *": {
+                                  m: 1,
+                                },
+                              }}
+                            >
+                              <ButtonGroup
+                                variant="text"
+                                aria-label="text button group"
+                                color="info"
+                              >
+                                <Button>View</Button>
+                                <Button>Edit</Button>
+                                <Button>Delete</Button>
+                              </ButtonGroup>
+                            </div>
+                          </TableCell>
                         </TableRow>
                       ))}
                     </TableBody>
