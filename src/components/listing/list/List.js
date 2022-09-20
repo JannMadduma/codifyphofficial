@@ -55,11 +55,10 @@ export default function List() {
         </main>
       </Box>
 
-      <Box sx={{ position: "relative" }}>
-        <Box>
-          <Grid container columns={5} sx={{ width: "100%", m: 5, gap: 1 }}>
+
+          <Grid container columns={12} >
             {properties.slice(0, 100).map((property) => (
-              <Grid item xs={1}>
+              <Grid item sm={6} md={4} lg={3} xs={12}>
                 <Card sx={{ position: "relative" }} variant="outlined">
                   <CardMedia
                     component="img"
@@ -131,9 +130,7 @@ export default function List() {
               </Grid>
             ))}
           </Grid>
-        </Box>
 
-      </Box>
     </Box>
   );
 }
