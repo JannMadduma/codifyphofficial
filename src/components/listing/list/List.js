@@ -1,4 +1,13 @@
-import { Box, Grid } from "@mui/material";
+import {
+  Alert,
+  Box,
+  FormControl,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  TextField,
+} from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "@mui/material/Container";
 import * as React from "react";
@@ -21,12 +30,38 @@ export default function List() {
   const dispatch = useDispatch();
   const properties = useSelector((state) => state.properties);
   const loggedIn = useSelector((state) => state.loggedIn);
+  const [name, setName] = React.useState("");
+  const [location, setLocation] = React.useState("");
+  const [lotArea, setLotArea] = React.useState(0);
+
+  const handleInputChange = (e) => {
+    switch (e.target.name) {
+      case "name":
+        setName(e.target.value);
+        break;
+      case "location":
+        setLocation(e.target.value);
+        break;
+      case "lotArea":
+        setLotArea(e.target.value);
+        break;
+      default:
+        break;
+    }
+  };
 
   useEffect(() => {
     getAllProperties().then((res) => {
       dispatch(setProperties(res.data));
     });
   }, []);
+
+  useEffect(() => {
+    console.log("trigger");
+    getAllProperties(null, name, location, lotArea).then((res) => {
+      dispatch(setProperties(res.data));
+    });
+  }, [name, location, lotArea]);
 
   return (
     <Box>
@@ -35,8 +70,8 @@ export default function List() {
           <Box
             sx={{
               bgcolor: "background.paper",
-              pt: 8,
-              pb: 6,
+              pt: 2,
+              pb: 2,
             }}
           >
             <Container>
@@ -53,6 +88,48 @@ export default function List() {
           </Box>
         </main>
       </Box>
+
+      <Container
+        sx={{
+          pb: 4,
+          display: "flex",
+          width: "100%",
+          justifyContent: "end",
+        }}
+      >
+        <TextField
+          label="Name"
+          variant="outlined"
+          sx={{ marginRight: "16px" }}
+          name="name"
+          onChange={handleInputChange}
+          value={name}
+        />
+        <TextField
+          label="Location"
+          variant="outlined"
+          sx={{ marginRight: "16px" }}
+          name="location"
+          onChange={handleInputChange}
+          value={location}
+        />
+        <FormControl sx={{ width: "150px" }}>
+          <InputLabel id="demo-simple-select-label">Lot Area</InputLabel>
+          <Select
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
+            label="Lot Area"
+            name="lotArea"
+            onChange={handleInputChange}
+            value={lotArea}
+          >
+            <MenuItem value={0}></MenuItem>
+            <MenuItem value={1}>30-39sqm</MenuItem>
+            <MenuItem value={2}>40-69sqm</MenuItem>
+            <MenuItem value={3}>70sqm above</MenuItem>
+          </Select>
+        </FormControl>
+      </Container>
 
       <Container>
         <Grid container columns={12}>
@@ -131,6 +208,8 @@ export default function List() {
             </Grid>
           ))}
         </Grid>
+
+        {!properties.length && <Alert severity="info">No results found</Alert>}
       </Container>
     </Box>
   );

@@ -11,7 +11,7 @@ const ComponentRoute = () => {
       <Route index element={<Home />} />
       <Route path="/home" element={<Home />} />
       <Route path="/listing" element={<Listing />} />
-      <Route path="/manageproperty" element={<ManageProperties />} />
+      <Route path="/manageproperties" element={<ManageProperties />} />
       <Route path="/manageusers" element={<Manageusers />} />
     </Routes>
   );

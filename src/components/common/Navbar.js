@@ -22,10 +22,8 @@ import { Alert } from "@mui/material";
 import { setLoggedIn } from "../../actions/loggedInActions";
 import { Link } from "react-router-dom";
 
-const pages = [
-  { name: "Listing", link: "/listing" },
-  { name: "Home Loans", link: "/listing" },
-];
+const pagesAll = [{ name: "Listing", link: "/listing" }];
+const pagesAdmin = [{ name: "Manage", link: "/manageproperties" }];
 
 const userDefaultValue = {
   name: "",
@@ -44,6 +42,7 @@ const ResponsiveAppBar = () => {
 
   const [user, setUser] = React.useState(userDefaultValue);
   const [error, setError] = React.useState("");
+  const [pages, setPages] = React.useState([]);
 
   const onValueChange = (e) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -112,6 +111,14 @@ const ResponsiveAppBar = () => {
   const handleUserMenuClose = () => {
     setUserMenuAnchorEl(null);
   };
+
+  React.useEffect(() => {
+    if (loggedIn?.role === "admin") {
+      setPages([...pagesAll, ...pagesAdmin]);
+    } else {
+      setPages(pagesAll);
+    }
+  }, [loggedIn]);
 
   return (
     <AppBar position="static" style={{ background: "white", color: "black" }}>

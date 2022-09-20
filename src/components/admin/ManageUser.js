@@ -12,10 +12,17 @@ import { mainListItems } from "./listItems";
 import { useDispatch, useSelector } from "react-redux";
 import { setUsers } from "../../actions/usersActions";
 import { Table } from "react-bootstrap";
-import { Button, ButtonGroup, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
+import {
+  Button,
+  ButtonGroup,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 import ResponsiveAppBar from "../common/Navbar";
 import { getAllUsers } from "../../service/userService";
-import PersonIcon from '@mui/icons-material/Person';
+import PersonIcon from "@mui/icons-material/Person";
 
 const drawerWidth = 240;
 
@@ -63,7 +70,7 @@ function DashboardContent() {
 
   return (
     <ThemeProvider theme={mdTheme}>
-    <ResponsiveAppBar/>
+      <ResponsiveAppBar />
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
 
@@ -73,7 +80,7 @@ function DashboardContent() {
               display: "flex",
               alignItems: "center",
               justifyContent: "flex-end",
-              px: [1],
+              // px: [1],
             }}
           ></Toolbar>
 
@@ -87,12 +94,12 @@ function DashboardContent() {
                 ? theme.palette.grey[100]
                 : theme.palette.grey[900],
             flexGrow: 1,
-            height: "100vh",
+            height: "calc(100vh - 70px)",
             overflow: "auto",
           }}
         >
           <Toolbar />
-          <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+          <Container maxWidth="lg" sx={{ mb: 4 }}>
             <Grid container spacing={3}>
               <Grid item xs={12}>
                 <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
@@ -122,13 +129,13 @@ function DashboardContent() {
                     <TableBody>
                       {users.map((row) => (
                         <TableRow key={row.id}>
-                        <TableCell>{row.id}</TableCell>
+                          <TableCell>{row.id}</TableCell>
                           <TableCell>{row.name}</TableCell>
                           <TableCell>{row.email}</TableCell>
                           <TableCell>{row.password}</TableCell>
                           <TableCell>{row.role}</TableCell>
                           <TableCell align="right">
-                          <div
+                            <div
                               sx={{
                                 display: "flex",
                                 flexDirection: "column",
@@ -148,7 +155,6 @@ function DashboardContent() {
                                 <Button>Delete</Button>
                               </ButtonGroup>
                             </div>
-
                           </TableCell>
                         </TableRow>
                       ))}

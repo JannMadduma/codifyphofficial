@@ -4,20 +4,21 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import GroupIcon from "@mui/icons-material/Group";
 import NightShelterIcon from "@mui/icons-material/NightShelter";
+import { Link } from "react-router-dom";
 
 export const mainListItems = (
   <React.Fragment>
-    <ListItemButton>
+    <ListItemButton component={Link} to={"/manageproperties"}>
       <ListItemIcon>
         <NightShelterIcon />
       </ListItemIcon>
-      <ListItemText primary="Properties"/>
+      <ListItemText primary="Properties" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton component={Link} to={"/manageusers"}>
       <ListItemIcon>
         <GroupIcon />
       </ListItemIcon>
-      <ListItemText primary="Users"/>
+      <ListItemText primary="Users" />
     </ListItemButton>
   </React.Fragment>
 );
