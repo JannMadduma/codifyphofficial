@@ -7,7 +7,7 @@ const Listing = ({}) => {
   return (
     <React.Fragment>
       <ResponsiveAppBar />
-       <List/>
+      <List />
       <StickyFooter />
     </React.Fragment>
   );

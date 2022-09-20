@@ -20,8 +20,12 @@ import { addUser, getUserEmail, loginUser } from "../../service/userService";
 import { AccountCircle } from "@mui/icons-material";
 import { Alert } from "@mui/material";
 import { setLoggedIn } from "../../actions/loggedInActions";
+import { Link } from "react-router-dom";
 
-const pages = ["Buy", "Home Loans"];
+const pages = [
+  { name: "Listing", link: "/listing" },
+  { name: "Home Loans", link: "/listing" },
+];
 
 const userDefaultValue = {
   name: "",
@@ -113,7 +117,9 @@ const ResponsiveAppBar = () => {
     <AppBar position="static" style={{ background: "white", color: "black" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Avatar alt="Photo" src="/img/logo.png" variant="square" />
+          <Link to={"/"}>
+            <Avatar alt="Photo" src="/img/logo.png" variant="square" />
+          </Link>
           <Typography
             variant="h6"
             noWrap
@@ -160,8 +166,8 @@ const ResponsiveAppBar = () => {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.name} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page.name}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -170,11 +176,13 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page}
+                key={page.name}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block", color: "black" }}
+                component={Link}
+                to={page.link}
               >
-                {page}
+                {page.name}
               </Button>
             ))}
           </Box>

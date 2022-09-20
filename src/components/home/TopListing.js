@@ -166,31 +166,31 @@ export default function TopListing() {
                     </Typography>
                   </CardContent>
                   <hr />
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{
-                      textAlign: "left",
-                      height: "45px",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      display: "-webkit-box",
-                      "-webkit-line-clamp": "2",
-                      "-webkit-box-orient": "vertical",
-                    }}
-                  >
-                    {property.propertyName}
-                  </Typography>
-                  {loggedIn?.id && (
-                    <CardActions disableSpacing>
-                      <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
-                      </IconButton>
-                      <IconButton aria-label="share">
-                        <ShareIcon />
-                      </IconButton>
-                    </CardActions>
-                  )}
+                  <CardContent sx={{ paddingBottom: "16px !important" }}>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      sx={{
+                        textAlign: "left",
+                        height: "45px",
+                        display: "-webkit-box",
+                        "-webkit-line-clamp": "2",
+                        "-webkit-box-orient": "vertical",
+                      }}
+                    >
+                      {property.propertyName}
+                    </Typography>
+                    {loggedIn?.id && (
+                      <CardActions disableSpacing>
+                        <IconButton aria-label="add to favorites">
+                          <FavoriteIcon />
+                        </IconButton>
+                        <IconButton aria-label="share">
+                          <ShareIcon />
+                        </IconButton>
+                      </CardActions>
+                    )}
+                  </CardContent>
                 </Card>
               </Grid>
             ))}

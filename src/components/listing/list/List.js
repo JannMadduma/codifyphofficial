@@ -1,4 +1,4 @@
-import { Box, Grid, Paper } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "@mui/material/Container";
 import * as React from "react";
@@ -16,7 +16,6 @@ import SquareFootIcon from "@mui/icons-material/SquareFoot";
 import { useEffect } from "react";
 import { getAllProperties } from "../../../service/propertyService";
 import { setProperties } from "../../../actions/propertiesActions";
-
 
 export default function List() {
   const dispatch = useDispatch();
@@ -37,7 +36,7 @@ export default function List() {
             sx={{
               bgcolor: "background.paper",
               pt: 8,
-              pb: 6
+              pb: 6,
             }}
           >
             <Container>
@@ -55,54 +54,55 @@ export default function List() {
         </main>
       </Box>
 
-
-          <Grid container columns={12} >
-            {properties.slice(0, 100).map((property) => (
-              <Grid item sm={6} md={4} lg={3} xs={12}>
-                <Card sx={{ position: "relative" }} variant="outlined">
-                  <CardMedia
-                    component="img"
-                    height="194"
-                    image={property.img[0]}
-                  />
-                  <CardContent>
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="div"
-                      sx={{ textAlign: "left" }}
-                    >
-                      ₱{" "}
-                      {property.tcp
-                        .toString()
-                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{ textAlign: "left" }}
-                    >
-                      {property.bedRooms}
-                      <HotelIcon /> {property.bathRooms}
-                      <BathtubIcon />
-                      {property.lotArea}
-                      <SquareFootIcon />
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{
-                        textAlign: "left",
-                        height: "45px",
-                        display: "-webkit-box",
-                        "-webkit-line-clamp": "2",
-                        "-webkit-box-orient": "vertical",
-                      }}
-                    >
-                      {property.location}
-                    </Typography>
-                  </CardContent>
-                  <hr />
+      <Container>
+        <Grid container columns={12}>
+          {properties.slice(0, 100).map((property) => (
+            <Grid item sm={6} md={4} lg={3} xs={12}>
+              <Card sx={{ position: "relative" }} variant="outlined">
+                <CardMedia
+                  component="img"
+                  height="194"
+                  image={property.img[0]}
+                />
+                <CardContent>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                    sx={{ textAlign: "left" }}
+                  >
+                    ₱{" "}
+                    {property.tcp
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ textAlign: "left" }}
+                  >
+                    {property.bedRooms}
+                    <HotelIcon /> {property.bathRooms}
+                    <BathtubIcon />
+                    {property.lotArea}
+                    <SquareFootIcon />
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      textAlign: "left",
+                      height: "45px",
+                      display: "-webkit-box",
+                      "-webkit-line-clamp": "2",
+                      "-webkit-box-orient": "vertical",
+                    }}
+                  >
+                    {property.location}
+                  </Typography>
+                </CardContent>
+                <hr />
+                <CardContent sx={{ paddingBottom: "16px !important" }}>
                   <Typography
                     variant="body2"
                     color="text.secondary"
@@ -126,11 +126,12 @@ export default function List() {
                       </IconButton>
                     </CardActions>
                   )}
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
-
+                </CardContent>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
     </Box>
   );
 }
