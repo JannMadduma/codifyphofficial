@@ -69,6 +69,7 @@ function DashboardContent() {
 
   return (
     <ThemeProvider theme={mdTheme}>
+      <ResponsiveAppBar />
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
 
