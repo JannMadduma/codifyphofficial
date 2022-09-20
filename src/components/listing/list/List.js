@@ -37,14 +37,14 @@ export default function List() {
             sx={{
               bgcolor: "background.paper",
               pt: 8,
-              pb: 6,
+              pb: 6
             }}
           >
             <Container>
               <Typography
                 component="h1"
                 variant="h5"
-                align="center"
+                align="left"
                 color="text.primary"
                 gutterBottom
               >
@@ -56,12 +56,9 @@ export default function List() {
       </Box>
 
       <Box sx={{ position: "relative" }}>
-        <Box
-          sx={{ width: "100%" }}
-          className="scrollListing"
-        >
-          <Grid container columns={9} sx={{ width: "200%" }}>
-            {properties.slice(0, 9).map((property) => (
+        <Box>
+          <Grid container columns={5} sx={{ width: "100%", m: 5, gap: 1 }}>
+            {properties.slice(0, 100).map((property) => (
               <Grid item xs={1}>
                 <Card sx={{ position: "relative" }} variant="outlined">
                   {/* <Paper
