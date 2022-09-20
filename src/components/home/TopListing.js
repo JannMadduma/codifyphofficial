@@ -2,7 +2,6 @@ import { Box, Grid, Paper } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "@mui/material/Container";
 import * as React from "react";
-import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
