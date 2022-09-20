@@ -21,7 +21,6 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
-import AddHomeIcon from "@mui/icons-material/AddHome";
 import ResponsiveAppBar from "../common/Navbar";
 
 const drawerWidth = 240;
@@ -112,9 +111,7 @@ function DashboardContent() {
                         <TableCell></TableCell>
                         <TableCell></TableCell>
                         <TableCell align="right">
-                          <Button variant="text">
-                            Add Property <AddHomeIcon />
-                          </Button>
+                          <Button variant="text">Add Property</Button>
                         </TableCell>
                       </TableRow>
                       <TableRow>

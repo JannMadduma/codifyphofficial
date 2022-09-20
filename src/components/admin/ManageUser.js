@@ -22,7 +22,6 @@ import {
 } from "@mui/material";
 import ResponsiveAppBar from "../common/Navbar";
 import { getAllUsers } from "../../service/userService";
-import PersonIcon from "@mui/icons-material/Person";
 
 const drawerWidth = 240;
 
@@ -112,9 +111,7 @@ function DashboardContent() {
                         <TableCell></TableCell>
                         <TableCell></TableCell>
                         <TableCell align="right">
-                          <Button variant="text">
-                            Add Users <PersonIcon />
-                          </Button>
+                          <Button variant="text">Add Users</Button>
                         </TableCell>
                       </TableRow>
                       <TableRow>
