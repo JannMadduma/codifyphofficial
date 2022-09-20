@@ -48,37 +48,49 @@ const ResponsiveAppBar = () => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleSignup = () => {
-    const userToSave = { ...user };
+  const handleSignup = (e) => {
+    e.preventDefault();
 
     setError("");
-    getUserEmail(user.email)
-      .then((res) => {
-        if (res?.data?.length) {
-          setError("This email is already been used");
-        } else {
-          addUser(userToSave);
-          handleDialogClose();
-        }
-      })
-      .catch(() => setError("Something went wrong. Please try later"));
+    if (!user.name || !user.email || !user.password) {
+      setError("Please fill up necessary fields");
+    } else {
+      const userToSave = { ...user };
+
+      getUserEmail(user.email)
+        .then((res) => {
+          if (res?.data?.length) {
+            setError("This email is already been used");
+          } else {
+            addUser(userToSave);
+            handleDialogClose();
+          }
+        })
+        .catch(() => setError("Something went wrong. Please try later"));
+    }
   };
 
-  const handleSignin = () => {
+  const handleSignin = (e) => {
+    e.preventDefault();
+
     setError("");
-    loginUser(user.email, user.password)
-      .then((res) => {
-        console.log(res);
-        if (!res?.data?.length) {
-          setError("Incorrect email or password");
-        } else {
-          dispatch(setLoggedIn(res.data[0]));
-          handleDialogClose();
-        }
-      })
-      .catch((err) => {
-        setError("Something went wrong. Please try later");
-      });
+    if (!user.email || !user.password) {
+      setError("Please fill up necessary fields");
+    } else {
+      loginUser(user.email, user.password)
+        .then((res) => {
+          console.log(res);
+          if (!res?.data?.length) {
+            setError("Incorrect email or password");
+          } else {
+            dispatch(setLoggedIn(res.data[0]));
+            handleDialogClose();
+          }
+        })
+        .catch((err) => {
+          setError("Something went wrong. Please try later");
+        });
+    }
   };
 
   const handleLogout = () => {
@@ -251,56 +263,59 @@ const ResponsiveAppBar = () => {
       </Container>
 
       <Dialog open={open} onClose={handleDialogClose}>
-        <DialogTitle>{signUpIn === "up" ? "Sign Up" : "Sign In"}</DialogTitle>
-        <DialogContent>
-          {error && <Alert severity="error">{error}</Alert>}
-          {signUpIn === "up" && (
+        <form onSubmit={signUpIn === "up" ? handleSignup : handleSignin}>
+          <DialogTitle>{signUpIn === "up" ? "Sign Up" : "Sign In"}</DialogTitle>
+          <DialogContent>
+            {error && <Alert severity="error">{error}</Alert>}
+            {signUpIn === "up" && (
+              <TextField
+                autoFocus
+                margin="dense"
+                label="Name"
+                type="email"
+                fullWidth
+                variant="standard"
+                onChange={(e) => onValueChange(e)}
+                name="name"
+              />
+            )}
             <TextField
               autoFocus
               margin="dense"
-              label="Name"
+              label="Email Address"
               type="email"
               fullWidth
               variant="standard"
               onChange={(e) => onValueChange(e)}
-              name="name"
+              name="email"
             />
-          )}
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Email Address"
-            type="email"
-            fullWidth
-            variant="standard"
-            onChange={(e) => onValueChange(e)}
-            name="email"
-          />
-          <TextField
-            autoFocus
-            margin="dense"
-            label="Password"
-            type="email"
-            fullWidth
-            variant="standard"
-            onChange={(e) => onValueChange(e)}
-            name="password"
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleDialogClose}>Cancel</Button>
-          <Button
-            onClick={signUpIn === "up" ? handleSignup : handleSignin}
-            disabled={
-              (signUpIn === "up" &&
-                (!user.name || !user.password || !user.email)) ||
-              !user.password ||
-              !user.email
-            }
-          >
-            {signUpIn === "up" ? "Sign Up" : "Sign In"}
-          </Button>
-        </DialogActions>
+            <TextField
+              autoFocus
+              margin="dense"
+              label="Password"
+              type="password"
+              fullWidth
+              variant="standard"
+              onChange={(e) => onValueChange(e)}
+              name="password"
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleDialogClose}>Cancel</Button>
+            <Button
+              type={"submit"}
+              onClick={signUpIn === "up" ? handleSignup : handleSignin}
+              disabled={
+                (signUpIn === "up" &&
+                  (!user.name || !user.password || !user.email)) ||
+                !user.password ||
+                !user.email
+              }
+            >
+              {signUpIn === "up" ? "Sign Up" : "Sign In"}
+            </Button>
+          </DialogActions>
+        </form>
       </Dialog>
     </AppBar>
   );
