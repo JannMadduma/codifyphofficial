@@ -11,13 +11,13 @@ export const mainListItems = (
       <ListItemIcon>
         <NightShelterIcon />
       </ListItemIcon>
-      <ListItemText primary="Properties" />
+      <ListItemText primary="Properties"/>
     </ListItemButton>
     <ListItemButton>
       <ListItemIcon>
         <GroupIcon />
       </ListItemIcon>
-      <ListItemText primary="Users" />
+      <ListItemText primary="Users"/>
     </ListItemButton>
   </React.Fragment>
 );
