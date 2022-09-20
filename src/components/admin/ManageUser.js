@@ -12,9 +12,10 @@ import { mainListItems } from "./listItems";
 import { useDispatch, useSelector } from "react-redux";
 import { setUsers } from "../../actions/usersActions";
 import { Table } from "react-bootstrap";
-import { TableBody, TableCell, TableHead, TableRow } from "@mui/material";
+import { Button, ButtonGroup, TableBody, TableCell, TableHead, TableRow } from "@mui/material";
 import ResponsiveAppBar from "../common/Navbar";
 import { getAllUsers } from "../../service/userService";
+import PersonIcon from '@mui/icons-material/Person';
 
 const drawerWidth = 240;
 
@@ -99,6 +100,15 @@ function DashboardContent() {
                     <TableHead>
                       <TableRow>
                         <TableCell>Users</TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell></TableCell>
+                        <TableCell align="right">
+                          <Button variant="text">
+                            Add Users <PersonIcon />
+                          </Button>
+                        </TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell>ID</TableCell>
@@ -112,11 +122,34 @@ function DashboardContent() {
                     <TableBody>
                       {users.map((row) => (
                         <TableRow key={row.id}>
+                        <TableCell>{row.id}</TableCell>
                           <TableCell>{row.name}</TableCell>
                           <TableCell>{row.email}</TableCell>
                           <TableCell>{row.password}</TableCell>
                           <TableCell>{row.role}</TableCell>
-                          <TableCell align="right"></TableCell>
+                          <TableCell align="right">
+                          <div
+                              sx={{
+                                display: "flex",
+                                flexDirection: "column",
+                                alignItems: "center",
+                                "& > *": {
+                                  m: 1,
+                                },
+                              }}
+                            >
+                              <ButtonGroup
+                                variant="text"
+                                aria-label="text button group"
+                                color="info"
+                              >
+                                <Button>View</Button>
+                                <Button>Edit</Button>
+                                <Button>Delete</Button>
+                              </ButtonGroup>
+                            </div>
+
+                          </TableCell>
                         </TableRow>
                       ))}
                     </TableBody>

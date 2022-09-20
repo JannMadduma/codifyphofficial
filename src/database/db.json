@@ -20,7 +20,11 @@
       "email": "user1@project.com",
       "password": "user1",
       "role": "user",
-      "likes": [1, 2, 3]
+      "likes": [
+        1,
+        2,
+        3
+      ]
     },
     {
       "name": "user2",
