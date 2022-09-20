@@ -1,7 +1,16 @@
 import React from "react";
+import ManageProperties from "../../admin/ManageProperties";
+import StickyFooter from "../../common/Footer";
+import ResponsiveAppBar from "../../common/Navbar";
 
 const Listing = ({}) => {
-  return <h1>Listing page ni</h1>;
+  return (
+    <React.Fragment>
+      <ResponsiveAppBar />
+      <ManageProperties />
+      <StickyFooter />
+    </React.Fragment>
+  );
 };
 
 export default Listing;
