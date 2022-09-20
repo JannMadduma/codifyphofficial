@@ -1,4 +1,4 @@
-import { Box, Paper } from "@mui/material";
+import { Box, Grid, Paper } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import Container from "@mui/material/Container";
 import * as React from "react";
@@ -17,21 +17,8 @@ import SquareFootIcon from "@mui/icons-material/SquareFoot";
 import { useEffect } from "react";
 import { getAllProperties } from "../../service/propertyService";
 import { setProperties } from "../../actions/propertiesActions";
-
-function preventDefault(event) {
-  event.preventDefault();
-}
-
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
-  marginLeft: "auto",
-  transition: theme.transitions.create("transform", {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 export default function TopListing() {
   const dispatch = useDispatch();
@@ -43,6 +30,46 @@ export default function TopListing() {
     setExpanded(!expanded);
   };
 
+  const [step, setStep] = React.useState(0);
+  const handleBack = () => {
+    if (step > 0) {
+      setStep(step - 1);
+    } else {
+      setStep(2);
+    }
+  };
+
+  const handleNext = () => {
+    if (step < 2) {
+      setStep(step + 1);
+    } else {
+      setStep(0);
+    }
+  };
+
+  React.useEffect(() => {
+    const container = document.querySelector(".scrollListing");
+    if (step === 0) {
+      container.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    } else if (step === 1) {
+      container.scrollTo({
+        top: 0,
+        left: (container.scrollWidth - container.clientWidth) / 2,
+        behavior: "smooth",
+      });
+    } else {
+      container.scrollTo({
+        top: 0,
+        left: container.scrollWidth - container.clientWidth,
+        behavior: "smooth",
+      });
+    }
+  }, [step]);
+
   useEffect(() => {
     getAllProperties().then((res) => {
       dispatch(setProperties(res.data));
@@ -50,8 +77,8 @@ export default function TopListing() {
   }, []);
 
   return (
-    <box>
-      <box>
+    <Box>
+      <Box>
         <main>
           <Box
             sx={{
@@ -73,45 +100,122 @@ export default function TopListing() {
             </Container>
           </Box>
         </main>
-      </box>
-      {properties.map((property) => (
-        <Card sx={{ maxWidth: 345, position: "relative" }}>
-          <Paper
-            variant="outlined"
-            sx={{ position: "absolute", top: 8, left: 8, padding: "2px 5px" }}
+      </Box>
+
+      <Box sx={{ position: "relative" }}>
+        <Box
+          sx={{ width: "100%", overflowX: "hidden", overflowY: "hidden" }}
+          className="scrollListing"
+        >
+          <Grid container columns={9} sx={{ width: "200%" }}>
+            {properties.slice(0, 9).map((property) => (
+              <Grid item xs={1}>
+                <Card sx={{ position: "relative" }} variant="outlined">
+                  <Paper
+                    variant="outlined"
+                    sx={{
+                      position: "absolute",
+                      top: 8,
+                      left: 8,
+                      padding: "2px 5px",
+                    }}
+                  >
+                    NEW - 15 minutes ago
+                  </Paper>
+                  <CardMedia
+                    component="img"
+                    height="194"
+                    image={property.img}
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                      ₱{" "}
+                      {property.tcp
+                        .toString()
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      {property.bedRooms}
+                      <HotelIcon /> {property.bathRooms}
+                      <BathtubIcon />
+                      {property.lotArea}
+                      <SquareFootIcon />
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      sx={{
+                        height: "45px",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        display: "-webkit-box",
+                        "-webkit-line-clamp": "2",
+                        "-webkit-box-orient": "vertical",
+                      }}
+                    >
+                      {property.location}
+                    </Typography>
+                  </CardContent>
+                  <hr />
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      height: "45px",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      display: "-webkit-box",
+                      "-webkit-line-clamp": "2",
+                      "-webkit-box-orient": "vertical",
+                    }}
+                  >
+                    {property.propertyName}
+                  </Typography>
+                  {loggedIn?.id && (
+                    <CardActions disableSpacing>
+                      <IconButton aria-label="add to favorites">
+                        <FavoriteIcon />
+                      </IconButton>
+                      <IconButton aria-label="share">
+                        <ShareIcon />
+                      </IconButton>
+                    </CardActions>
+                  )}
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            width: "100%",
+            justifyContent: "space-between",
+            position: "absolute",
+            top: "calc(50% - 30px)",
+            padding: "0px 20px",
+          }}
+        >
+          <IconButton
+            aria-label="delete"
+            onClick={handleBack}
+            sx={{
+              background: "white",
+            }}
           >
-            NEW - 15 minutes ago
-          </Paper>
-          <CardMedia component="img" height="194" image={property.img} />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              ₱ {property.tcp.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {property.bedRooms}
-              <HotelIcon /> {property.bathRooms}
-              <BathtubIcon />
-              {property.lotArea}
-              <SquareFootIcon />
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {property.location}
-            </Typography>
-          </CardContent>
-          <hr />
-          {property.propertyName}
-          {loggedIn?.id && (
-            <CardActions disableSpacing>
-              <IconButton aria-label="add to favorites">
-                <FavoriteIcon />
-              </IconButton>
-              <IconButton aria-label="share">
-                <ShareIcon />
-              </IconButton>
-            </CardActions>
-          )}
-        </Card>
-      ))}
-    </box>
+            <ArrowBackIosNewIcon />
+          </IconButton>
+          <IconButton
+            aria-label="delete"
+            onClick={handleNext}
+            sx={{
+              background: "white",
+            }}
+          >
+            <ArrowForwardIosIcon />
+          </IconButton>
+        </Box>
+      </Box>
+    </Box>
   );
 }
