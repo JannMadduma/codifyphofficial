@@ -61,17 +61,6 @@ export default function List() {
             {properties.slice(0, 100).map((property) => (
               <Grid item xs={1}>
                 <Card sx={{ position: "relative" }} variant="outlined">
-                  {/* <Paper
-                    variant="outlined"
-                    sx={{
-                      position: "absolute",
-                      top: 8,
-                      left: 8,
-                      padding: "2px 5px",
-                    }}
-                  >
-                    NEW - 15 minutes ago
-                  </Paper> */}
                   <CardMedia
                     component="img"
                     height="194"
