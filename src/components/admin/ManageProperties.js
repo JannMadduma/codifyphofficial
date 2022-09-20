@@ -22,6 +22,7 @@ import {
   TableRow,
 } from "@mui/material";
 import AddHomeIcon from "@mui/icons-material/AddHome";
+import ResponsiveAppBar from "../common/Navbar";
 
 const drawerWidth = 240;
 
