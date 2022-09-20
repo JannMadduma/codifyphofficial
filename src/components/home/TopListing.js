@@ -128,13 +128,13 @@ export default function TopListing() {
                     image={property.img}
                   />
                   <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography gutterBottom variant="h5" component="div" sx={{ textAlign: "left"}}>
                       ₱{" "}
                       {property.tcp
                         .toString()
                         .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.secondary" sx={{ textAlign: "left"}}>
                       {property.bedRooms}
                       <HotelIcon /> {property.bathRooms}
                       <BathtubIcon />
@@ -145,6 +145,7 @@ export default function TopListing() {
                       variant="body2"
                       color="text.secondary"
                       sx={{
+                        textAlign: "left",
                         height: "45px",
                         overflow: "hidden",
                         textOverflow: "ellipsis",
@@ -161,6 +162,7 @@ export default function TopListing() {
                     variant="body2"
                     color="text.secondary"
                     sx={{
+                      textAlign: "left",
                       height: "45px",
                       overflow: "hidden",
                       textOverflow: "ellipsis",

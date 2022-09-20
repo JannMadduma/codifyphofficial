@@ -56,16 +56,11 @@ export default function StickyFooter() {
           >
             <FacebookIcon fontSize="large" color="primary" />
           </IconButton>
-<<<<<<< HEAD
-          <IconButton aria-label="GitHub.com" onClick={() => window.open('https://www.GitHub.com')}>
-          <GitHubIcon fontSize="large" color='primary' />
-=======
           <IconButton
             aria-label="GitHub.com"
             onClick={() => window.open("https://www.GitHub.com")}
           >
             <GitHubIcon fontSize="large" color="primary" />
->>>>>>> 0ad05f7e726302669ec7dcacba8d90ee281de653
           </IconButton>
           <IconButton
             aria-label="Twitter.com"
