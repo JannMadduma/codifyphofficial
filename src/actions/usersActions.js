@@ -17,6 +17,6 @@ export function editUser(user) {
   return { type: actionTypes.EDIT_USER, user };
 }
 
-export function deleteUser(user) {
+export function deleteUserAction(user) {
   return { type: actionTypes.DELETE_USER, user };
 }

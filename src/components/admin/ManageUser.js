@@ -10,7 +10,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { mainListItems } from "./listItems";
 import { useDispatch, useSelector } from "react-redux";
-import { setUsers } from "../../actions/usersActions";
+import { deleteUserAction, setUsers } from "../../actions/usersActions";
 import { Table } from "react-bootstrap";
 import {
   Button,
@@ -19,9 +19,18 @@ import {
   TableCell,
   TableHead,
   TableRow,
+  TextField,
 } from "@mui/material";
 import ResponsiveAppBar from "../common/Navbar";
-import { getAllUsers } from "../../service/userService";
+import { deleteUser, getAllUsers } from "../../service/userService";
+
+// for Dialog
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+
+// ----------------------------------------------------
 
 const drawerWidth = 240;
 
@@ -57,6 +66,8 @@ function DashboardContent() {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.users);
   const [open, setOpen] = React.useState(true);
+    // added to map users in the edit textfield
+    const [user, setUser] = React.useState({});
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -66,6 +77,30 @@ function DashboardContent() {
       dispatch(setUsers(res.data));
     });
   }, []);
+
+
+// to delete users
+const handleUserDelete = async (id) =>{
+  // "deleteUser" is from service,UserService
+deleteUser(id)
+.then((res) => {
+      // "deleteUserAction" is from actions, UsersAction
+  dispatch(deleteUserAction({id:id}));
+})
+}
+
+// dialog for Edit functions
+const [editOpen, setEditOpen] = React.useState(false);
+      // (i) is added when mapping to dialog's textfield
+  const handleClickOpen = (i) => {
+    setUser(i)
+    setEditOpen(true);
+  };
+
+  const handleClose = () => {
+    setEditOpen(false);
+  };
+
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -148,25 +183,82 @@ function DashboardContent() {
                                 color="info"
                               >
                                 <Button>View</Button>
-                                <Button>Edit</Button>
-                                <Button>Delete</Button>
+                                <Button onClick={() => {handleClickOpen(row)}
+                                  }>Edit</Button>
+                                <Button onClick={()=> {handleUserDelete(row.id)}}>Delete</Button>
                               </ButtonGroup>
-                            </div>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </Paper>
-              </Grid>
-            </Grid>
-          </Container>
-        </Box>
-      </Box>
-    </ThemeProvider>
-  );
-}
+                    </div>
+                      </TableCell>
+                           </TableRow>
+                                 ))}
+                                    </TableBody>
+                                      </Table>
+                                   </Paper>
+                                        </Grid>
+                                      </Grid>
+                                    </Container>
+                                  </Box>
+                                </Box>
+                                    {/* DIALOG here for input edit items */}
+                                    <Dialog
+                                open={editOpen}
+                                onClose={handleClose}         
+                                aria-labelledby="draggable-dialog-title"
+                              >
+                                <DialogTitle style={{ cursor: 'move' }} id="draggable-dialog-title">
+                                  Edit User
+                                </DialogTitle>
+                                <DialogContent>                    
+                                <TextField
+                                    autoFocus
+                                    margin="dense"
+                                    value={user.name}
+                                    type="email"
+                                    fullWidth
+                                    variant="standard"
+                                    name="name"
+                                    disabled
+                                  /> 
+                                    <TextField
+                                    autoFocus
+                                    margin="dense"
+                                    value={user.email}
+                                    type="email"
+                                    fullWidth
+                                    variant="standard"
+                                    name="name"
+                                    disabled
+                                  /> 
+                                   <TextField
+                                    autoFocus
+                                    margin="dense"
+                                    value={user.password}
+                                    type="email"
+                                    fullWidth
+                                    variant="standard"
+                                    name="name"
+                                  /> 
+                                    <TextField
+                                    autoFocus
+                                    margin="dense"
+                                    value={user.role}
+                                    type="email"
+                                    fullWidth
+                                    variant="standard"
+                                    name="name"
+                                  /> 
+                                </DialogContent>
 
+                                <DialogActions>
+                                  <Button autoFocus onClick={handleClose}>
+                                    Cancel
+                                  </Button>
+                                  <Button onClick={handleClose}>Save</Button>
+                                </DialogActions>
+                              </Dialog>
+                      </ThemeProvider>
+                   );
+                }
 export default function ManageUsers() {
   return <DashboardContent />;
 }
