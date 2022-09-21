@@ -49,16 +49,19 @@ export default function List() {
         break;
     }
   };
+  // Trigger effect once only - initial state --------
+  // useEffect(() => {
+  //   getAllProperties().then((res) => {
+  //     dispatch(setProperties(res.data));
+  //   });
+  // }, []);
 
-  useEffect(() => {
-    getAllProperties().then((res) => {
-      dispatch(setProperties(res.data));
-    });
-  }, []);
-
+  //  this is used for filtering----------
+  // Trigger effect when name, location, lotArea is changed
   useEffect(() => {
     console.log("trigger");
     getAllProperties(null, name, location, lotArea).then((res) => {
+      console.log(res.data);
       dispatch(setProperties(res.data));
     });
   }, [name, location, lotArea]);
