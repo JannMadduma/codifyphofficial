@@ -13,7 +13,7 @@ export function addUser(user) {
   return { type: actionTypes.ADD_USER, user };
 }
 
-export function editUser(user) {
+export function editUserAction(user) {
   return { type: actionTypes.EDIT_USER, user };
 }
 

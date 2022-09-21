@@ -10,11 +10,15 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { mainListItems } from "./listItems";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteUserAction, setUsers } from "../../actions/usersActions";
+import { deleteUserAction, editUserAction, setUsers } from "../../actions/usersActions";
 import { Table } from "react-bootstrap";
 import {
   Button,
   ButtonGroup,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
   TableBody,
   TableCell,
   TableHead,
@@ -22,7 +26,7 @@ import {
   TextField,
 } from "@mui/material";
 import ResponsiveAppBar from "../common/Navbar";
-import { deleteUser, getAllUsers } from "../../service/userService";
+import { deleteUser, editUser, getAllUsers } from "../../service/userService";
 
 // for Dialog
 import Dialog from '@mui/material/Dialog';
@@ -101,6 +105,20 @@ const [editOpen, setEditOpen] = React.useState(false);
     setEditOpen(false);
   };
 
+  const handleInputChange = (e) => {
+    setUser({...user, role: e.target.value})
+  };
+
+  const handleEdit = () =>{
+    // "deleteUser" is from service,UserService
+    editUser(user.id,user)
+    .then((res) => {
+      // "deleteUserAction" is from actions, UsersAction
+  dispatch(editUserAction(user));
+})
+  handleClose()
+  }
+
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -144,7 +162,6 @@ const [editOpen, setEditOpen] = React.useState(false);
                         <TableCell></TableCell>
                         <TableCell></TableCell>
                         <TableCell></TableCell>
-                        <TableCell></TableCell>
                         <TableCell align="right">
                           <Button variant="text">Add Users</Button>
                         </TableCell>
@@ -153,7 +170,6 @@ const [editOpen, setEditOpen] = React.useState(false);
                         <TableCell>ID</TableCell>
                         <TableCell>Name</TableCell>
                         <TableCell>Email</TableCell>
-                        <TableCell>Password</TableCell>
                         <TableCell>Role</TableCell>
                         <TableCell align="right">Actions</TableCell>
                       </TableRow>
@@ -164,7 +180,6 @@ const [editOpen, setEditOpen] = React.useState(false);
                           <TableCell>{row.id}</TableCell>
                           <TableCell>{row.name}</TableCell>
                           <TableCell>{row.email}</TableCell>
-                          <TableCell>{row.password}</TableCell>
                           <TableCell>{row.role}</TableCell>
                           <TableCell align="right">
                             <div
@@ -182,7 +197,7 @@ const [editOpen, setEditOpen] = React.useState(false);
                                 aria-label="text button group"
                                 color="info"
                               >
-                                <Button>View</Button>
+                              
                                 <Button onClick={() => {handleClickOpen(row)}
                                   }>Edit</Button>
                                 <Button onClick={()=> {handleUserDelete(row.id)}}>Delete</Button>
@@ -213,7 +228,7 @@ const [editOpen, setEditOpen] = React.useState(false);
                                     autoFocus
                                     margin="dense"
                                     value={user.name}
-                                    type="email"
+                                    type="text"
                                     fullWidth
                                     variant="standard"
                                     name="name"
@@ -229,31 +244,27 @@ const [editOpen, setEditOpen] = React.useState(false);
                                     name="name"
                                     disabled
                                   /> 
-                                   <TextField
-                                    autoFocus
-                                    margin="dense"
-                                    value={user.password}
-                                    type="email"
-                                    fullWidth
-                                    variant="standard"
-                                    name="name"
-                                  /> 
-                                    <TextField
-                                    autoFocus
-                                    margin="dense"
-                                    value={user.role}
-                                    type="email"
-                                    fullWidth
-                                    variant="standard"
-                                    name="name"
-                                  /> 
+                                      <FormControl fullWidth>
+                                        <InputLabel id="demo-simple-select-label">Role</InputLabel>
+                                        <Select
+                                          labelId="demo-simple-select-label"
+                                          id="demo-simple-select"
+                                          label="Lot Area"
+                                          name="lotArea"
+                                          onChange={handleInputChange}
+                                          value={user.role}
+                                        >
+                                          <MenuItem value={'admin'}>Admin</MenuItem>
+                                          <MenuItem value={'user'}>User</MenuItem>
+                                        </Select>
+                                        </FormControl>
                                 </DialogContent>
 
                                 <DialogActions>
                                   <Button autoFocus onClick={handleClose}>
                                     Cancel
                                   </Button>
-                                  <Button onClick={handleClose}>Save</Button>
+                                  <Button onClick={handleEdit}>Save</Button>
                                 </DialogActions>
                               </Dialog>
                       </ThemeProvider>
