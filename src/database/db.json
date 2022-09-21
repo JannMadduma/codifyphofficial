@@ -1,20 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "admin",
-      "email": "admin@project.com",
-      "password": "admin",
-      "role": "admin"
-    },
-    {
-      "id": 2,
-      "name": "admin2",
-      "email": "admin2@project.com",
-      "password": "admin2",
-      "role": "admin"
-    },
-    {
       "id": 3,
       "name": "admin3",
       "email": "admin3@project.com",

@@ -5,6 +5,7 @@ import {
   Grid,
   InputLabel,
   MenuItem,
+  Paper,
   Select,
   TextField,
 } from "@mui/material";
@@ -136,6 +137,15 @@ export default function List() {
           {properties.slice(0, 100).map((property) => (
             <Grid item sm={6} md={4} lg={3} xs={12}>
               <Card sx={{ position: "relative" }} variant="outlined">
+                <Paper
+                  variant="outlined"
+                  sx={{
+                    position: "absolute",
+                    top: 8,
+                    left: 8,
+                    padding: "2px 5px",
+                  }}
+                ></Paper>
                 <CardMedia
                   component="img"
                   height="194"
@@ -156,36 +166,11 @@ export default function List() {
                   <Typography
                     variant="body2"
                     color="text.secondary"
-                    sx={{ textAlign: "left" }}
-                  >
-                    {property.bedRooms}
-                    <HotelIcon /> {property.bathRooms}
-                    <BathtubIcon />
-                    {property.lotArea}
-                    <SquareFootIcon />
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
                     sx={{
                       textAlign: "left",
                       height: "45px",
-                      display: "-webkit-box",
-                      "-webkit-line-clamp": "2",
-                      "-webkit-box-orient": "vertical",
-                    }}
-                  >
-                    {property.location}
-                  </Typography>
-                </CardContent>
-                <hr />
-                <CardContent sx={{ paddingBottom: "16px !important" }}>
-                  <Typography
-                    variant="body2"
-                    color="text.secondary"
-                    sx={{
-                      textAlign: "left",
-                      height: "45px",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
                       display: "-webkit-box",
                       "-webkit-line-clamp": "2",
                       "-webkit-box-orient": "vertical",
@@ -193,13 +178,48 @@ export default function List() {
                   >
                     {property.propertyName}
                   </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{ textAlign: "left", padding: "10px 0" }}
+                  >
+                    {property.bedRooms}
+                    <IconButton aria-label="delete" size="small">
+                      <HotelIcon fontSize="inherit" />
+                    </IconButton>
+                    {property.bathRooms}
+                    <IconButton aria-label="delete" size="small">
+                      <BathtubIcon fontSize="inherit" />
+                    </IconButton>
+                    {property.lotArea}
+                    <IconButton aria-label="delete" size="small">
+                      <SquareFootIcon fontSize="inherit" />
+                    </IconButton>
+                  </Typography>
+                  <Typography
+                    variant="body2"
+                    color="text.secondary"
+                    sx={{
+                      textAlign: "left",
+                      height: "45px",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      display: "-webkit-box",
+                      "-webkit-line-clamp": "2",
+                      "-webkit-box-orient": "vertical",
+                    }}
+                  >
+                    {property.location}
+                  </Typography>
+
+                  <hr />
                   {loggedIn?.id && (
                     <CardActions disableSpacing>
-                      <IconButton aria-label="add to favorites">
-                        <FavoriteIcon />
+                      <IconButton aria-label="add to favorites" size="small">
+                        <FavoriteIcon fontSize="inherit" />
                       </IconButton>
-                      <IconButton aria-label="share">
-                        <ShareIcon />
+                      <IconButton aria-label="share" size="small">
+                        <ShareIcon fontSize="inherit" />
                       </IconButton>
                     </CardActions>
                   )}
