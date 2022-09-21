@@ -28,19 +28,19 @@ import CardActions from "@mui/material/CardActions";
 
 const itemData = [
   {
-    img: "https://images.unsplash.com/photo-1549388604-817d15aa0110",
+    img: "https://www.bachelorsrealty.com.ph/uploads/property/PR1660975468PR2TY/images/0_1660975468.jpg",
     title: "Bed",
   },
   {
-    img: "https://images.unsplash.com/photo-1525097487452-6278ff080c31",
+    img: "https://www.bachelorsrealty.com.ph/uploads/property/PR1660975468PR2TY/images//1_1660975469.jpg",
     title: "Books",
   },
   {
-    img: "https://images.unsplash.com/photo-1523413651479-597eb2da0ad6",
+    img: "https://www.bachelorsrealty.com.ph/uploads/property/PR1660975468PR2TY/images//2_1660975469.jpg",
     title: "Sink",
   },
   {
-    img: "https://images.unsplash.com/photo-1563298723-dcfebaa392e3",
+    img: "https://www.bachelorsrealty.com.ph/uploads/property/PR1660975468PR2TY/images//0_1660975498.jpg",
     title: "Kitchen",
   },
   {
@@ -79,11 +79,9 @@ const itemData = [
 
 const theme = createMuiTheme();
 
-export default function ListingGallery() {
+export default function ListingGallery({ property }) {
   const dispatch = useDispatch();
-  const properties = useSelector((state) => state.properties);
   const [expanded, setExpanded] = React.useState(false);
-  const loggedIn = useSelector((state) => state.loggedIn);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -131,94 +129,106 @@ export default function ListingGallery() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container
-        sx={{
-          margin: "0px",
-          maxWidth: { xs: "100%" },
-          padding: { xs: "0px" },
-          paddingLeft: { xs: "70px" },
-        }}
-      >
-        <div>
-          <Grid
-            container
+      <Grid container>
+        <Grid item xs={7}>
+          <Container
             sx={{
-              width: "100%",
-              position: "relative",
+              margin: "0px",
+              maxWidth: { xs: "100%" },
+              padding: { xs: "0px" },
+              flexGrow: 0,
+              flexShrink: 1,
             }}
           >
-            <Grid xs={12}>
-              <Box
-                className="scrollGallery"
+            <img
+              src={`${property.img}`}
+              srcSet={`${property.img}`}
+              alt={property.propertyName}
+              loading="lazy"
+              style={{ width: "100%" }}
+            />
+            <div>
+              <Grid
+                container
                 sx={{
                   width: "100%",
-                  overflowX: "hidden",
-                  overflowY: "hidden",
+                  position: "relative",
+                  pt: 2,
                 }}
               >
-                <Box
-                  sx={{
-                    width: "200%",
-                  }}
-                >
-                  <ImageList variant="masonry" cols={10} gap={8}>
-                    {itemData.map((item) => (
-                      <ImageListItem key={item.img}>
-                        <img
-                          src={`${item.img}?w=248&fit=crop&auto=format`}
-                          srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                          alt={item.title}
-                          loading="lazy"
-                        />
-                      </ImageListItem>
-                    ))}
-                  </ImageList>
-                </Box>
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  width: "100%",
-                  justifyContent: "space-between",
-                  position: "absolute",
-                  top: "calc(50% - 30px)",
-                  padding: "0px 20px",
-                }}
-              >
-                <IconButton
-                  aria-label="delete"
-                  onClick={handleBack}
-                  sx={{
-                    background: "white",
-                  }}
-                >
-                  <ArrowBackIosNewIcon />
-                </IconButton>
-                <IconButton
-                  aria-label="delete"
-                  onClick={handleNext}
-                  sx={{
-                    background: "white",
-                  }}
-                >
-                  <ArrowForwardIosIcon />
-                </IconButton>
-              </Box>
-            </Grid>
-          </Grid>
-        </div>
-      </Container>
-      <main>
-        <Box
-          sx={{
-            bgcolor: "background.paper",
-            pt: 8,
-            pb: 6,
-            padding: "0px",
-          }}
-        >
-          <Container>
-            {properties.slice(0, 1).map((property) => (
+                <Grid xs={12}>
+                  <Box
+                    className="scrollGallery"
+                    sx={{
+                      width: "100%",
+                      overflowX: "hidden",
+                      overflowY: "hidden",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: "200%",
+                      }}
+                    >
+                      <ImageList variant="masonry" cols={10} gap={8}>
+                        {itemData.map((item, index) => (
+                          <ImageListItem key={item.img}>
+                            <img
+                              src={`${item.img}?w=800&fit=crop&auto=format`}
+                              srcSet={`${item.img}?w=800&fit=crop&auto=format&dpr=2 2x`}
+                              alt={item.title}
+                              loading="lazy"
+                            />
+                          </ImageListItem>
+                        ))}
+                      </ImageList>
+                    </Box>
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      width: "100%",
+                      justifyContent: "space-between",
+                      position: "absolute",
+                      top: "calc(50% - 30px)",
+                      padding: "0px 20px",
+                    }}
+                  >
+                    <IconButton
+                      aria-label="delete"
+                      onClick={handleBack}
+                      sx={{
+                        background: "white",
+                      }}
+                    >
+                      <ArrowBackIosNewIcon />
+                    </IconButton>
+                    <IconButton
+                      aria-label="delete"
+                      onClick={handleNext}
+                      sx={{
+                        background: "white",
+                      }}
+                    >
+                      <ArrowForwardIosIcon />
+                    </IconButton>
+                  </Box>
+                </Grid>
+              </Grid>
+            </div>
+          </Container>
+        </Grid>
+        <Grid item xs={5}>
+          <main>
+            <Box
+              sx={{
+                bgcolor: "background.paper",
+                pt: 8,
+                pb: 6,
+                padding: "0px",
+                paddingLeft: 2,
+              }}
+            >
               <div>
                 <Typography
                   gutterBottom
@@ -280,10 +290,10 @@ export default function ListingGallery() {
                   <span> sqm Floor Area</span>
                 </Typography>
               </div>
-            ))}
-          </Container>
-        </Box>
-      </main>
+            </Box>
+          </main>
+        </Grid>
+      </Grid>
     </ThemeProvider>
   );
 }

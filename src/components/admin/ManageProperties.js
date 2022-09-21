@@ -23,6 +23,7 @@ import {
 } from "@mui/material";
 import ResponsiveAppBar from "../common/Navbar";
 import ListingView from "../listing/view/ListingView";
+import ViewModal from "../listing/view/ViewModal";
 
 const drawerWidth = 240;
 
@@ -58,8 +59,19 @@ function DashboardContent() {
   const dispatch = useDispatch();
   const properties = useSelector((state) => state.properties);
   const [open, setOpen] = React.useState(true);
+  const [property, setProperty] = React.useState({});
+  const [openView, setOpenView] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
+  };
+
+  const handleOpenView = (i) => {
+    setProperty(i);
+    setOpenView(true);
+  };
+
+  const handleCloseView = () => {
+    setOpenView(false);
   };
 
   React.useEffect(() => {
@@ -131,7 +143,11 @@ function DashboardContent() {
                           <TableCell>{row.propertyName}</TableCell>
                           <TableCell>{row.location}</TableCell>
                           <TableCell>{row.developer}</TableCell>
-                          <TableCell>{row.tcp}</TableCell>
+                          <TableCell>
+                            {row.tcp
+                              .toString()
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                          </TableCell>
 
                           <TableCell align="right">
                             <div
@@ -149,8 +165,12 @@ function DashboardContent() {
                                 aria-label="text button group"
                                 color="info"
                               >
-                                <Button>
-                                  <ListingView />
+                                <Button
+                                  onClick={() => {
+                                    handleOpenView(row);
+                                  }}
+                                >
+                                  View
                                 </Button>
                                 <Button>Edit</Button>
                                 <Button>Delete</Button>
@@ -167,6 +187,7 @@ function DashboardContent() {
           </Container>
         </Box>
       </Box>
+      <ViewModal open={openView} setOpen={setOpenView} property={property} />
     </ThemeProvider>
   );
 }

@@ -17,7 +17,7 @@ function Description(props) {
         },
       }}
     >
-      <Grid container column={12} sx={{ padding: 5 }}>
+      <Grid container column={12} sx={{ paddingTop: 5 }}>
         <Grid item md={6} sx={{ paddingRight: 5 }}>
           <Typography variant="h6" gutterBottom>
             DESCRIPTION
@@ -69,7 +69,7 @@ function Description(props) {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container column={12} sx={{ padding: 5 }}>
+      <Grid container column={12} sx={{ paddingTop: 5 }}>
         <Grid item md={6} sx={{ paddingRight: 5 }}>
           <Typography variant="h6" gutterBottom>
             PAYMENT FINANCING SCHEME/COMPUTATION
