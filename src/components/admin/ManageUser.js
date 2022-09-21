@@ -254,8 +254,9 @@ function DashboardContent() {
             value={user.name}
             type="text"
             fullWidth
-            variant="standard"
+            variant="filled"
             name="name"
+            label="Name"
             disabled
           />
           <TextField
@@ -264,8 +265,9 @@ function DashboardContent() {
             value={user.email}
             type="email"
             fullWidth
-            variant="standard"
+            variant="filled"
             name="name"
+            label="Email"
             disabled
           />
           <FormControl fullWidth>
