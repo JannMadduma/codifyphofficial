@@ -13,7 +13,7 @@ export function addProperty(property) {
   return { type: actionTypes.ADD_PROPERTY, property };
 }
 
-export function editProperty(property) {
+export function editPropertyAction(property) {
   return { type: actionTypes.EDIT_PROPERTY, property };
 }
 

@@ -1,4 +1,4 @@
-import { actionTypes } from '../actions/propertiesActions';
+import { actionTypes } from "../actions/propertiesActions";
 
 const propertiesState = [];
 let index;
@@ -18,7 +18,7 @@ export default function propertiesReducer(state = propertiesState, action) {
         ...state.slice(index + 1), // everything after current item
       ];
     case actionTypes.DELETE_PROPERTY:
-      index = state.findIndex((mod) => mod.id === action.id);
+      index = state.findIndex((mod) => mod.id === action.property.id);
 
       return [
         ...state.slice(0, index), // everything before current item

@@ -19,13 +19,13 @@
       "name": "admin3",
       "email": "admin3@project.com",
       "password": "admin3",
-      "role": "user"
+      "role": "admin"
     }
   ],
   "properties": [
     {
       "id": 1,
-      "propertyName": "Summerville Subdivision Carcar - 2-storey Townhouse",
+      "propertyName": "Summerville Subdivision Carcar - 2-storey Townhouse ",
       "location": "Can-asujan, City Of Carcar, Cebu, Region VII (Central Visayas)",
       "developer": "Abq & Sons Realty & Development Corporation",
       "projectType": "Pre-selling",
@@ -156,9 +156,9 @@
     },
     {
       "id": 9,
-      "propertyName": "ALMONDS LANE RESIDENCES - 2 STOREY TOWNHOUSE",
-      "location": "Poblacion, City Of Talisay - Cebu, Cebu, Region VII (Central Visayas)",
-      "developer": "Csmichael Development Corp.",
+      "propertyName": "ALMONDS LANE RESIDENCES - 2 STOREY TOWNHOUSE ",
+      "location": "Poblacion, City Of Talisay - Cebu, Cebu, Region VII (Central Visayas) ",
+      "developer": "Csmichael Development Corp. ",
       "projectType": "Pre-selling",
       "monthly": "25469",
       "tcp": "3950000",
