@@ -118,9 +118,7 @@ export default function TopListing() {
                       left: 8,
                       padding: "2px 5px",
                     }}
-                  >
-                    NEW - 15 minutes ago
-                  </Paper>
+                  ></Paper>
                   <CardMedia
                     component="img"
                     height="194"
@@ -141,13 +139,35 @@ export default function TopListing() {
                     <Typography
                       variant="body2"
                       color="text.secondary"
-                      sx={{ textAlign: "left" }}
+                      sx={{
+                        textAlign: "left",
+                        height: "45px",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        display: "-webkit-box",
+                        "-webkit-line-clamp": "2",
+                        "-webkit-box-orient": "vertical",
+                      }}
+                    >
+                      {property.propertyName}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      color="text.secondary"
+                      sx={{ textAlign: "left", padding: "10px 0" }}
                     >
                       {property.bedRooms}
-                      <HotelIcon /> {property.bathRooms}
-                      <BathtubIcon />
+                      <IconButton aria-label="delete" size="small">
+                        <HotelIcon fontSize="inherit" />
+                      </IconButton>
+                      {property.bathRooms}
+                      <IconButton aria-label="delete" size="small">
+                        <BathtubIcon fontSize="inherit" />
+                      </IconButton>
                       {property.lotArea}
-                      <SquareFootIcon />
+                      <IconButton aria-label="delete" size="small">
+                        <SquareFootIcon fontSize="inherit" />
+                      </IconButton>
                     </Typography>
                     <Typography
                       variant="body2"
@@ -164,29 +184,15 @@ export default function TopListing() {
                     >
                       {property.location}
                     </Typography>
-                  </CardContent>
-                  <hr />
-                  <CardContent sx={{ paddingBottom: "16px !important" }}>
-                    <Typography
-                      variant="body2"
-                      color="text.secondary"
-                      sx={{
-                        textAlign: "left",
-                        height: "45px",
-                        display: "-webkit-box",
-                        "-webkit-line-clamp": "2",
-                        "-webkit-box-orient": "vertical",
-                      }}
-                    >
-                      {property.propertyName}
-                    </Typography>
+
+                    <hr />
                     {loggedIn?.id && (
                       <CardActions disableSpacing>
-                        <IconButton aria-label="add to favorites">
-                          <FavoriteIcon />
+                        <IconButton aria-label="add to favorites" size="small">
+                          <FavoriteIcon fontSize="inherit" />
                         </IconButton>
-                        <IconButton aria-label="share">
-                          <ShareIcon />
+                        <IconButton aria-label="share" size="small">
+                          <ShareIcon fontSize="inherit" />
                         </IconButton>
                       </CardActions>
                     )}
