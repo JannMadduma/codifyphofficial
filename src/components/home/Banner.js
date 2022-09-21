@@ -61,6 +61,7 @@ const Banner = ({}) => {
           />
           <Box component="form" noValidate sx={{ mt: 1 }}>
             <h1
+              align="center"
               style={{
                 fontFamily: "'Rasputin', sans-serif",
                 fontSize: "50px",
@@ -78,8 +79,10 @@ const Banner = ({}) => {
                 fullWidth
                 variant="outlined"
                 sx={{ mt: 3, mb: 2, borderRadius: "100px", opacity: "60%" }}
+                component={RLink}
+                to={"/listing"}
               >
-                Find your home.
+                See Current Listings...
               </Button>
             </Box>
           </Box>
@@ -136,7 +139,7 @@ const Banner = ({}) => {
               component={RLink}
               to={"/listing"}
             >
-              See Current Listings
+              Search Homes...
             </Button>
           </Box>
         </Box>
