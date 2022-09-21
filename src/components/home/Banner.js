@@ -5,7 +5,6 @@ import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import { Link as RLink } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -61,7 +60,6 @@ const Banner = ({}) => {
           />
           <Box component="form" noValidate sx={{ mt: 1 }}>
             <h1
-              align="center"
               style={{
                 fontFamily: "'Rasputin', sans-serif",
                 fontSize: "50px",
@@ -79,10 +77,8 @@ const Banner = ({}) => {
                 fullWidth
                 variant="outlined"
                 sx={{ mt: 3, mb: 2, borderRadius: "100px", opacity: "60%" }}
-                component={RLink}
-                to={"/listing"}
               >
-                See Current Listings...
+                Find your home.
               </Button>
             </Box>
           </Box>
@@ -136,10 +132,8 @@ const Banner = ({}) => {
               fullWidth
               variant="outlined"
               sx={{ mt: 3, mb: 2, borderRadius: "100px" }}
-              component={RLink}
-              to={"/listing"}
             >
-              Search Homes...
+              See Current Listings
             </Button>
           </Box>
         </Box>
