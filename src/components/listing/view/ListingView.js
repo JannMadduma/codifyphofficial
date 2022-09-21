@@ -1,17 +1,17 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
-import { Avatar, Box, Container, Typography } from "@mui/material";
+import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import ListGallery from "./ListGallery";
-import SearchIcon from "@mui/icons-material/Search";
 import ListingGallery from "./ListGallery";
+import Suggestions from "./Suggestions";
+import Description from "./descriptions";
+import TopListing from "../../home/TopListing";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -122,6 +122,12 @@ export default function ListingView() {
         >
           <ListingGallery />
         </Box>
+        <Container>
+          <Description />
+        </Container>
+        <Container sx={{ paddingBottom: "100px" }}>
+          <TopListing />
+        </Container>
       </Dialog>
     </div>
   );

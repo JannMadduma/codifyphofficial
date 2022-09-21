@@ -136,6 +136,7 @@ export default function ListingGallery() {
           margin: "0px",
           maxWidth: { xs: "100%" },
           padding: { xs: "0px" },
+          paddingLeft: { xs: "70px" },
         }}
       >
         <div>
