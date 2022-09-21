@@ -5,7 +5,7 @@
       "name": "admin3",
       "email": "admin3@project.com",
       "password": "admin3",
-      "role": "admin"
+      "role": "user"
     }
   ],
   "properties": [
