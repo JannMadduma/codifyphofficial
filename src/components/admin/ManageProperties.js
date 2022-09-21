@@ -22,6 +22,7 @@ import {
   TableRow,
 } from "@mui/material";
 import ResponsiveAppBar from "../common/Navbar";
+import ListingView from "../listing/view/ListingView";
 
 const drawerWidth = 240;
 
@@ -148,7 +149,9 @@ function DashboardContent() {
                                 aria-label="text button group"
                                 color="info"
                               >
-                                <Button>View</Button>
+                                <Button>
+                                  <ListingView />
+                                </Button>
                                 <Button>Edit</Button>
                                 <Button>Delete</Button>
                               </ButtonGroup>
