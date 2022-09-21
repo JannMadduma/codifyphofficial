@@ -16,19 +16,10 @@
     },
     {
       "id": 3,
-      "name": "user1",
-      "email": "user1@project.com",
-      "password": "user1",
-      "role": "user",
-      "likes": [1, 2, 3]
-    },
-    {
-      "name": "test",
-      "email": "test@test.com",
-      "password": "test",
-      "likes": [],
-      "role": "user",
-      "id": 7
+      "name": "admin3",
+      "email": "admin3@project.com",
+      "password": "admin3",
+      "role": "admin"
     }
   ],
   "properties": [

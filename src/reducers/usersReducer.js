@@ -18,7 +18,7 @@ export default function usersReducer(state = usersState, action) {
         ...state.slice(index + 1), // everything after current item
       ];
     case actionTypes.DELETE_USER:
-      index = state.findIndex((mod) => mod.id === action.id);
+      index = state.findIndex((mod) => mod.id === action.user.id);
 
       return [
         ...state.slice(0, index), // everything before current item
