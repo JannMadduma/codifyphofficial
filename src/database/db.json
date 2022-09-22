@@ -43,13 +43,6 @@
       "role": "user"
     },
     {
-      "id": 7,
-      "name": "user7",
-      "email": "user7@project.com",
-      "password": "user",
-      "role": "user"
-    },
-    {
       "name": "Admin",
       "email": "admin@estatewindows.com",
       "password": "admin",
@@ -278,7 +271,8 @@
       "id": 14,
       "location": "wdadwae123",
       "developer": "wdawd31412",
-      "projectType": "RFO"
+      "projectType": "RFO",
+      "tcp": "5000000"
     }
   ]
 }

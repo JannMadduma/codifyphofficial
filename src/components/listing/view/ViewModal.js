@@ -1,5 +1,4 @@
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
@@ -9,9 +8,10 @@ import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ListingGallery from "./ListGallery";
-import Suggestions from "./Suggestions";
 import Description from "./descriptions";
-import TopListing from "../../home/TopListing";
+
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ShareIcon from "@mui/icons-material/Share";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -56,6 +56,9 @@ export default function ViewModal({ open, setOpen, property }) {
         style={{ padding: "0 150px" }}
       >
         <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <Link to={"/"}>
+            <Avatar alt="Photo" src="/img/logo.png" variant="square" />
+          </Link>
           {/* 
         {pages.map((page) => (
           <Button
@@ -76,14 +79,24 @@ export default function ViewModal({ open, setOpen, property }) {
         ))}
       */}
         </Box>
-        <Typography
-          component="h2"
-          variant="h5"
-          color="inherit"
-          align="center"
-          noWrap
-          sx={{ flex: 1 }}
-        ></Typography>
+        <Box color="gray" align="center" noWrap sx={{ flex: 1 }}>
+          <IconButton
+            edge="start"
+            color="inherit"
+            onClick={handleClose}
+            aria-label="close"
+          >
+            <FavoriteIcon sx={{ padding: "2px" }} />
+          </IconButton>
+          <IconButton
+            edge="start"
+            color="inherit"
+            onClick={handleClose}
+            aria-label="close"
+          >
+            <ShareIcon sx={{ padding: "2px" }} />
+          </IconButton>
+        </Box>
 
         <IconButton
           edge="start"
@@ -110,11 +123,8 @@ export default function ViewModal({ open, setOpen, property }) {
           <ListingGallery property={property} />
         </Box>
       </Container>
-      <Container>
+      <Container sx={{ paddingBottom: "50px" }}>
         <Description />
-      </Container>
-      <Container sx={{ paddingBottom: "100px" }}>
-        <TopListing />
       </Container>
     </Dialog>
   );

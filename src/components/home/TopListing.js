@@ -9,11 +9,15 @@ import { getAllProperties } from "../../service/propertyService";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ListingCard from "../common/ListingCard";
+import ViewModal from "../listing/view/ViewModal";
 
 export default function TopListing() {
   const [properties, setProperties] = React.useState([]);
   const [expanded, setExpanded] = React.useState(false);
   const loggedIn = useSelector((state) => state.loggedIn);
+
+  const [property, setProperty] = React.useState({});
+  const [openView, setOpenView] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -65,6 +69,11 @@ export default function TopListing() {
     });
   }, []);
 
+  const handleOpenView = (i) => {
+    setProperty(i);
+    setOpenView(true);
+  };
+
   return (
     <Box>
       <Box>
@@ -99,7 +108,13 @@ export default function TopListing() {
           <Grid container columns={9} sx={{ width: "200%" }}>
             {properties.slice(0, 9).map((property) => (
               <Grid item xs={1} sx={{ padding: "0px 5px" }}>
-                <ListingCard property={property} loggedIn={loggedIn} />
+                <Box
+                  onClick={() => {
+                    handleOpenView(property);
+                  }}
+                >
+                  <ListingCard property={property} loggedIn={loggedIn} />
+                </Box>
               </Grid>
             ))}
           </Grid>
@@ -134,6 +149,8 @@ export default function TopListing() {
           </IconButton>
         </Box>
       </Box>
+
+      <ViewModal open={openView} setOpen={setOpenView} property={property} />
     </Box>
   );
 }
