@@ -9,30 +9,18 @@ export const getAllProperties = async (id, name, location, lotArea) => {
   let lotAreaFilter = "";
 
   if (name) {
-    nameFilter = `?propertyName_like=${name}`;
+    nameFilter = `&propertyName_like=${name}`;
   }
   if (location) {
-    if (name) {
-      locationFilter += "&";
-    } else {
-      locationFilter += "?";
-    }
-
-    locationFilter += `location_like=${location}`;
+    locationFilter += `&location_like=${location}`;
   }
   if (lotArea) {
-    if (name || location) {
-      lotAreaFilter += "&";
-    } else {
-      lotAreaFilter += "?";
-    }
-
     if (lotArea === 1) {
-      lotAreaFilter += `lotArea_gte=30&lotArea_lte=39`;
+      lotAreaFilter += `&lotArea_gte=30&lotArea_lte=39`;
     } else if (lotArea === 2) {
-      lotAreaFilter += `lotArea_gte=40&lotArea_lte=69`;
+      lotAreaFilter += `&lotArea_gte=40&lotArea_lte=69`;
     } else if (lotArea === 3) {
-      lotAreaFilter += `lotArea_gte=70`;
+      lotAreaFilter += `&lotArea_gte=70`;
     }
   }
 

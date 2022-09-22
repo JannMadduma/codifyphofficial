@@ -48,6 +48,14 @@
       "email": "user7@project.com",
       "password": "user",
       "role": "user"
+    },
+    {
+      "name": "Admin",
+      "email": "admin@estatewindows.com",
+      "password": "admin",
+      "likes": [],
+      "role": "admin",
+      "id": 8
     }
   ],
   "properties": [
