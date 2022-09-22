@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import {
+  Button,
   Card,
   CardActions,
   CardContent,
   CardMedia,
   IconButton,
   Paper,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -15,6 +17,8 @@ import BathtubIcon from "@mui/icons-material/Bathtub";
 import SquareFootIcon from "@mui/icons-material/SquareFoot";
 
 const ListingCard = ({ property, loggedIn }) => {
+  const [copy, setCopy] = useState(false);
+
   const getStatus = () => {
     if (property?.status === "Available") {
       return "success.main";
@@ -23,6 +27,17 @@ const ListingCard = ({ property, loggedIn }) => {
     } else if (property?.status === "Re-open") {
       return "info.main";
     }
+  };
+
+  const handleCopy = (e) => {
+    setCopy(true);
+    e.stopPropagation();
+    navigator.clipboard.writeText(
+      `${window.location.origin}/viewproperty/${property.id}`
+    );
+    setTimeout(() => {
+      setCopy(false);
+    }, 2000);
   };
 
   return (
@@ -116,9 +131,11 @@ const ListingCard = ({ property, loggedIn }) => {
             <IconButton aria-label="add to favorites" size="small">
               <FavoriteIcon fontSize="inherit" />
             </IconButton>
-            <IconButton aria-label="share" size="small">
-              <ShareIcon fontSize="inherit" />
-            </IconButton>
+            <Tooltip title={copy ? "Copied" : "Copy Link"}>
+              <Button aria-label="share" size="small" onClick={handleCopy}>
+                <Typography>Copy link property</Typography>
+              </Button>
+            </Tooltip>
           </CardActions>
         )}
       </CardContent>

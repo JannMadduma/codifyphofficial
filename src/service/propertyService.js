@@ -23,6 +23,10 @@ export const getAllProperties = async (id, name, location, status) => {
   );
 };
 
+export const searchProperty = async (search) => {
+  return await axios.get(`${urlProperty}?q=${search}`);
+};
+
 export const addProperty = async (property) => {
   return await axios.post(urlProperty, property);
 };

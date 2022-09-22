@@ -9,7 +9,6 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ListingGallery from "./ListGallery";
 import Description from "./descriptions";
-
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
 import CallToAction from "../../common/CallToAction";
@@ -86,17 +85,13 @@ export default function ViewModal({ open, setOpen, property }) {
             color="inherit"
             onClick={handleClose}
             aria-label="close"
-          >
-            <FavoriteIcon sx={{ padding: "2px" }} />
-          </IconButton>
+          ></IconButton>
           <IconButton
             edge="start"
             color="inherit"
             onClick={handleClose}
             aria-label="close"
-          >
-            <ShareIcon sx={{ padding: "2px" }} />
-          </IconButton>
+          ></IconButton>
         </Box>
 
         <IconButton

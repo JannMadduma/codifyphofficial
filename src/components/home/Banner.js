@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
@@ -6,6 +6,12 @@ import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
 
 const Banner = ({}) => {
+  const [search, setSearch] = useState("");
+
+  const handleChange = (e) => {
+    setSearch(e.target.value);
+  };
+
   return (
     <Grid
       container
@@ -45,7 +51,7 @@ const Banner = ({}) => {
             src="/img/logoRoof.png"
             style={{ height: "100px", width: "300px" }}
           />
-          <Box component="form" noValidate sx={{ mt: 1 }}>
+          <Box noValidate sx={{ mt: 1 }}>
             <h1
               style={{
                 fontFamily: "'Rasputin', sans-serif",
@@ -99,14 +105,15 @@ const Banner = ({}) => {
             },
           }}
         >
-          <Box component="form" noValidate sx={{ mt: 1 }}>
+          <Box noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               fullWidth
-              id="email"
+              id="search"
               label="Search Homes"
-              name="email"
-              autoComplete="email"
+              name="search"
+              autoComplete="search"
+              onChange={handleChange}
               autoFocus
               sx={{
                 "& .MuiInputBase-root": {
@@ -115,11 +122,12 @@ const Banner = ({}) => {
               }}
             />
             <Button
-              type="submit"
               color="inherit"
               fullWidth
               variant="outlined"
               sx={{ mt: 3, mb: 2, borderRadius: "100px" }}
+              component={Link}
+              to={`/listing?search=${search}`}
             >
               Search homes...
             </Button>

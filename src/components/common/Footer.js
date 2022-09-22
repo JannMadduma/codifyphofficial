@@ -3,12 +3,12 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Link from "@mui/material/Link";
 import { IconButton } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import { Link } from "react-router-dom";
 
 function Copyright() {
   return (
@@ -69,44 +69,14 @@ export default function StickyFooter() {
         </Typography>
         <br />
         <Typography variant="body1">
-          <Link href="#" sx={{ color: "inherit", textDecoration: "none" }}>
-            About us /
+          <Link
+            to="/aboutus"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            About us |
           </Link>
-          <Link href="#" sx={{ color: "inherit", textDecoration: "none" }}>
-            Careers /
-          </Link>
-          <Link href="#" sx={{ color: "inherit", textDecoration: "none" }}>
-            Accessibility /
-          </Link>
-          <Link href="#" sx={{ color: "inherit", textDecoration: "none" }}>
-            Feedback /
-          </Link>
-          <Link href="#" sx={{ color: "inherit", textDecoration: "none" }}>
-            Media room /
-          </Link>
-          <Link href="#" sx={{ color: "inherit", textDecoration: "none" }}>
-            Ad Choises /
-          </Link>
-          <Link href="#" sx={{ color: "inherit", textDecoration: "none" }}>
-            Advertise with us /
-          </Link>
-          <Link href="#" sx={{ color: "inherit", textDecoration: "none" }}>
-            Agent Support /
-          </Link>
-          <Link href="#" sx={{ color: "inherit", textDecoration: "none" }}>
-            Privacy /
-          </Link>
-          <Link href="#" sx={{ color: "inherit", textDecoration: "none" }}>
-            Terms /
-          </Link>
-          <Link href="#" sx={{ color: "inherit", textDecoration: "none" }}>
-            Home Made /
-          </Link>
-          <Link href="#" sx={{ color: "inherit", textDecoration: "none" }}>
-            Tech Blog /
-          </Link>
-          <Link href="#" sx={{ color: "inherit", textDecoration: "none" }}>
-            Sitemap{" "}
+          <Link href="#" style={{ color: "inherit", textDecoration: "none" }}>
+            Developers
           </Link>
         </Typography>
         <br />
