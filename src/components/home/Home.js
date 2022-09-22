@@ -1,5 +1,6 @@
 import React from "react";
 import StickyFooter from "../common/Footer";
+import ListingBeta from "../common/listingBeta";
 import ResponsiveAppBar from "../common/Navbar";
 import Banner from "./Banner";
 import Gallery from "./Gallery";
@@ -14,7 +15,7 @@ const Home = ({}) => {
       <Gallery />
       <Stats />
       <TopListing />
-      <StickyFooter/>
+      <StickyFooter />
     </div>
   );
 };

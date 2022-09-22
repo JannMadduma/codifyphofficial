@@ -6,14 +6,12 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { useEffect } from "react";
 import { getAllProperties } from "../../service/propertyService";
-import { setProperties } from "../../actions/propertiesActions";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ListingCard from "../common/ListingCard";
 
 export default function TopListing() {
-  const dispatch = useDispatch();
-  const properties = useSelector((state) => state.properties);
+  const [properties, setProperties] = React.useState([]);
   const [expanded, setExpanded] = React.useState(false);
   const loggedIn = useSelector((state) => state.loggedIn);
 
@@ -63,7 +61,7 @@ export default function TopListing() {
 
   useEffect(() => {
     getAllProperties().then((res) => {
-      dispatch(setProperties(res.data));
+      setProperties(res.data);
     });
   }, []);
 
@@ -100,7 +98,7 @@ export default function TopListing() {
         >
           <Grid container columns={9} sx={{ width: "200%" }}>
             {properties.slice(0, 9).map((property) => (
-              <Grid item xs={1}>
+              <Grid item xs={1} sx={{ padding: "0px 5px" }}>
                 <ListingCard property={property} loggedIn={loggedIn} />
               </Grid>
             ))}

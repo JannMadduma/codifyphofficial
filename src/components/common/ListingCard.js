@@ -16,7 +16,18 @@ import SquareFootIcon from "@mui/icons-material/SquareFoot";
 
 const ListingCard = ({ property, loggedIn }) => {
   return (
-    <Card sx={{ position: "relative" }} variant="outlined">
+    <Card
+      sx={{
+        "&:hover": {
+          boxShadow: 6,
+        },
+        cursor: "pointer",
+        position: "relative",
+        borderRadius: "10px",
+        margin: "5px 0",
+      }}
+      variant="outlined"
+    >
       <Paper
         variant="outlined"
         sx={{
@@ -74,7 +85,7 @@ const ListingCard = ({ property, loggedIn }) => {
           color="text.secondary"
           sx={{
             textAlign: "left",
-            height: "45px",
+            height: "60px",
             overflow: "hidden",
             textOverflow: "ellipsis",
             display: "-webkit-box",

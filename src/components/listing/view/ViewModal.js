@@ -56,23 +56,25 @@ export default function ViewModal({ open, setOpen, property }) {
         style={{ padding: "0 150px" }}
       >
         <Box sx={{ display: { xs: "none", md: "flex" } }}>
-          {pages.map((page) => (
-            <Button
-              key={page.name}
-              onClick={handleCloseNavMenu}
-              sx={{
-                padding: "0 30px",
-                my: 2,
-                color: "white",
-                display: "block",
-                color: "bluegreen",
-              }}
-              component={Link}
-              to={page.link}
-            >
-              {page.name}
-            </Button>
-          ))}
+          {/* 
+        {pages.map((page) => (
+          <Button
+            key={page.name}
+            onClick={handleClose}
+            sx={{
+              padding: "0 30px",
+              my: 2,
+              color: "white",
+              display: "block",
+              color: "bluegreen",
+            }}
+            component={Link}
+            to={page.link}
+          >
+            {page.name}
+          </Button>
+        ))}
+      */}
         </Box>
         <Typography
           component="h2"
@@ -82,12 +84,7 @@ export default function ViewModal({ open, setOpen, property }) {
           noWrap
           sx={{ flex: 1 }}
         ></Typography>
-        <Button variant="outlined" size="small">
-          Edit
-        </Button>
-        <Button variant="text" onClick={handleClose}>
-          save
-        </Button>
+
         <IconButton
           edge="start"
           color="inherit"
