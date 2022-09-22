@@ -26,7 +26,7 @@ const ListingCard = ({ property, loggedIn }) => {
           padding: "2px 5px",
         }}
       ></Paper>
-      <CardMedia component="img" height="194" image={property.img[0]} />
+      <CardMedia component="img" height="194" image={property?.img[0]} />
       <CardContent>
         <Typography
           gutterBottom
@@ -34,7 +34,7 @@ const ListingCard = ({ property, loggedIn }) => {
           component="div"
           sx={{ textAlign: "left" }}
         >
-          ₱ {property.tcp.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          ₱ {property?.tcp?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         </Typography>
         <Typography
           variant="body2"
@@ -49,22 +49,22 @@ const ListingCard = ({ property, loggedIn }) => {
             "-webkit-box-orient": "vertical",
           }}
         >
-          {property.propertyName}
+          {property?.propertyName}
         </Typography>
         <Typography
           variant="body2"
           color="text.secondary"
           sx={{ textAlign: "left", padding: "10px 0" }}
         >
-          {property.bedRooms}
+          {property?.bedRooms}
           <IconButton aria-label="delete" size="small">
             <HotelIcon fontSize="inherit" />
           </IconButton>
-          {property.bathRooms}
+          {property?.bathRooms}
           <IconButton aria-label="delete" size="small">
             <BathtubIcon fontSize="inherit" />
           </IconButton>
-          {property.lotArea}
+          {property?.lotArea}
           <IconButton aria-label="delete" size="small">
             <SquareFootIcon fontSize="inherit" />
           </IconButton>
@@ -82,7 +82,7 @@ const ListingCard = ({ property, loggedIn }) => {
             "-webkit-box-orient": "vertical",
           }}
         >
-          {property.location}
+          {property?.location}
         </Typography>
 
         <hr />

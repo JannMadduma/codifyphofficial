@@ -9,7 +9,7 @@ export function setProperties(properties) {
   return { type: actionTypes.SET_PROPERTIES, properties };
 }
 
-export function addProperty(property) {
+export function addPropertyAction(property) {
   return { type: actionTypes.ADD_PROPERTY, property };
 }
 

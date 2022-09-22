@@ -37,7 +37,7 @@ export const getAllProperties = async (id, name, location, lotArea) => {
   }
 
   return await axios.get(
-    `${urlProperty}/${id}${nameFilter}${locationFilter}${lotAreaFilter}`
+    `${urlProperty}/${id}?_sort=id&_order=desc${nameFilter}${locationFilter}${lotAreaFilter}`
   );
 };
 

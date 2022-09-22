@@ -11,11 +11,13 @@ import Paper from "@mui/material/Paper";
 import { mainListItems } from "./listItems";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  addProperty,
   deleteProperty,
   editProperty,
   getAllProperties,
 } from "../../service/propertyService";
 import {
+  addPropertyAction,
   deletePropertyAction,
   editPropertyAction,
   setProperties,
@@ -108,12 +110,24 @@ function DashboardContent() {
   };
 
   const handleEdit = () => {
-    // "deleteProperty" is from service,PropertyService
-    editProperty(property.id, property).then((res) => {
-      // "deletePropertyAction" is from actions, PropertyAction
-      dispatch(editPropertyAction(property));
-    });
-    handleClose();
+    if (property.id) {
+      // "deleteUser" is from service,UserService
+      editProperty(property.id, property).then((res) => {
+        // "deleteUserAction" is from actions, UsersAction
+        dispatch(editPropertyAction(property));
+      });
+      handleClose();
+    } else {
+      const propertyToAdd = {
+        ...property,
+        img: [],
+      };
+
+      addProperty(propertyToAdd).then((res) => {
+        dispatch(addPropertyAction(res.data));
+      });
+      handleClose();
+    }
   };
 
   React.useEffect(() => {
@@ -187,7 +201,14 @@ function DashboardContent() {
                         <TableCell></TableCell>
                         <TableCell></TableCell>
                         <TableCell align="right">
-                          <Button variant="text">Add Property</Button>
+                          <Button
+                            variant="text"
+                            onClick={() => {
+                              handleClickOpen({});
+                            }}
+                          >
+                            Add Property
+                          </Button>
                         </TableCell>
                       </TableRow>
                       <TableRow>
@@ -201,14 +222,14 @@ function DashboardContent() {
                     </TableHead>
                     <TableBody>
                       {properties.map((row) => (
-                        <TableRow key={row.id}>
-                          <TableCell>{row.id}</TableCell>
-                          <TableCell>{row.propertyName}</TableCell>
-                          <TableCell>{row.location}</TableCell>
-                          <TableCell>{row.developer}</TableCell>
+                        <TableRow key={row?.id}>
+                          <TableCell>{row?.id}</TableCell>
+                          <TableCell>{row?.propertyName}</TableCell>
+                          <TableCell>{row?.location}</TableCell>
+                          <TableCell>{row?.developer}</TableCell>
                           <TableCell>
-                            {row.tcp
-                              .toString()
+                            {row?.tcp
+                              ?.toString()
                               .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                           </TableCell>
 
@@ -271,7 +292,7 @@ function DashboardContent() {
         aria-labelledby="draggable-dialog-title"
       >
         <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
-          Edit Property
+          {property.id ? "Edit" : "Add"} Property
         </DialogTitle>
         <DialogContent>
           <TextField
@@ -418,7 +439,7 @@ function DashboardContent() {
         <DialogContent>
           <Typography>
             Are you sure you want to delete{" "}
-            <strong>{property?.propertyName}</strong>"?
+            <strong>{property?.propertyName}</strong>?
           </Typography>
         </DialogContent>
 
