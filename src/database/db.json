@@ -288,12 +288,11 @@
       "projectType": "RFO",
       "tcp": "5000000"
     }
-  ]
+  ],
 
   "subscribed": [
-          {
-            "email": []
-          }
+    {
+      "email": "vip@email.com"
+    }
   ]
-
 }
