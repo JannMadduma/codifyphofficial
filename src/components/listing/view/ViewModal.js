@@ -12,6 +12,7 @@ import Description from "./descriptions";
 
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ShareIcon from "@mui/icons-material/Share";
+import CallToAction from "../../common/CallToAction";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -125,6 +126,9 @@ export default function ViewModal({ open, setOpen, property }) {
       </Container>
       <Container sx={{ paddingBottom: "50px" }}>
         <Description />
+      </Container>
+      <Container sx={{ paddingBottom: "100px" }}>
+        <CallToAction />
       </Container>
     </Dialog>
   );

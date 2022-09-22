@@ -9,9 +9,9 @@ import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import ListingGallery from "./ListGallery";
-import Suggestions from "./Suggestions";
 import Description from "./descriptions";
 import TopListing from "../../home/TopListing";
+import CallToAction from "../../common/CallToAction";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -125,8 +125,11 @@ export default function ListingView() {
         <Container>
           <Description />
         </Container>
-        <Container sx={{ paddingBottom: "100px" }}>
+        <Container sx={{ padding: "50px" }}>
           <TopListing />
+        </Container>
+        <Container sx={{ paddingBottom: "100px" }}>
+          <CallToAction />
         </Container>
       </Dialog>
     </div>
