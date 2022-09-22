@@ -15,6 +15,16 @@ import BathtubIcon from "@mui/icons-material/Bathtub";
 import SquareFootIcon from "@mui/icons-material/SquareFoot";
 
 const ListingCard = ({ property, loggedIn }) => {
+  const getStatus = () => {
+    if (property?.status === "Available") {
+      return "success.main";
+    } else if (property?.status === "Sold") {
+      return "error.main";
+    } else if (property?.status === "Re-open") {
+      return "info.main";
+    }
+  };
+
   return (
     <Card
       sx={{
@@ -35,8 +45,12 @@ const ListingCard = ({ property, loggedIn }) => {
           top: 8,
           left: 8,
           padding: "2px 5px",
+          color: "white",
+          backgroundColor: getStatus(property?.status),
         }}
-      ></Paper>
+      >
+        {property?.status}
+      </Paper>
       <CardMedia component="img" height="194" image={property?.img[0]} />
       <CardContent>
         <Typography

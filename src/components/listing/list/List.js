@@ -24,7 +24,7 @@ export default function List() {
   const loggedIn = useSelector((state) => state.loggedIn);
   const [name, setName] = React.useState("");
   const [location, setLocation] = React.useState("");
-  const [lotArea, setLotArea] = React.useState(0);
+  const [status, setStatus] = React.useState(0);
   const [property, setProperty] = React.useState({});
   const [openView, setOpenView] = React.useState(false);
 
@@ -42,8 +42,8 @@ export default function List() {
       case "location":
         setLocation(e.target.value);
         break;
-      case "lotArea":
-        setLotArea(e.target.value);
+      case "status":
+        setStatus(e.target.value);
         break;
       default:
         break;
@@ -57,14 +57,14 @@ export default function List() {
   // }, []);
 
   //  this is used for filtering----------
-  // Trigger effect when name, location, lotArea is changed
+  // Trigger effect when name, location, status is changed
   useEffect(() => {
     console.log("trigger");
-    getAllProperties(null, name, location, lotArea).then((res) => {
+    getAllProperties(null, name, location, status).then((res) => {
       console.log(res.data);
       dispatch(setProperties(res.data));
     });
-  }, [name, location, lotArea]);
+  }, [name, location, status]);
 
   return (
     <Box>
@@ -117,19 +117,19 @@ export default function List() {
           value={location}
         />
         <FormControl sx={{ width: "150px" }}>
-          <InputLabel id="demo-simple-select-label">Lot Area</InputLabel>
+          <InputLabel id="demo-simple-select-label">Status</InputLabel>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            label="Lot Area"
-            name="lotArea"
+            label="Status"
+            name="status"
             onChange={handleInputChange}
-            value={lotArea}
+            value={status}
           >
-            <MenuItem value={0}></MenuItem>
-            <MenuItem value={1}>30-39sqm</MenuItem>
-            <MenuItem value={2}>40-69sqm</MenuItem>
-            <MenuItem value={3}>70sqm above</MenuItem>
+            <MenuItem value={""}></MenuItem>
+            <MenuItem value={"Available"}>Available</MenuItem>
+            <MenuItem value={"Sold"}>Sold</MenuItem>
+            <MenuItem value={"Re-open"}>Re-open</MenuItem>
           </Select>
         </FormControl>
       </Container>

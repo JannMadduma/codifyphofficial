@@ -23,6 +23,7 @@ import {
   setProperties,
 } from "../../actions/propertiesActions";
 import {
+  Alert,
   Button,
   ButtonGroup,
   Dialog,
@@ -83,6 +84,7 @@ function DashboardContent() {
   // for delete confirm dialog
   const [openConfirm, setOpenConfirm] = React.useState(false);
   const [editOpen, setEditOpen] = React.useState(false);
+  const [error, setError] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -92,6 +94,7 @@ function DashboardContent() {
   };
 
   const handleClickOpen = (i) => {
+    setError(false);
     setProperty(i);
     setEditOpen(true);
   };
@@ -110,26 +113,45 @@ function DashboardContent() {
   };
 
   const handleEdit = () => {
-    if (property.id) {
-      // "deleteUser" is from service,UserService
-      editProperty(property.id, { ...property, img: [...property.img] }).then(
-        (res) => {
-          // "deleteUserAction" is from actions, UsersAction
-          console.log(res.data.img);
-          dispatch(editPropertyAction(res.data));
-        }
-      );
-      handleClose();
-    } else {
-      const propertyToAdd = {
-        ...property,
-        img: property?.img?.length ? property?.img : [],
-      };
+    setError(false);
 
-      addProperty(propertyToAdd).then((res) => {
-        dispatch(addPropertyAction(res.data));
-      });
-      handleClose();
+    if (
+      !property.propertyName ||
+      !property.location ||
+      !property.developer ||
+      !property.projectType ||
+      !property.status ||
+      !property.monthly ||
+      !property.tcp ||
+      !property.bedRooms ||
+      !property.bathRooms ||
+      !property.lotArea ||
+      !property.floorArea
+    ) {
+      setError(true);
+    } else {
+      if (property.id) {
+        // "deleteUser" is from service,UserService
+        editProperty(property.id, { ...property, img: [...property.img] }).then(
+          (res) => {
+            // "deleteUserAction" is from actions, UsersAction
+            console.log(res.data.img);
+            dispatch(editPropertyAction(res.data));
+          }
+        );
+        handleClose();
+      } else {
+        const propertyToAdd = {
+          ...property,
+          img: property?.img?.length ? property?.img : [],
+          status: "Available",
+        };
+
+        addProperty(propertyToAdd).then((res) => {
+          dispatch(addPropertyAction(res.data));
+        });
+        handleClose();
+      }
     }
   };
 
@@ -213,6 +235,7 @@ function DashboardContent() {
                         <TableCell></TableCell>
                         <TableCell></TableCell>
                         <TableCell></TableCell>
+                        <TableCell></TableCell>
                         <TableCell align="right">
                           <Button
                             variant="text"
@@ -230,6 +253,7 @@ function DashboardContent() {
                         <TableCell>Location</TableCell>
                         <TableCell>Developer</TableCell>
                         <TableCell>TCP</TableCell>
+                        <TableCell>Status</TableCell>
                         <TableCell align="right">Actions</TableCell>
                       </TableRow>
                     </TableHead>
@@ -245,6 +269,7 @@ function DashboardContent() {
                               ?.toString()
                               .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                           </TableCell>
+                          <TableCell>{row?.status}</TableCell>
 
                           <TableCell align="right">
                             <div
@@ -308,6 +333,7 @@ function DashboardContent() {
           {property.id ? "Edit" : "Add"} Property
         </DialogTitle>
         <DialogContent>
+          {error && <Alert severity="error">Please fill-up all fields</Alert>}
           <TextField
             autoFocus
             margin="dense"
@@ -339,20 +365,43 @@ function DashboardContent() {
             label="Developer"
             onChange={handleInputChange}
           />
-          <FormControl fullWidth sx={{ my: 1 }}>
-            <InputLabel id="demo-simple-select-label">Project Type</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              label="Project Type"
-              name="projectType"
-              onChange={handleInputChange}
-              value={property.projectType}
-            >
-              <MenuItem value={"Pre-selling"}>Pre-selling</MenuItem>
-              <MenuItem value={"RFO"}>RFO</MenuItem>
-            </Select>
-          </FormControl>
+          <Box
+            sx={{
+              "& > :not(style)": { mt: 1, width: "50%" },
+            }}
+          >
+            <FormControl fullWidth sx={{ my: 1 }}>
+              <InputLabel id="demo-simple-select-label">
+                Project Type
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Project Type"
+                name="projectType"
+                onChange={handleInputChange}
+                value={property.projectType}
+              >
+                <MenuItem value={"Pre-selling"}>Pre-selling</MenuItem>
+                <MenuItem value={"RFO"}>RFO</MenuItem>
+              </Select>
+            </FormControl>
+            <FormControl fullWidth sx={{ my: 1 }}>
+              <InputLabel id="demo-simple-select-label">Status</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Project Type"
+                name="status"
+                onChange={handleInputChange}
+                value={property.status}
+              >
+                <MenuItem value={"Available"}>Available</MenuItem>
+                <MenuItem value={"Sold"}>Sold</MenuItem>
+                <MenuItem value={"Re-open"}>Re-open</MenuItem>
+              </Select>
+            </FormControl>
+          </Box>
           <Box
             sx={{
               "& > :not(style)": { mt: 1, width: "50%" },
