@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const urlProperty = "http://127.0.0.1:8000/properties";
+const urlProperty = "https://capstone-server-two.herokuapp.com/properties";
 
 export const getAllProperties = async (id, name, location, status) => {
   id = id || "";

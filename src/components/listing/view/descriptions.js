@@ -118,9 +118,4 @@ function Description(props) {
   );
 }
 
-Description.propTypes = {
-  posts: PropTypes.arrayOf(PropTypes.string).isRequired,
-  title: PropTypes.string.isRequired,
-};
-
 export default Description;

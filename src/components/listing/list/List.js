@@ -137,7 +137,15 @@ export default function List() {
       <Container>
         <Grid container columns={12}>
           {properties.slice(0, 100).map((property) => (
-            <Grid item sm={6} md={4} lg={3} xs={12} sx={{ padding: "0 5px" }}>
+            <Grid
+              key={property.id}
+              item
+              sm={6}
+              md={4}
+              lg={3}
+              xs={12}
+              sx={{ padding: "0 5px" }}
+            >
               <Box
                 onClick={() => {
                   handleOpenView(property);

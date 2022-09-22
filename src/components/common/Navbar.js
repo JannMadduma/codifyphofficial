@@ -159,7 +159,6 @@ const ResponsiveAppBar = () => {
               </Button>
             ))}
           </Box>
-
           {loggedIn?.id ? (
             <div>
               <IconButton

@@ -88,7 +88,7 @@ export default function ListingView() {
             variant="h5"
             color="inherit"
             align="center"
-            noWrap
+            nowrap
             sx={{ flex: 1 }}
           ></Typography>
           <Button variant="outlined" size="small">

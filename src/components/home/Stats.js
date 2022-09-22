@@ -9,7 +9,7 @@ function preventDefault(event) {
 
 export default function Stats() {
   return (
-    <box>
+    <Box>
       <main>
         <Box
           sx={{
@@ -73,6 +73,6 @@ export default function Stats() {
           </Typography>
         </Box>
       </Box>
-    </box>
+    </Box>
   );
 }

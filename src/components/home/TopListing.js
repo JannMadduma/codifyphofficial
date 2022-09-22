@@ -107,7 +107,7 @@ export default function TopListing() {
         >
           <Grid container columns={9} sx={{ width: "200%" }}>
             {properties.slice(0, 9).map((property) => (
-              <Grid item xs={1} sx={{ padding: "0px 5px" }}>
+              <Grid key={property.id} item xs={1} sx={{ padding: "0px 5px" }}>
                 <Box
                   onClick={() => {
                     handleOpenView(property);

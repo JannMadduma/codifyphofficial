@@ -75,7 +75,7 @@ const Banner = ({}) => {
       <Grid
         item
         display={{ xs: "none", md: "initial", lg: "initial" }}
-        square
+        // square
         md={6}
         xs={12}
         sx={{
