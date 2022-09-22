@@ -141,9 +141,9 @@ export default function ListingGallery({ property }) {
             }}
           >
             <img
-              src={`${property.img}`}
-              srcSet={`${property.img}`}
-              alt={property.propertyName}
+              src={`${property?.img}`}
+              srcSet={`${property?.img}`}
+              alt={property?.propertyName}
               loading="lazy"
               style={{ width: "100%" }}
             />
@@ -237,8 +237,8 @@ export default function ListingGallery({ property }) {
                   sx={{ textAlign: "left" }}
                 >
                   ₱{" "}
-                  {property.tcp
-                    .toString()
+                  {property?.tcp
+                    ?.toString()
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </Typography>
                 <hr />
@@ -255,7 +255,7 @@ export default function ListingGallery({ property }) {
                     "-webkit-box-orient": "vertical",
                   }}
                 >
-                  {property.propertyName}
+                  {property?.propertyName}
                 </Typography>
 
                 <hr />
@@ -272,7 +272,7 @@ export default function ListingGallery({ property }) {
                     "-webkit-box-orient": "vertical",
                   }}
                 >
-                  {property.location}
+                  {property?.location}
                 </Typography>
                 <hr />
                 <Typography
@@ -280,13 +280,13 @@ export default function ListingGallery({ property }) {
                   color="text.secondary"
                   sx={{ textAlign: "left" }}
                 >
-                  {property.bedRooms}
+                  {property?.bedRooms}
                   <span> Bedrooms</span>
                   <br />
-                  {property.bathRooms}
+                  {property?.bathRooms}
                   <span> Bathrooms</span>
                   <br />
-                  {property.lotArea}
+                  {property?.lotArea}
                   <span> sqm Floor Area</span>
                 </Typography>
               </div>
