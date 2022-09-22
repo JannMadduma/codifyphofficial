@@ -19,7 +19,6 @@ import { AccountCircle } from "@mui/icons-material";
 import { Alert } from "@mui/material";
 import { setLoggedIn } from "../../actions/loggedInActions";
 import { Link } from "react-router-dom";
-import MenuIcon from "@mui/icons-material/Menu";
 
 const pagesAll = [{ name: "Listing", link: "/listing" }];
 const pagesAdmin = [{ name: "Manage", link: "/manageproperties" }];
