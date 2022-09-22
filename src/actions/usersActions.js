@@ -1,8 +1,8 @@
 export const actionTypes = {
-  SET_USERS: 'SET_USERS',
-  ADD_USER: 'ADD_USER',
-  EDIT_USER: 'EDIT_USER',
-  DELETE_USER: 'DELETE_USER',
+  SET_USERS: "SET_USERS",
+  ADD_USER: "ADD_USER",
+  EDIT_USER: "EDIT_USER",
+  DELETE_USER: "DELETE_USER",
 };
 
 export function setUsers(users) {
