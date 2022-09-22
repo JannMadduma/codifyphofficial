@@ -134,6 +134,7 @@ function DashboardContent() {
 
   // to avoid deleting right away, added dialog for confirm
   const handleOpenConfirmDelete = (i) => {
+    console.log("Confirm detete?");
     setProperty(i);
     setOpenConfirm(true);
   };
