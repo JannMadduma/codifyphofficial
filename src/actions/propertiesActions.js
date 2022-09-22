@@ -17,6 +17,6 @@ export function editPropertyAction(property) {
   return { type: actionTypes.EDIT_PROPERTY, property };
 }
 
-export function deleteProperty(property) {
+export function deletePropertyAction(property) {
   return { type: actionTypes.DELETE_PROPERTY, property };
 }

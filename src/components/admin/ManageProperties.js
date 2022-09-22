@@ -10,8 +10,13 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { mainListItems } from "./listItems";
 import { useDispatch, useSelector } from "react-redux";
-import { editProperty, getAllProperties } from "../../service/propertyService";
 import {
+  deleteProperty,
+  editProperty,
+  getAllProperties,
+} from "../../service/propertyService";
+import {
+  deletePropertyAction,
   editPropertyAction,
   setProperties,
 } from "../../actions/propertiesActions";
@@ -32,9 +37,9 @@ import {
   TableHead,
   TableRow,
   TextField,
+  Typography,
 } from "@mui/material";
 import ResponsiveAppBar from "../common/Navbar";
-import ListingView from "../listing/view/ListingView";
 import ViewModal from "../listing/view/ViewModal";
 
 const drawerWidth = 240;
@@ -73,6 +78,8 @@ function DashboardContent() {
   const [open, setOpen] = React.useState(true);
   const [property, setProperty] = React.useState({});
   const [openView, setOpenView] = React.useState(false);
+  // for delete confirm dialog
+  const [openConfirm, setOpenConfirm] = React.useState(false);
   const [editOpen, setEditOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -101,9 +108,9 @@ function DashboardContent() {
   };
 
   const handleEdit = () => {
-    // "deleteUser" is from service,UserService
+    // "deleteProperty" is from service,PropertyService
     editProperty(property.id, property).then((res) => {
-      // "deleteUserAction" is from actions, UsersAction
+      // "deletePropertyAction" is from actions, PropertyAction
       dispatch(editPropertyAction(property));
     });
     handleClose();
@@ -114,6 +121,26 @@ function DashboardContent() {
       dispatch(setProperties(res.data));
     });
   }, []);
+
+  // to delete Property
+  const handlePropertyDelete = () => {
+    // "deletePropert" is from service,PropertyService
+    deleteProperty(property.id).then((res) => {
+      // "deletePropertyAction" is from actions, PropertyAction
+      dispatch(deletePropertyAction({ id: property.id }));
+    });
+    handleCloseConfirmDelete();
+  };
+
+  // to avoid deleting right away, added dialog for confirm
+  const handleOpenConfirmDelete = (i) => {
+    setProperty(i);
+    setOpenConfirm(true);
+  };
+
+  const handleCloseConfirmDelete = () => {
+    setOpenConfirm(false);
+  };
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -214,7 +241,13 @@ function DashboardContent() {
                                 >
                                   Edit
                                 </Button>
-                                <Button>Delete</Button>
+                                <Button
+                                  onClick={() => {
+                                    handleOpenConfirmDelete(row);
+                                  }}
+                                >
+                                  Delete
+                                </Button>
                               </ButtonGroup>
                             </div>
                           </TableCell>
@@ -370,6 +403,29 @@ function DashboardContent() {
             Cancel
           </Button>
           <Button onClick={handleEdit}>Save</Button>
+        </DialogActions>
+      </Dialog>
+      {/* dialog for confirm delete*/}
+      <Dialog
+        open={openConfirm}
+        onClose={handleCloseConfirmDelete}
+        aria-labelledby="draggable-dialog-title"
+      >
+        <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
+          Confirm Delete
+        </DialogTitle>
+        <DialogContent>
+          <Typography>
+            Are you sure you want to delete{" "}
+            <strong>{property?.propertyName}</strong>"?
+          </Typography>
+        </DialogContent>
+
+        <DialogActions>
+          <Button autoFocus onClick={handleCloseConfirmDelete}>
+            No
+          </Button>
+          <Button onClick={handlePropertyDelete}>Yes</Button>
         </DialogActions>
       </Dialog>
     </ThemeProvider>
