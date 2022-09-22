@@ -4,8 +4,23 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { Button, TextField } from "@mui/material";
+import { addVipEmail, getVipEmail } from "../../service/vipService";
 
 function Subscribe() {
+  const [email, setEmail] = React.useState("");
+
+  const handleChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handleSubscribe = () => {
+    getVipEmail(email).then((res) => {
+      if (!res.data.length) {
+        addVipEmail({ email: email });
+      }
+    });
+  };
+
   return (
     <Paper
       sx={{
@@ -46,11 +61,18 @@ function Subscribe() {
             </Typography>
             <br />
             <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <TextField id="outlined-basic" label="Email" variant="outlined" />
+              <TextField
+                id="outlined-basic"
+                label="Email"
+                variant="outlined"
+                onChange={handleChangeEmail}
+                value={email}
+              />
               <Button
                 variant="contained"
                 size="large"
                 sx={{ marginLeft: "10px" }}
+                onClick={handleSubscribe}
               >
                 Subscribe
               </Button>
