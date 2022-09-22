@@ -19,6 +19,7 @@ import { AccountCircle } from "@mui/icons-material";
 import { Alert } from "@mui/material";
 import { setLoggedIn } from "../../actions/loggedInActions";
 import { Link } from "react-router-dom";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const pagesAll = [{ name: "Listing", link: "/listing" }];
 const pagesAdmin = [{ name: "Manage", link: "/manageproperties" }];
@@ -161,35 +162,47 @@ const ResponsiveAppBar = () => {
           </Box>
 
           {loggedIn?.id ? (
-            <div>
+            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
               <IconButton
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleUserMenuOpen}
-                color="primary"
+                onClick={handleOpenNavMenu}
+                color="inherit"
               >
-                <AccountCircle />
+                <MenuIcon />
               </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={userMenuAnchorEl}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "right",
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: "top",
-                  horizontal: "right",
-                }}
-                open={Boolean(userMenuAnchorEl)}
-                onClose={handleUserMenuClose}
-              >
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </Menu>
-            </div>
+              <div>
+                <IconButton
+                  size="large"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  onClick={handleUserMenuOpen}
+                  color="primary"
+                >
+                  <AccountCircle />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={userMenuAnchorEl}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(userMenuAnchorEl)}
+                  onClose={handleUserMenuClose}
+                >
+                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                </Menu>
+              </div>
+            </Box>
           ) : (
             <Box sx={{ flexGrow: 0 }}>
               <Button
