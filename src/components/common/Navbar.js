@@ -162,47 +162,35 @@ const ResponsiveAppBar = () => {
           </Box>
 
           {loggedIn?.id ? (
-            <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+            <div>
               <IconButton
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleOpenNavMenu}
-                color="inherit"
+                onClick={handleUserMenuOpen}
+                color="primary"
               >
-                <MenuIcon />
+                <AccountCircle />
               </IconButton>
-              <div>
-                <IconButton
-                  size="large"
-                  aria-label="account of current user"
-                  aria-controls="menu-appbar"
-                  aria-haspopup="true"
-                  onClick={handleUserMenuOpen}
-                  color="primary"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={userMenuAnchorEl}
-                  anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "right",
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: "top",
-                    horizontal: "right",
-                  }}
-                  open={Boolean(userMenuAnchorEl)}
-                  onClose={handleUserMenuClose}
-                >
-                  <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                </Menu>
-              </div>
-            </Box>
+              <Menu
+                id="menu-appbar"
+                anchorEl={userMenuAnchorEl}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(userMenuAnchorEl)}
+                onClose={handleUserMenuClose}
+              >
+                <MenuItem onClick={handleLogout}>Logout</MenuItem>
+              </Menu>
+            </div>
           ) : (
             <Box sx={{ flexGrow: 0 }}>
               <Button
