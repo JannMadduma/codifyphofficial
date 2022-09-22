@@ -1,23 +1,9 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
-import Typography from "@mui/material/Typography";
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.inherit" align="center" {...props}>
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Estate Windows
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import { Link } from "react-router-dom";
 
 const Banner = ({}) => {
   return (
@@ -46,6 +32,7 @@ const Banner = ({}) => {
       >
         <Box
           sx={{
+            textAlign: "center",
             my: 8,
             mx: 4,
             display: "flex",
@@ -72,13 +59,14 @@ const Banner = ({}) => {
             </h1>
             <Box display={{ xs: "none", md: "initial" }}>
               <Button
-                type="submit"
                 color="inherit"
                 fullWidth
                 variant="outlined"
                 sx={{ mt: 3, mb: 2, borderRadius: "100px", opacity: "60%" }}
+                component={Link}
+                to={"/listing"}
               >
-                Find your home.
+                See current listings...
               </Button>
             </Box>
           </Box>
@@ -133,7 +121,7 @@ const Banner = ({}) => {
               variant="outlined"
               sx={{ mt: 3, mb: 2, borderRadius: "100px" }}
             >
-              See Current Listings
+              Search homes...
             </Button>
           </Box>
         </Box>

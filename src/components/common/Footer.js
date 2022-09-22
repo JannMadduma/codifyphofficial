@@ -31,7 +31,6 @@ export default function StickyFooter() {
         flexDirection: "column",
       }}
     >
-      <CssBaseline />
       <Container
         component="main"
         sx={{ mt: 8, mb: 2, textAlign: "left", maxWidth: { xs: "100%" } }}
@@ -118,26 +117,21 @@ export default function StickyFooter() {
         </Typography>
       </Container>
 
-      <Box
-        component="footer"
+      <Container
+        maxWidth="sm"
         sx={{
-          py: 3,
-          px: 2,
-          mt: "auto",
-          backgroundColor: (theme) =>
-            theme.palette.mode === "light"
-              ? theme.palette.grey[200]
-              : theme.palette.grey[800],
+          display: "flex",
+          alignItems: "center",
+          flexDirection: "column",
+          paddingBottom: "50px",
         }}
       >
-        <Container maxWidth="sm">
-          {/* <Typography variant="body1">
+        {/* <Typography variant="body1">
             Capstone two
           </Typography> */}
-          <img src="/img/houses.png" alt="Photo" />
-          <Copyright />
-        </Container>
-      </Box>
+        <img src="/img/houses.png" alt="Photo" />
+        <Copyright />
+      </Container>
     </Box>
   );
 }
