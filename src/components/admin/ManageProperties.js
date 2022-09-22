@@ -112,15 +112,18 @@ function DashboardContent() {
   const handleEdit = () => {
     if (property.id) {
       // "deleteUser" is from service,UserService
-      editProperty(property.id, property).then((res) => {
-        // "deleteUserAction" is from actions, UsersAction
-        dispatch(editPropertyAction(property));
-      });
+      editProperty(property.id, { ...property, img: [...property.img] }).then(
+        (res) => {
+          // "deleteUserAction" is from actions, UsersAction
+          console.log(res.data.img);
+          dispatch(editPropertyAction(res.data));
+        }
+      );
       handleClose();
     } else {
       const propertyToAdd = {
         ...property,
-        img: [],
+        img: property?.img?.length ? property?.img : [],
       };
 
       addProperty(propertyToAdd).then((res) => {
@@ -155,6 +158,16 @@ function DashboardContent() {
 
   const handleCloseConfirmDelete = () => {
     setOpenConfirm(false);
+  };
+
+  const handleImgChange = (e) => {
+    var file = e.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+
+    reader.onloadend = function (e) {
+      setProperty({ ...property, img: [reader.result] });
+    };
   };
 
   return (
@@ -418,6 +431,22 @@ function DashboardContent() {
               onChange={handleInputChange}
             />
           </Box>
+          <Button component="label" variant="outlined" sx={{ mt: 1 }}>
+            Upload Image
+            <input
+              type="file"
+              accept="image/*"
+              hidden
+              onChange={handleImgChange}
+            />
+          </Button>
+
+          {!!property?.img?.length && (
+            <img
+              src={property.img[0]}
+              style={{ width: "100%", marginTop: 8 }}
+            />
+          )}
         </DialogContent>
 
         <DialogActions>
