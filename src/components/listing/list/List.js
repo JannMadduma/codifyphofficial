@@ -143,7 +143,7 @@ export default function List() {
                 <CardMedia
                   component="img"
                   height="194"
-                  image={property.img[0]}
+                  image={property?.img[0]}
                 />
                 <CardContent>
                   <Typography
@@ -153,8 +153,8 @@ export default function List() {
                     sx={{ textAlign: "left" }}
                   >
                     ₱{" "}
-                    {property.tcp
-                      .toString()
+                    {property?.tcp
+                      ?.toString()
                       .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                   </Typography>
                   <Typography
@@ -162,10 +162,10 @@ export default function List() {
                     color="text.secondary"
                     sx={{ textAlign: "left" }}
                   >
-                    {property.bedRooms}
-                    <HotelIcon /> {property.bathRooms}
+                    {property?.bedRooms}
+                    <HotelIcon /> {property?.bathRooms}
                     <BathtubIcon />
-                    {property.lotArea}
+                    {property?.lotArea}
                     <SquareFootIcon />
                   </Typography>
                   <Typography
@@ -179,7 +179,7 @@ export default function List() {
                       "-webkit-box-orient": "vertical",
                     }}
                   >
-                    {property.location}
+                    {property?.location}
                   </Typography>
                 </CardContent>
                 <hr />
@@ -195,7 +195,7 @@ export default function List() {
                       "-webkit-box-orient": "vertical",
                     }}
                   >
-                    {property.propertyName}
+                    {property?.propertyName}
                   </Typography>
                   {loggedIn?.id && (
                     <CardActions disableSpacing>
