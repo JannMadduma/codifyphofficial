@@ -8,6 +8,7 @@ import Manageusers from "./components/admin/ManageUser";
 import { useSelector } from "react-redux";
 import ViewProperty from "./components/listing/view/ViewProperty";
 import AboutUs from "./components/home/AboutUs";
+import ContactUs from "./components/common/ContactUs";
 
 // https://www.robinwieruch.de/react-router-private-routes/
 const ProtectedRoute = ({ isAllowed, redirectPath = "/", children }) => {
@@ -28,6 +29,7 @@ const ComponentRoute = () => {
       <Route path="/listing" element={<Listing />} />
       <Route path="/viewproperty/:id" element={<ViewProperty />} />
       <Route path="/aboutus" element={<AboutUs />} />
+      <Route path="/contactus" element={<ContactUs />} />
       <Route
         element={<ProtectedRoute isAllowed={loggedIn?.role === "admin"} />}
       >

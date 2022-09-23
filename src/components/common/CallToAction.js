@@ -12,6 +12,7 @@ import Container from "@mui/material/Container";
 import CallIcon from "@mui/icons-material/Call";
 import KeyIcon from "@mui/icons-material/Key";
 import OtherHousesIcon from "@mui/icons-material/OtherHouses";
+import ContactUs from "./ContactUs";
 
 const tiers = [
   {
@@ -61,6 +62,12 @@ const tiers = [
 ];
 
 export default function CallToAction() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
   return (
     <React.Fragment>
       <GlobalStyles
@@ -108,7 +115,11 @@ export default function CallToAction() {
                   </ul>
                 </CardContent>
                 <CardActions>
-                  <Button fullWidth variant={tier.buttonVariant}>
+                  <Button
+                    fullWidth
+                    variant={tier.buttonVariant}
+                    onClick={handleOpen}
+                  >
                     {tier.buttonText}
                   </Button>
                 </CardActions>
@@ -116,6 +127,7 @@ export default function CallToAction() {
             </Grid>
           ))}
         </Grid>
+        <ContactUs open={open} setOpen={setOpen} />
       </Container>
     </React.Fragment>
   );
