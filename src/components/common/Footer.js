@@ -75,7 +75,10 @@ export default function StickyFooter() {
           >
             About us |
           </Link>
-          <Link href="#" style={{ color: "inherit", textDecoration: "none" }}>
+          <Link
+            to="/developers"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
             Developers
           </Link>
         </Typography>

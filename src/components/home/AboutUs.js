@@ -2,7 +2,6 @@ import * as React from "react";
 import Toolbar from "@mui/material/Toolbar";
 import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
-import Description from "../listing/view/descriptions";
 import CallToAction from "../common/CallToAction";
 
 export default function AboutUs() {
@@ -55,6 +54,21 @@ export default function AboutUs() {
               someone's life. Home buyers are a big part of my family and being
               given the opportunity to honor them and what they do is rewarding
               everyday!
+            </Typography>
+          </Container>
+          <Container>
+            <Typography
+              component="h1"
+              variant="h4"
+              align="center"
+              color="text.primary"
+              gutterBottom
+              sx={{ paddingTop: "50px" }}
+            >
+              Estate Windows Mission
+            </Typography>
+            <Typography align="center" color="text.secondary" paragraph>
+              find your home.
             </Typography>
           </Container>
         </Box>
