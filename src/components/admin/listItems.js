@@ -6,6 +6,7 @@ import GroupIcon from "@mui/icons-material/Group";
 import NightShelterIcon from "@mui/icons-material/NightShelter";
 import MarkEmailReadIcon from "@mui/icons-material/MarkEmailRead";
 import { Link } from "react-router-dom";
+import ContactSupportIcon from "@mui/icons-material/ContactSupport";
 
 export const mainListItems = (
   <React.Fragment>
@@ -20,6 +21,12 @@ export const mainListItems = (
         <GroupIcon />
       </ListItemIcon>
       <ListItemText primary="Users" />
+    </ListItemButton>
+    <ListItemButton component={Link} to={"/managesubscribed"}>
+      <ListItemIcon>
+        <ContactSupportIcon />
+      </ListItemIcon>
+      <ListItemText primary="Appointments" />
     </ListItemButton>
     <ListItemButton component={Link} to={"/managesubscribed"}>
       <ListItemIcon>
