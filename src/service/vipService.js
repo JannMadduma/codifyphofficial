@@ -2,6 +2,10 @@ import axios from "axios";
 
 const urlVip = "https://capstone-server-two.herokuapp.com/subscribed";
 
+export const getAllVip = async () => {
+  return await axios.get(`${urlVip}`);
+};
+
 export const getVipEmail = async (email) => {
   return await axios.get(`${urlVip}?email=${email}`);
 };

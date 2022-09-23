@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import ViewProperty from "./components/listing/view/ViewProperty";
 import AboutUs from "./components/home/AboutUs";
 import ContactUs from "./components/common/ContactUs";
+import ManageSubscribed from "./components/admin/ManageSubscribed";
 
 // https://www.robinwieruch.de/react-router-private-routes/
 const ProtectedRoute = ({ isAllowed, redirectPath = "/", children }) => {
@@ -35,6 +36,7 @@ const ComponentRoute = () => {
       >
         <Route path="/manageproperties" element={<ManageProperties />} />
         <Route path="/manageusers" element={<Manageusers />} />
+        <Route path="/managesubscribed" element={<ManageSubscribed />} />
       </Route>
     </Routes>
   );
