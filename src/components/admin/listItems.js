@@ -22,12 +22,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Users" />
     </ListItemButton>
-    <ListItemButton component={Link} to={"/managesubscribed"}>
-      <ListItemIcon>
-        <ContactSupportIcon />
-      </ListItemIcon>
-      <ListItemText primary="Appointments" />
-    </ListItemButton>
+
     <ListItemButton component={Link} to={"/managesubscribed"}>
       <ListItemIcon>
         <MarkEmailReadIcon />
