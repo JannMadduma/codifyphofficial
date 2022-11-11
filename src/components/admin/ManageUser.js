@@ -31,7 +31,11 @@ import {
   Typography,
 } from "@mui/material";
 import ResponsiveAppBar from "../common/Navbar";
-import { deleteUser, editUser, getAllUsers } from "../../service/userService";
+import {
+  deleteFreelancer,
+  editFreelancer,
+  getAllFreelancers,
+} from "../../service/userService";
 
 // for Dialog
 import Dialog from "@mui/material/Dialog";
@@ -84,15 +88,15 @@ function DashboardContent() {
   };
 
   React.useEffect(() => {
-    getAllUsers().then((res) => {
+    getAllFreelancers().then((res) => {
       dispatch(setUsers(res.data));
     });
   }, []);
 
   // to delete users
   const handleUserDelete = () => {
-    // "deleteUser" is from service,UserService
-    deleteUser(user.idNo).then((res) => {
+    // "deleteFreelancer" is from service,UserService
+    deleteFreelancer(user.idNo).then((res) => {
       // "deleteUserAction" is from actions, UsersAction
       dispatch(deleteUserAction({ idNo: user.idNo }));
     });
@@ -126,8 +130,8 @@ function DashboardContent() {
   };
 
   const handleEdit = () => {
-    // "deleteUser" is from service,UserService
-    editUser(user.idNo, user).then((res) => {
+    // "deleteFreelancer" is from service,UserService
+    editFreelancer(user.idNo, user).then((res) => {
       // "deleteUserAction" is from actions, UsersAction
       dispatch(editUserAction(user));
     });

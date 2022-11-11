@@ -131,7 +131,7 @@ function DashboardContent() {
       setError(true);
     } else {
       if (project.idNo) {
-        // "deleteUser" is from service,UserService
+        // "deleteFreelancer" is from service,UserService
         editProject(project.idNo, {
           ...project,
           img: [...project.img],

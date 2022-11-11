@@ -9,7 +9,7 @@ export function setUsers(users) {
   return { type: actionTypes.SET_USERS, users };
 }
 
-export function addUser(user) {
+export function addFreelancer(user) {
   return { type: actionTypes.ADD_USER, user };
 }
 

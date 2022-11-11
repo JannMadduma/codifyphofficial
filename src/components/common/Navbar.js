@@ -14,7 +14,11 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import { addUser, getUserEmail, loginUser } from "../../service/userService";
+import {
+  addFreelancer,
+  getFreelancerEmail,
+  loginFreelancer,
+} from "../../service/userService";
 import { AccountCircle } from "@mui/icons-material";
 import { Alert } from "@mui/material";
 import { setLoggedIn } from "../../actions/loggedInActions";
@@ -54,12 +58,12 @@ const ResponsiveAppBar = () => {
     } else {
       const userToSave = { ...user, likes: [], role: "user" };
 
-      getUserEmail(user.email)
+      getFreelancerEmail(user.email)
         .then((res) => {
           if (res?.data?.length) {
             setError("This email is already been used");
           } else {
-            addUser(userToSave);
+            addFreelancer(userToSave);
             handleDialogClose();
           }
         })
@@ -74,7 +78,7 @@ const ResponsiveAppBar = () => {
     if (!user.email || !user.password) {
       setError("Please fill up necessary fields");
     } else {
-      loginUser(user.email, user.password)
+      loginFreelancer(user.email, user.password)
         .then((res) => {
           console.log(res);
           if (!res?.data?.length) {

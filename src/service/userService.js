@@ -1,28 +1,30 @@
 import axios from "axios";
 
-const urlUser = "https://capstone-server-two.herokuapp.com/users";
+const urlFreelancer = "https://codify-api.herokuapp.com/freelancers";
 
-export const loginUser = async (email, password) => {
-  return await axios.get(`${urlUser}?email=${email}&password=${password}`);
+export const loginFreelancer = async (email, password) => {
+  return await axios.get(
+    `${urlFreelancer}?email=${email}&password=${password}`
+  );
 };
 
-export const getAllUsers = async (idNo) => {
+export const getAllFreelancers = async (idNo) => {
   idNo = idNo || "";
-  return await axios.get(`${urlUser}/${idNo}`);
+  return await axios.get(`${urlFreelancer}/${idNo}`);
 };
 
-export const getUserEmail = async (email) => {
-  return await axios.get(`${urlUser}?email=${email}`);
+export const getFreelancerEmail = async (email) => {
+  return await axios.get(`${urlFreelancer}?email=${email}`);
 };
 
-export const addUser = async (user) => {
-  return await axios.post(urlUser, user);
+export const addFreelancer = async (user) => {
+  return await axios.post(urlFreelancer, user);
 };
 
-export const editUser = async (idNo, user) => {
-  return await axios.put(`${urlUser}/${idNo}`, user);
+export const editFreelancer = async (idNo, user) => {
+  return await axios.put(`${urlFreelancer}/${idNo}`, user);
 };
 
-export const deleteUser = async (idNo) => {
-  return await axios.delete(`${urlUser}/${idNo}`);
+export const deleteFreelancer = async (idNo) => {
+  return await axios.delete(`${urlFreelancer}/${idNo}`);
 };
