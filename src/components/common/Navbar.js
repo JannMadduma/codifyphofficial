@@ -18,17 +18,17 @@ import {
   addFreelancer,
   getFreelancerEmail,
   loginFreelancer,
-} from "../../service/userService";
+} from "../../service/freelancerService";
 import { AccountCircle } from "@mui/icons-material";
 import { Alert } from "@mui/material";
 import { setLoggedIn } from "../../actions/loggedInActions";
 import { Link } from "react-router-dom";
 
-const pagesAll = [{ Projectname: "Listing", link: "/listing" }];
-const pagesAdmin = [{ Projectname: "Manage", link: "/manageproperties" }];
+const pagesAll = [{ name: "Listing", link: "/listing" }];
+const pagesAdmin = [{ name: "Manage", link: "/manageproperties" }];
 
 const userDefaultValue = {
-  Projectname: "",
+  name: "",
   email: "",
   password: "",
 };
@@ -41,24 +41,24 @@ const ResponsiveAppBar = () => {
   const [userMenuAnchorEl, setUserMenuAnchorEl] = React.useState(null);
   const [signUpIn, setSignUpIn] = React.useState(null);
 
-  const [user, setUser] = React.useState(userDefaultValue);
+  const [freelancer, setFreelancer] = React.useState(userDefaultValue);
   const [error, setError] = React.useState("");
   const [pages, setPages] = React.useState([]);
 
   const onValueChange = (e) => {
-    setUser({ ...user, [e.target.Projectname]: e.target.value });
+    setFreelancer({ ...freelancer, [e.target.Projectname]: e.target.value });
   };
 
   const handleSignup = (e) => {
     e.preventDefault();
 
     setError("");
-    if (!user.Projectname || !user.email || !user.password) {
+    if (!freelancer.name || !freelancer.email || !freelancer.password) {
       setError("Please fill up necessary fields");
     } else {
-      const userToSave = { ...user, likes: [], role: "user" };
+      const userToSave = { ...freelancer, likes: [], role: "freelancer" };
 
-      getFreelancerEmail(user.email)
+      getFreelancerEmail(freelancer.email)
         .then((res) => {
           if (res?.data?.length) {
             setError("This email is already been used");
@@ -75,10 +75,10 @@ const ResponsiveAppBar = () => {
     e.preventDefault();
 
     setError("");
-    if (!user.email || !user.password) {
+    if (!freelancer.email || !freelancer.password) {
       setError("Please fill up necessary fields");
     } else {
-      loginFreelancer(user.email, user.password)
+      loginFreelancer(freelancer.email, freelancer.password)
         .then((res) => {
           console.log(res);
           if (!res?.data?.length) {
@@ -135,39 +135,54 @@ const ResponsiveAppBar = () => {
 
   return (
     <AppBar
-      position="static"
-      style={{ background: "white", color: "black", padding: "0 150px" }}
+      component="nav"
+      position="fixed"
+      sx={{
+        height: "80px",
+        display: "grid",
+        alignContent: "center",
+        backgroundColor: "white",
+        boxShadow: "none",
+      }}
     >
-      <Container maxWidth="xl">
+      <Container>
         <Toolbar disableGutters>
-          <Link to={"/"}>
-            <Avatar alt="Photo" src="/img/logo.png" variant="square" />
-          </Link>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page.Projectname}
-                onClick={handleCloseNavMenu}
-                sx={{
-                  padding: "0 20px",
-                  my: 2,
-                  color: "white",
-                  display: "block",
-                  color: "#1A80D9",
-                }}
-                component={Link}
-                to={page.link}
-              >
-                {page.Projectname}
-              </Button>
-            ))}
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", sm: "block" },
+              // paddingLeft: "50px",
+            }}
+          >
+            <img
+              alt=""
+              src="img/herologo.png"
+              style={{ height: "80px", width: "200px" }}
+            />
           </Box>
-          {loggedIn?.idNo ? (
+
+          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            <a style={{ color: "#353C42", fontWeight: "bold" }} href="#home1">
+              Home
+            </a>
+            <a
+              style={{ color: "#353C42", fontWeight: "bold" }}
+              href="#portfolio"
+            >
+              Portfolio
+            </a>
+            <a style={{ color: "#353C42", fontWeight: "bold" }} href="#pricing">
+              Pricing
+            </a>
+            <a style={{ color: "#353C42", fontWeight: "bold" }} href="#aboutUs">
+              About Us
+            </a>
+          </Box>
+          {/* {loggedIn?.idNo ? (
             <div>
               <IconButton
                 size="large"
-                aria-label="account of current user"
+                aria-label="account of current freelancer"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleUserMenuOpen}
@@ -176,7 +191,7 @@ const ResponsiveAppBar = () => {
                 <AccountCircle />
               </IconButton>
               <Menu
-                idNo="menu-appbar"
+                id="menu-appbar"
                 anchorEl={userMenuAnchorEl}
                 anchorOrigin={{
                   vertical: "bottom",
@@ -193,8 +208,8 @@ const ResponsiveAppBar = () => {
                 <MenuItem onClick={handleLogout}>Logout</MenuItem>
               </Menu>
             </div>
-          ) : (
-            <Box sx={{ flexGrow: 0 }}>
+          ) : ( */}
+          {/* <Box sx={{ flexGrow: 0 }}>
               <Button
                 variant="text"
                 sx={{ marginRight: 1 }}
@@ -214,8 +229,17 @@ const ResponsiveAppBar = () => {
               >
                 Register
               </Button>
-            </Box>
-          )}
+            </Box> */}
+          {/* )} */}
+
+          <Button
+            className="Button"
+            variant="contained"
+            style={{ backgroundColor: "#82C8E1", boxShadow: "none" }}
+            // onClick={() => handleClickOpen({})}
+          >
+            CONTACT US
+          </Button>
         </Toolbar>
       </Container>
 
@@ -233,7 +257,7 @@ const ResponsiveAppBar = () => {
                 fullWidth
                 variant="standard"
                 onChange={(e) => onValueChange(e)}
-                Projectname="Projectname"
+                name="name"
               />
             )}
             <TextField
@@ -244,7 +268,7 @@ const ResponsiveAppBar = () => {
               fullWidth
               variant="standard"
               onChange={(e) => onValueChange(e)}
-              Projectname="email"
+              name="email"
             />
             <TextField
               autoFocus
@@ -254,7 +278,7 @@ const ResponsiveAppBar = () => {
               fullWidth
               variant="standard"
               onChange={(e) => onValueChange(e)}
-              Projectname="password"
+              name="password"
             />
           </DialogContent>
           <DialogActions>
@@ -264,9 +288,11 @@ const ResponsiveAppBar = () => {
               onClick={signUpIn === "up" ? handleSignup : handleSignin}
               disabled={
                 (signUpIn === "up" &&
-                  (!user.Projectname || !user.password || !user.email)) ||
-                !user.password ||
-                !user.email
+                  (!freelancer.name ||
+                    !freelancer.password ||
+                    !freelancer.email)) ||
+                !freelancer.password ||
+                !freelancer.email
               }
             >
               {signUpIn === "up" ? "Sign Up" : "Sign In"}

@@ -1,81 +1,99 @@
-import * as React from "react";
-import Toolbar from "@mui/material/Toolbar";
-import { Avatar, Box, Container, Grid, Typography } from "@mui/material";
-import { Link, useParams } from "react-router-dom";
-import CallToAction from "../common/CallToAction";
+import { Box, Container } from "@mui/system";
+import React from "react";
+import Typography from "@mui/material/Typography";
+import { Grid } from "@mui/material";
 
 export default function AboutUs() {
   return (
-    <Box>
-      <Toolbar
-        sx={{ borderBottom: 1, borderColor: "divider" }}
-        style={{ padding: "0 150px" }}
+    <div
+      style={{
+        backgroundImage: "url('img/ABOUT US - GOAL.png')",
+        backgroundSize: "cover",
+        height: "100%",
+      }}
+    >
+      <Box
+        sx={{
+          height: "100%",
+        }}
+        id="aboutUs"
       >
-        <Box sx={{ display: { xs: "none", md: "flex" } }}>
-          <Link to={"/"}>
-            <Avatar alt="Photo" src="/img/logo.png" variant="square" />
-          </Link>
-        </Box>
-      </Toolbar>
-      <Toolbar
-        component="nav"
-        variant="dense"
-        sx={{ justifyContent: "space-between", overflowX: "auto" }}
-      ></Toolbar>
-
-      <Container>
-        <Box
-          sx={{
-            display: "flex",
-            alignSelf: "start",
-          }}
-        ></Box>
-      </Container>
-      <Container
-        sx={{ display: "flex", alignItems: "center", paddingBottom: "50px" }}
-      >
-        <Container>
-          <img src="/img/jann.png" />
+        <Container maxWidth="lg" sx={{ height: "100%" }}>
+          <Grid
+            container
+            spacing={2}
+            sx={{ height: "100%", alignContent: "center" }}
+          >
+            <Grid item xs={6} sx={{ display: "flex", alignItems: "center" }}>
+              <Box>
+                <Typography
+                  variant="h2"
+                  sx={{
+                    fontWeight: "bold",
+                    color: "rgba(130, 200, 225)",
+                    fontFamily: "Poppins, sans-serif;",
+                  }}
+                >
+                  About Us
+                </Typography>
+                <Box
+                  className="container mb-5 mx-0"
+                  style={{
+                    borderBottom: "3px solid rgba(135, 180, 235, 0.8)",
+                    borderRadius: 25,
+                    width: 380,
+                    marginTop: 10,
+                    marginBottom: 30,
+                  }}
+                ></Box>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontWeight: "bold",
+                    marginBottom: 5,
+                    fontFamily: "Poppins, sans-serif;",
+                  }}
+                >
+                  We are visionary developers that seeks improvement to the
+                  current innovations we are using. We are passionate and
+                  determined to excel and give our best in every challenge we
+                  face. We are, Codify.
+                </Typography>
+                <Box
+                  className="container mb-5 mx-0"
+                  style={{
+                    borderBottom: "1px solid rgba(135, 180, 235, 0.8)",
+                    borderRadius: 25,
+                    width: 380,
+                  }}
+                ></Box>
+                <Typography
+                  variant="h6"
+                  sx={{
+                    fontStyle: "italic",
+                    fontWeight: "light",
+                    fontSize: 14,
+                    marginTop: 0.5,
+                    fontFamily: "Poppins, sans-serif;",
+                  }}
+                >
+                  Know more about us on our portfolios!
+                </Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={6} sx={{ display: "flex", alignItems: "center" }}>
+              <Box
+                sx={{
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                <img alt="" style={{ width: "100%" }} src="../images/6.svg" />
+              </Box>
+            </Grid>
+          </Grid>
         </Container>
-        <Box>
-          <Container>
-            <Typography
-              component="h1"
-              variant="h4"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              Hi, I'm Jann.
-            </Typography>
-            <Typography align="center" color="text.secondary" paragraph>
-              I work at Bachelors Reality for Home buyers so I can be a part of
-              something impactful and hopefully help make a difference in
-              someone's life. Home buyers are a big part of my family and being
-              given the opportunity to honor them and what they do is rewarding
-              everyday!
-            </Typography>
-          </Container>
-          <Container>
-            <Typography
-              component="h1"
-              variant="h4"
-              align="center"
-              color="text.primary"
-              gutterBottom
-              sx={{ paddingTop: "50px" }}
-            >
-              Estate Windows Mission
-            </Typography>
-            <Typography align="center" color="text.secondary" paragraph>
-              find your home.
-            </Typography>
-          </Container>
-        </Box>
-      </Container>
-      <Container sx={{ paddingBottom: "70px" }}>
-        <CallToAction />
-      </Container>
-    </Box>
+      </Box>
+    </div>
   );
 }

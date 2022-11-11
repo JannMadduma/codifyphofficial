@@ -16,7 +16,7 @@ export const getAllProjects = async (
   let isPendingFilter = "";
 
   if (Projectname) {
-    nameFilter = `&propertyName_like=${Projectname}`;
+    nameFilter = `&projectName_like=${Projectname}`;
   }
   if (ClientName) {
     locationFilter += `&location_like=${ClientName}`;

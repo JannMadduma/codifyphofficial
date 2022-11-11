@@ -9,14 +9,14 @@ export function setUsers(users) {
   return { type: actionTypes.SET_USERS, users };
 }
 
-export function addFreelancer(user) {
-  return { type: actionTypes.ADD_USER, user };
+export function addFreelancer(freelancer) {
+  return { type: actionTypes.ADD_USER, freelancer };
 }
 
-export function editUserAction(user) {
-  return { type: actionTypes.EDIT_USER, user };
+export function editUserAction(freelancer) {
+  return { type: actionTypes.EDIT_USER, freelancer };
 }
 
-export function deleteUserAction(user) {
-  return { type: actionTypes.DELETE_USER, user };
+export function deleteUserAction(freelancer) {
+  return { type: actionTypes.DELETE_USER, freelancer };
 }

@@ -143,7 +143,7 @@ export default function ListingGallery({ project }) {
             <img
               src={`${project?.img}`}
               srcSet={`${project?.img}`}
-              alt={project?.propertyName}
+              alt={project?.projectName}
               loading="lazy"
               style={{ width: "100%" }}
             />
@@ -255,7 +255,7 @@ export default function ListingGallery({ project }) {
                     "-webkit-box-orient": "vertical",
                   }}
                 >
-                  {project?.propertyName}
+                  {project?.projectName}
                 </Typography>
 
                 <hr />

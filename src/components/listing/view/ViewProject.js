@@ -10,16 +10,16 @@ import { getAllProjects } from "../../../service/projectService";
 
 const pagesAll = [{ Projectname: "Listing", link: "/listing" }];
 
-export default function ViewProperty() {
+export default function ViewProject() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [pages, setPages] = React.useState([]);
   const { idNo } = useParams();
-  const [project, setProperty] = React.useState({});
+  const [project, setProject] = React.useState({});
 
   React.useEffect(() => {
     getAllProjects(idNo).then((res) => {
       console.log(res.data);
-      setProperty(res.data);
+      setProject(res.data);
     });
   }, []);
 

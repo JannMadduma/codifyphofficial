@@ -79,7 +79,7 @@ function DashboardContent() {
   const dispatch = useDispatch();
   const projects = useSelector((state) => state.projects);
   const [open, setOpen] = React.useState(true);
-  const [project, setProperty] = React.useState({});
+  const [project, setProject] = React.useState({});
   const [openView, setOpenView] = React.useState(false);
   // for delete confirm dialog
   const [openConfirm, setOpenConfirm] = React.useState(false);
@@ -90,12 +90,12 @@ function DashboardContent() {
   };
 
   const handleInputChange = (e) => {
-    setProperty({ ...project, [e.target.Projectname]: e.target.value });
+    setProject({ ...project, [e.target.Projectname]: e.target.value });
   };
 
   const handleClickOpen = (i) => {
     setError(false);
-    setProperty(i);
+    setProject(i);
     setEditOpen(true);
   };
 
@@ -104,7 +104,7 @@ function DashboardContent() {
   };
 
   const handleOpenView = (i) => {
-    setProperty(i);
+    setProject(i);
     setOpenView(true);
   };
 
@@ -116,7 +116,7 @@ function DashboardContent() {
     setError(false);
 
     if (
-      !project.propertyName ||
+      !project.projectName ||
       !project.ClientName ||
       !project.developer ||
       !project.projectType ||
@@ -142,13 +142,13 @@ function DashboardContent() {
         });
         handleClose();
       } else {
-        const propertyToAdd = {
+        const projectToAdd = {
           ...project,
           img: project?.img?.length ? project?.img : [],
           status: "Available",
         };
 
-        addProject(propertyToAdd).then((res) => {
+        addProject(projectToAdd).then((res) => {
           dispatch(addPropertyAction(res.data));
         });
         handleClose();
@@ -175,7 +175,7 @@ function DashboardContent() {
   // to avoid deleting right away, added dialog for confirm
   const handleOpenConfirmDelete = (i) => {
     console.log("Confirm detete?");
-    setProperty(i);
+    setProject(i);
     setOpenConfirm(true);
   };
 
@@ -189,7 +189,7 @@ function DashboardContent() {
     reader.readAsDataURL(file);
 
     reader.onloadend = function (e) {
-      setProperty({ ...project, img: [reader.result] });
+      setProject({ ...project, img: [reader.result] });
     };
   };
 
@@ -262,7 +262,7 @@ function DashboardContent() {
                       {projects.map((row) => (
                         <TableRow key={row?.idNo}>
                           <TableCell>{row?.idNo}</TableCell>
-                          <TableCell>{row?.propertyName}</TableCell>
+                          <TableCell>{row?.projectName}</TableCell>
                           <TableCell>{row?.ClientName}</TableCell>
                           <TableCell>{row?.developer}</TableCell>
                           <TableCell>
@@ -338,11 +338,11 @@ function DashboardContent() {
           <TextField
             autoFocus
             margin="dense"
-            value={project?.propertyName}
+            value={project?.projectName}
             type="text"
             fullWidth
             variant="outlined"
-            Projectname="propertyName"
+            Projectname="projectName"
             label="Name"
             onChange={handleInputChange}
           />
@@ -515,7 +515,7 @@ function DashboardContent() {
         <DialogContent>
           <Typography>
             Are you sure you want to delete{" "}
-            <strong>{project?.propertyName}</strong>?
+            <strong>{project?.projectName}</strong>?
           </Typography>
         </DialogContent>
 

@@ -2,9 +2,9 @@ export const actionTypes = {
   SET_LOGGEDIN: "SET_LOGGEDIN",
 };
 
-export function setLoggedIn(user) {
+export function setLoggedIn(freelancer) {
   return {
     type: actionTypes.SET_LOGGEDIN,
-    loggedIn: user,
+    loggedIn: freelancer,
   };
 }

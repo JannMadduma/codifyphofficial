@@ -26,12 +26,12 @@ export default function List() {
   const [Projectname, setName] = React.useState("");
   const [ClientName, setLocation] = React.useState("");
   const [status, setStatus] = React.useState(0);
-  const [project, setProperty] = React.useState({});
+  const [project, setProject] = React.useState({});
   const [openView, setOpenView] = React.useState(false);
   const [query, setQuery] = React.useState(useLocation().search);
 
   const handleOpenView = (i) => {
-    setProperty(i);
+    setProject(i);
     setOpenView(true);
   };
 

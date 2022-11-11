@@ -32,7 +32,7 @@ const ListingCard = ({ project, loggedIn }) => {
     setCopy(true);
     e.stopPropagation();
     navigator.clipboard.writeText(
-      `${window.ClientName.origin}/viewproperty/${project.idNo}`
+      `${window.ClientName.origin}/viewproject/${project.idNo}`
     );
     setTimeout(() => {
       setCopy(false);
@@ -65,7 +65,7 @@ const ListingCard = ({ project, loggedIn }) => {
       >
         {project?.status}
       </Paper>
-      <CardMedia component="img" height="194" image={project?.img[0]} />
+      {/* <CardMedia component="img" height="194" image={project?.img[0]} /> */}
       <CardContent>
         <Typography
           gutterBottom
@@ -88,7 +88,7 @@ const ListingCard = ({ project, loggedIn }) => {
             "-webkit-box-orient": "vertical",
           }}
         >
-          {project?.propertyName}
+          {project?.projectName}
         </Typography>
         <Typography
           variant="body2"

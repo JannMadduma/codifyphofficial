@@ -35,7 +35,7 @@ import {
   deleteFreelancer,
   editFreelancer,
   getAllFreelancers,
-} from "../../service/userService";
+} from "../../service/freelancerService";
 
 // for Dialog
 import Dialog from "@mui/material/Dialog";
@@ -82,7 +82,7 @@ function DashboardContent() {
   // for delete confirm dialog
   const [openConfirm, setOpenConfirm] = React.useState(false);
   // added to map users in the edit textfield
-  const [user, setUser] = React.useState({});
+  const [freelancer, setFreelancer] = React.useState({});
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -96,16 +96,16 @@ function DashboardContent() {
   // to delete users
   const handleUserDelete = () => {
     // "deleteFreelancer" is from service,UserService
-    deleteFreelancer(user.idNo).then((res) => {
+    deleteFreelancer(freelancer.idNo).then((res) => {
       // "deleteUserAction" is from actions, UsersAction
-      dispatch(deleteUserAction({ idNo: user.idNo }));
+      dispatch(deleteUserAction({ idNo: freelancer.idNo }));
     });
     handleCloseConfirmDelete();
   };
 
   // to avoid deleting right away, added dialog for confirm
   const handleOpenConfirmDelete = (i) => {
-    setUser(i);
+    setFreelancer(i);
     setOpenConfirm(true);
   };
 
@@ -117,7 +117,7 @@ function DashboardContent() {
   const [editOpen, setEditOpen] = React.useState(false);
   // (i) is added when mapping to dialog's textfield
   const handleClickOpen = (i) => {
-    setUser(i);
+    setFreelancer(i);
     setEditOpen(true);
   };
 
@@ -126,14 +126,14 @@ function DashboardContent() {
   };
 
   const handleInputChange = (e) => {
-    setUser({ ...user, role: e.target.value });
+    setFreelancer({ ...freelancer, role: e.target.value });
   };
 
   const handleEdit = () => {
     // "deleteFreelancer" is from service,UserService
-    editFreelancer(user.idNo, user).then((res) => {
+    editFreelancer(freelancer.idNo, freelancer).then((res) => {
       // "deleteUserAction" is from actions, UsersAction
-      dispatch(editUserAction(user));
+      dispatch(editUserAction(freelancer));
     });
     handleClose();
   };
@@ -255,7 +255,7 @@ function DashboardContent() {
           <TextField
             autoFocus
             margin="dense"
-            value={user.Projectname}
+            value={freelancer.Projectname}
             type="text"
             fullWidth
             variant="filled"
@@ -266,7 +266,7 @@ function DashboardContent() {
           <TextField
             autoFocus
             margin="dense"
-            value={user.email}
+            value={freelancer.email}
             type="email"
             fullWidth
             variant="filled"
@@ -282,10 +282,10 @@ function DashboardContent() {
               label="Lot Area"
               Projectname="lotArea"
               onChange={handleInputChange}
-              value={user.role}
+              value={freelancer.role}
             >
               <MenuItem value={"admin"}>Admin</MenuItem>
-              <MenuItem value={"user"}>User</MenuItem>
+              <MenuItem value={"freelancer"}>User</MenuItem>
             </Select>
           </FormControl>
         </DialogContent>
@@ -309,7 +309,8 @@ function DashboardContent() {
         </DialogTitle>
         <DialogContent>
           <Typography>
-            Are you sure you want to delete <strong>{user.Projectname}</strong>
+            Are you sure you want to delete{" "}
+            <strong>{freelancer.Projectname}</strong>
             "?
           </Typography>
         </DialogContent>

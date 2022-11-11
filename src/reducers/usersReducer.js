@@ -8,17 +8,17 @@ export default function usersReducer(state = usersState, action) {
     case actionTypes.SET_USERS:
       return action.users;
     case actionTypes.ADD_USER:
-      return [action.user, ...state];
+      return [action.freelancer, ...state];
     case actionTypes.EDIT_USER:
-      index = state.findIndex((mod) => mod.idNo === action.user.idNo);
+      index = state.findIndex((mod) => mod.idNo === action.freelancer.idNo);
 
       return [
         ...state.slice(0, index), // everything before current item
-        action.user,
+        action.freelancer,
         ...state.slice(index + 1), // everything after current item
       ];
     case actionTypes.DELETE_USER:
-      index = state.findIndex((mod) => mod.idNo === action.user.idNo);
+      index = state.findIndex((mod) => mod.idNo === action.freelancer.idNo);
 
       return [
         ...state.slice(0, index), // everything before current item

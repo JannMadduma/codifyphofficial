@@ -1,33 +1,36 @@
 import React from "react";
-import StickyFooter from "../common/Footer";
+import Hero from "./hero";
+import Portfolio from "./Portfolio";
+import Technology from "./Technology";
+import FAQ from "./FAQ";
+import AboutUs from "./AboutUs";
+import Framework from "./Framework";
+import Missionvision from "./missionvision";
+import Goals from "./goalsObj";
+import Team from "./Team";
+import PricingService from "./PricingService";
+import Pricing from "./Pricing";
+import Footer from "../common/Footer";
 import ResponsiveAppBar from "../common/Navbar";
-import Banner from "./Banner";
-import Gallery from "./Gallery";
-import Stats from "./Stats";
-import TopListing from "./TopListing";
-import CallToAction from "../common/CallToAction";
-import { Box } from "@mui/system";
-import Subscribe from "../common/subscribe";
 
 const Home = ({}) => {
   return (
-    <div>
+    <div id="home1">
       <ResponsiveAppBar />
-      <Banner />
-      <Box sx={{ padding: "50px" }}>
-        <CallToAction />
-      </Box>
-      <Gallery />
-      <Stats />
-      <TopListing />
-      <Box sx={{ padding: "50px 0" }}>
-        <Subscribe />
-      </Box>
-      <Box sx={{ padding: "50px" }}>
-        <CallToAction />
-      </Box>
-
-      <StickyFooter />
+      <Hero />
+      <Portfolio />
+      <PricingService />
+      <Pricing />
+      <Technology />
+      <FAQ />
+      <AboutUs />
+      <Framework />
+      <Missionvision />
+      <Goals />
+      {/* <Feedbacks /> */}
+      <Team />
+      {/* <ContactUs /> */}
+      <Footer />
     </div>
   );
 };
