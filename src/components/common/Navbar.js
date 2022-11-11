@@ -20,11 +20,11 @@ import { Alert } from "@mui/material";
 import { setLoggedIn } from "../../actions/loggedInActions";
 import { Link } from "react-router-dom";
 
-const pagesAll = [{ name: "Listing", link: "/listing" }];
-const pagesAdmin = [{ name: "Manage", link: "/manageproperties" }];
+const pagesAll = [{ Projectname: "Listing", link: "/listing" }];
+const pagesAdmin = [{ Projectname: "Manage", link: "/manageproperties" }];
 
 const userDefaultValue = {
-  name: "",
+  Projectname: "",
   email: "",
   password: "",
 };
@@ -42,14 +42,14 @@ const ResponsiveAppBar = () => {
   const [pages, setPages] = React.useState([]);
 
   const onValueChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setUser({ ...user, [e.target.Projectname]: e.target.value });
   };
 
   const handleSignup = (e) => {
     e.preventDefault();
 
     setError("");
-    if (!user.name || !user.email || !user.password) {
+    if (!user.Projectname || !user.email || !user.password) {
       setError("Please fill up necessary fields");
     } else {
       const userToSave = { ...user, likes: [], role: "user" };
@@ -143,7 +143,7 @@ const ResponsiveAppBar = () => {
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page.name}
+                key={page.Projectname}
                 onClick={handleCloseNavMenu}
                 sx={{
                   padding: "0 20px",
@@ -155,11 +155,11 @@ const ResponsiveAppBar = () => {
                 component={Link}
                 to={page.link}
               >
-                {page.name}
+                {page.Projectname}
               </Button>
             ))}
           </Box>
-          {loggedIn?.id ? (
+          {loggedIn?.idNo ? (
             <div>
               <IconButton
                 size="large"
@@ -172,7 +172,7 @@ const ResponsiveAppBar = () => {
                 <AccountCircle />
               </IconButton>
               <Menu
-                id="menu-appbar"
+                idNo="menu-appbar"
                 anchorEl={userMenuAnchorEl}
                 anchorOrigin={{
                   vertical: "bottom",
@@ -229,7 +229,7 @@ const ResponsiveAppBar = () => {
                 fullWidth
                 variant="standard"
                 onChange={(e) => onValueChange(e)}
-                name="name"
+                Projectname="Projectname"
               />
             )}
             <TextField
@@ -240,7 +240,7 @@ const ResponsiveAppBar = () => {
               fullWidth
               variant="standard"
               onChange={(e) => onValueChange(e)}
-              name="email"
+              Projectname="email"
             />
             <TextField
               autoFocus
@@ -250,7 +250,7 @@ const ResponsiveAppBar = () => {
               fullWidth
               variant="standard"
               onChange={(e) => onValueChange(e)}
-              name="password"
+              Projectname="password"
             />
           </DialogContent>
           <DialogActions>
@@ -260,7 +260,7 @@ const ResponsiveAppBar = () => {
               onClick={signUpIn === "up" ? handleSignup : handleSignin}
               disabled={
                 (signUpIn === "up" &&
-                  (!user.name || !user.password || !user.email)) ||
+                  (!user.Projectname || !user.password || !user.email)) ||
                 !user.password ||
                 !user.email
               }

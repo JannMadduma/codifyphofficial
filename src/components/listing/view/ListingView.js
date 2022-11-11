@@ -17,7 +17,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const pagesAll = [{ name: "Listing", link: "/listing" }];
+const pagesAll = [{ Projectname: "Listing", link: "/listing" }];
 
 export default function ListingView() {
   const loggedIn = useSelector((state) => state.loggedIn);
@@ -67,7 +67,7 @@ export default function ListingView() {
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
               <Button
-                key={page.name}
+                key={page.Projectname}
                 onClick={handleCloseNavMenu}
                 sx={{
                   padding: "0 30px",
@@ -79,7 +79,7 @@ export default function ListingView() {
                 component={Link}
                 to={page.link}
               >
-                {page.name}
+                {page.Projectname}
               </Button>
             ))}
           </Box>

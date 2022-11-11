@@ -92,9 +92,9 @@ function DashboardContent() {
   // to delete users
   const handleUserDelete = () => {
     // "deleteUser" is from service,UserService
-    deleteUser(user.id).then((res) => {
+    deleteUser(user.idNo).then((res) => {
       // "deleteUserAction" is from actions, UsersAction
-      dispatch(deleteUserAction({ id: user.id }));
+      dispatch(deleteUserAction({ idNo: user.idNo }));
     });
     handleCloseConfirmDelete();
   };
@@ -127,7 +127,7 @@ function DashboardContent() {
 
   const handleEdit = () => {
     // "deleteUser" is from service,UserService
-    editUser(user.id, user).then((res) => {
+    editUser(user.idNo, user).then((res) => {
       // "deleteUserAction" is from actions, UsersAction
       dispatch(editUserAction(user));
     });
@@ -190,9 +190,9 @@ function DashboardContent() {
                     </TableHead>
                     <TableBody>
                       {users.map((row) => (
-                        <TableRow key={row.id}>
-                          <TableCell>{row.id}</TableCell>
-                          <TableCell>{row.name}</TableCell>
+                        <TableRow key={row.idNo}>
+                          <TableCell>{row.idNo}</TableCell>
+                          <TableCell>{row.Projectname}</TableCell>
                           <TableCell>{row.email}</TableCell>
                           <TableCell>{row.role}</TableCell>
                           <TableCell align="right">
@@ -244,18 +244,18 @@ function DashboardContent() {
         onClose={handleClose}
         aria-labelledby="draggable-dialog-title"
       >
-        <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
+        <DialogTitle style={{ cursor: "move" }} idNo="draggable-dialog-title">
           Edit User
         </DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
             margin="dense"
-            value={user.name}
+            value={user.Projectname}
             type="text"
             fullWidth
             variant="filled"
-            name="name"
+            Projectname="Projectname"
             label="Name"
             disabled
           />
@@ -266,17 +266,17 @@ function DashboardContent() {
             type="email"
             fullWidth
             variant="filled"
-            name="name"
+            Projectname="Projectname"
             label="Email"
             disabled
           />
           <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Role</InputLabel>
+            <InputLabel idNo="demo-simple-select-label">Role</InputLabel>
             <Select
               labelId="demo-simple-select-label"
-              id="demo-simple-select"
+              idNo="demo-simple-select"
               label="Lot Area"
-              name="lotArea"
+              Projectname="lotArea"
               onChange={handleInputChange}
               value={user.role}
             >
@@ -300,12 +300,13 @@ function DashboardContent() {
         onClose={handleCloseConfirmDelete}
         aria-labelledby="draggable-dialog-title"
       >
-        <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
+        <DialogTitle style={{ cursor: "move" }} idNo="draggable-dialog-title">
           Confirm Delete
         </DialogTitle>
         <DialogContent>
           <Typography>
-            Are you sure you want to delete <strong>{user.name}</strong>"?
+            Are you sure you want to delete <strong>{user.Projectname}</strong>
+            "?
           </Typography>
         </DialogContent>
 

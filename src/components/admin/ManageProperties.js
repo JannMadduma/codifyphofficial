@@ -11,11 +11,11 @@ import Paper from "@mui/material/Paper";
 import { mainListItems } from "./listItems";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addProperty,
-  deleteProperty,
-  editProperty,
-  getAllProperties,
-} from "../../service/propertyService";
+  addProject,
+  deleteProject,
+  editProject,
+  getAllProjects,
+} from "../../service/projectService";
 import {
   addPropertyAction,
   deletePropertyAction,
@@ -77,9 +77,9 @@ const mdTheme = createTheme();
 
 function DashboardContent() {
   const dispatch = useDispatch();
-  const properties = useSelector((state) => state.properties);
+  const projects = useSelector((state) => state.projects);
   const [open, setOpen] = React.useState(true);
-  const [property, setProperty] = React.useState({});
+  const [project, setProperty] = React.useState({});
   const [openView, setOpenView] = React.useState(false);
   // for delete confirm dialog
   const [openConfirm, setOpenConfirm] = React.useState(false);
@@ -90,7 +90,7 @@ function DashboardContent() {
   };
 
   const handleInputChange = (e) => {
-    setProperty({ ...property, [e.target.name]: e.target.value });
+    setProperty({ ...project, [e.target.Projectname]: e.target.value });
   };
 
   const handleClickOpen = (i) => {
@@ -116,38 +116,39 @@ function DashboardContent() {
     setError(false);
 
     if (
-      !property.propertyName ||
-      !property.location ||
-      !property.developer ||
-      !property.projectType ||
-      !property.status ||
-      !property.monthly ||
-      !property.tcp ||
-      !property.bedRooms ||
-      !property.bathRooms ||
-      !property.lotArea ||
-      !property.floorArea
+      !project.propertyName ||
+      !project.ClientName ||
+      !project.developer ||
+      !project.projectType ||
+      !project.status ||
+      !project.monthly ||
+      !project.tcp ||
+      !project.bedRooms ||
+      !project.bathRooms ||
+      !project.lotArea ||
+      !project.floorArea
     ) {
       setError(true);
     } else {
-      if (property.id) {
+      if (project.idNo) {
         // "deleteUser" is from service,UserService
-        editProperty(property.id, { ...property, img: [...property.img] }).then(
-          (res) => {
-            // "deleteUserAction" is from actions, UsersAction
-            console.log(res.data.img);
-            dispatch(editPropertyAction(res.data));
-          }
-        );
+        editProject(project.idNo, {
+          ...project,
+          img: [...project.img],
+        }).then((res) => {
+          // "deleteUserAction" is from actions, UsersAction
+          console.log(res.data.img);
+          dispatch(editPropertyAction(res.data));
+        });
         handleClose();
       } else {
         const propertyToAdd = {
-          ...property,
-          img: property?.img?.length ? property?.img : [],
+          ...project,
+          img: project?.img?.length ? project?.img : [],
           status: "Available",
         };
 
-        addProperty(propertyToAdd).then((res) => {
+        addProject(propertyToAdd).then((res) => {
           dispatch(addPropertyAction(res.data));
         });
         handleClose();
@@ -156,7 +157,7 @@ function DashboardContent() {
   };
 
   React.useEffect(() => {
-    getAllProperties().then((res) => {
+    getAllProjects().then((res) => {
       dispatch(setProperties(res.data));
     });
   }, []);
@@ -164,9 +165,9 @@ function DashboardContent() {
   // to delete Property
   const handlePropertyDelete = () => {
     // "deletePropert" is from service,PropertyService
-    deleteProperty(property.id).then((res) => {
+    deleteProject(project.idNo).then((res) => {
       // "deletePropertyAction" is from actions, PropertyAction
-      dispatch(deletePropertyAction({ id: property.id }));
+      dispatch(deletePropertyAction({ idNo: project.idNo }));
     });
     handleCloseConfirmDelete();
   };
@@ -188,7 +189,7 @@ function DashboardContent() {
     reader.readAsDataURL(file);
 
     reader.onloadend = function (e) {
-      setProperty({ ...property, img: [reader.result] });
+      setProperty({ ...project, img: [reader.result] });
     };
   };
 
@@ -230,7 +231,7 @@ function DashboardContent() {
                   <Table size="small">
                     <TableHead>
                       <TableRow>
-                        <TableCell>Properties</TableCell>
+                        <TableCell>PROJECTS</TableCell>
                         <TableCell></TableCell>
                         <TableCell></TableCell>
                         <TableCell></TableCell>
@@ -243,26 +244,26 @@ function DashboardContent() {
                               handleClickOpen({});
                             }}
                           >
-                            Add Property
+                            Add Project
                           </Button>
                         </TableCell>
                       </TableRow>
                       <TableRow>
                         <TableCell>ID</TableCell>
-                        <TableCell>Property Name</TableCell>
-                        <TableCell>Location</TableCell>
-                        <TableCell>Developer</TableCell>
-                        <TableCell>TCP</TableCell>
+                        <TableCell>Project Name</TableCell>
+                        <TableCell>Client Name</TableCell>
+                        <TableCell>Design</TableCell>
                         <TableCell>Status</TableCell>
+                        <TableCell>isPending</TableCell>
                         <TableCell align="right">Actions</TableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {properties.map((row) => (
-                        <TableRow key={row?.id}>
-                          <TableCell>{row?.id}</TableCell>
+                      {projects.map((row) => (
+                        <TableRow key={row?.idNo}>
+                          <TableCell>{row?.idNo}</TableCell>
                           <TableCell>{row?.propertyName}</TableCell>
-                          <TableCell>{row?.location}</TableCell>
+                          <TableCell>{row?.ClientName}</TableCell>
                           <TableCell>{row?.developer}</TableCell>
                           <TableCell>
                             {row?.tcp
@@ -321,7 +322,7 @@ function DashboardContent() {
           </Container>
         </Box>
       </Box>
-      <ViewModal open={openView} setOpen={setOpenView} property={property} />
+      <ViewModal open={openView} setOpen={setOpenView} project={project} />
       <Dialog
         maxWidth="sm"
         fullWidth
@@ -329,39 +330,39 @@ function DashboardContent() {
         onClose={handleClose}
         aria-labelledby="draggable-dialog-title"
       >
-        <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
-          {property.id ? "Edit" : "Add"} Property
+        <DialogTitle style={{ cursor: "move" }} idNo="draggable-dialog-title">
+          {project.idNo ? "Edit" : "Add"} Property
         </DialogTitle>
         <DialogContent>
           {error && <Alert severity="error">Please fill-up all fields</Alert>}
           <TextField
             autoFocus
             margin="dense"
-            value={property?.propertyName}
+            value={project?.propertyName}
             type="text"
             fullWidth
             variant="outlined"
-            name="propertyName"
+            Projectname="propertyName"
             label="Name"
             onChange={handleInputChange}
           />
           <TextField
             margin="dense"
-            value={property?.location}
+            value={project?.ClientName}
             type="text"
             fullWidth
             variant="outlined"
-            name="location"
+            Projectname="ClientName"
             label="Location"
             onChange={handleInputChange}
           />
           <TextField
             margin="dense"
-            value={property?.developer}
+            value={project?.developer}
             type="text"
             fullWidth
             variant="outlined"
-            name="developer"
+            Projectname="developer"
             label="Developer"
             onChange={handleInputChange}
           />
@@ -371,30 +372,30 @@ function DashboardContent() {
             }}
           >
             <FormControl fullWidth sx={{ my: 1 }}>
-              <InputLabel id="demo-simple-select-label">
+              <InputLabel idNo="demo-simple-select-label">
                 Project Type
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                idNo="demo-simple-select"
                 label="Project Type"
-                name="projectType"
+                Projectname="projectType"
                 onChange={handleInputChange}
-                value={property.projectType}
+                value={project.projectType}
               >
                 <MenuItem value={"Pre-selling"}>Pre-selling</MenuItem>
                 <MenuItem value={"RFO"}>RFO</MenuItem>
               </Select>
             </FormControl>
             <FormControl fullWidth sx={{ my: 1 }}>
-              <InputLabel id="demo-simple-select-label">Status</InputLabel>
+              <InputLabel idNo="demo-simple-select-label">Status</InputLabel>
               <Select
                 labelId="demo-simple-select-label"
-                id="demo-simple-select"
+                idNo="demo-simple-select"
                 label="Project Type"
-                name="status"
+                Projectname="status"
                 onChange={handleInputChange}
-                value={property.status}
+                value={project.status}
               >
                 <MenuItem value={"Available"}>Available</MenuItem>
                 <MenuItem value={"Sold"}>Sold</MenuItem>
@@ -409,21 +410,21 @@ function DashboardContent() {
           >
             <TextField
               margin="dense"
-              value={property?.monthly}
+              value={project?.monthly}
               type="number"
               fullWidth
               variant="outlined"
-              name="monthly"
+              Projectname="monthly"
               label="Monthly"
               onChange={handleInputChange}
             />
             <TextField
               margin="dense"
-              value={property?.tcp}
+              value={project?.tcp}
               type="number"
               fullWidth
               variant="outlined"
-              name="tcp"
+              Projectname="tcp"
               label="TCP"
               onChange={handleInputChange}
             />
@@ -435,21 +436,21 @@ function DashboardContent() {
           >
             <TextField
               margin="dense"
-              value={property?.bedRooms}
+              value={project?.bedRooms}
               type="number"
               fullWidth
               variant="outlined"
-              name="bedRooms"
+              Projectname="bedRooms"
               label="Bed Rooms"
               onChange={handleInputChange}
             />
             <TextField
               margin="dense"
-              value={property?.bathRooms}
+              value={project?.bathRooms}
               type="number"
               fullWidth
               variant="outlined"
-              name="bathRooms"
+              Projectname="bathRooms"
               label="Bath Rooms"
               onChange={handleInputChange}
             />
@@ -461,21 +462,21 @@ function DashboardContent() {
           >
             <TextField
               margin="dense"
-              value={property?.lotArea}
+              value={project?.lotArea}
               type="number"
               fullWidth
               variant="outlined"
-              name="lotArea"
+              Projectname="lotArea"
               label="Lot Area"
               onChange={handleInputChange}
             />
             <TextField
               margin="dense"
-              value={property?.floorArea}
+              value={project?.floorArea}
               type="number"
               fullWidth
               variant="outlined"
-              name="floorArea"
+              Projectname="floorArea"
               label="Floor Area"
               onChange={handleInputChange}
             />
@@ -490,11 +491,8 @@ function DashboardContent() {
             />
           </Button>
 
-          {!!property?.img?.length && (
-            <img
-              src={property.img[0]}
-              style={{ width: "100%", marginTop: 8 }}
-            />
+          {!!project?.img?.length && (
+            <img src={project.img[0]} style={{ width: "100%", marginTop: 8 }} />
           )}
         </DialogContent>
 
@@ -511,13 +509,13 @@ function DashboardContent() {
         onClose={handleCloseConfirmDelete}
         aria-labelledby="draggable-dialog-title"
       >
-        <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
+        <DialogTitle style={{ cursor: "move" }} idNo="draggable-dialog-title">
           Confirm Delete
         </DialogTitle>
         <DialogContent>
           <Typography>
             Are you sure you want to delete{" "}
-            <strong>{property?.propertyName}</strong>?
+            <strong>{project?.propertyName}</strong>?
           </Typography>
         </DialogContent>
 

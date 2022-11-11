@@ -5,18 +5,18 @@ import * as React from "react";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { useEffect } from "react";
-import { getAllProperties } from "../../service/propertyService";
+import { getAllProjects } from "../../service/projectService";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ListingCard from "../common/ListingCard";
 import ViewModal from "../listing/view/ViewModal";
 
 export default function TopListing() {
-  const [properties, setProperties] = React.useState([]);
+  const [projects, setProperties] = React.useState([]);
   const [expanded, setExpanded] = React.useState(false);
   const loggedIn = useSelector((state) => state.loggedIn);
 
-  const [property, setProperty] = React.useState({});
+  const [project, setProperty] = React.useState({});
   const [openView, setOpenView] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -64,7 +64,7 @@ export default function TopListing() {
   }, [step]);
 
   useEffect(() => {
-    getAllProperties().then((res) => {
+    getAllProjects().then((res) => {
       setProperties(res.data);
     });
   }, []);
@@ -106,14 +106,14 @@ export default function TopListing() {
           className="scrollListing"
         >
           <Grid container columns={9} sx={{ width: "200%" }}>
-            {properties.slice(0, 9).map((property) => (
-              <Grid key={property.id} item xs={1} sx={{ padding: "0px 5px" }}>
+            {projects.slice(0, 9).map((project) => (
+              <Grid key={project.idNo} item xs={1} sx={{ padding: "0px 5px" }}>
                 <Box
                   onClick={() => {
-                    handleOpenView(property);
+                    handleOpenView(project);
                   }}
                 >
-                  <ListingCard property={property} loggedIn={loggedIn} />
+                  <ListingCard project={project} loggedIn={loggedIn} />
                 </Box>
               </Grid>
             ))}
@@ -150,7 +150,7 @@ export default function TopListing() {
         </Box>
       </Box>
 
-      <ViewModal open={openView} setOpen={setOpenView} property={property} />
+      <ViewModal open={openView} setOpen={setOpenView} project={project} />
     </Box>
   );
 }

@@ -6,18 +6,18 @@ import { Link, useParams } from "react-router-dom";
 import ListingGallery from "./ListGallery";
 import Description from "./descriptions";
 import CallToAction from "../../common/CallToAction";
-import { getAllProperties } from "../../../service/propertyService";
+import { getAllProjects } from "../../../service/projectService";
 
-const pagesAll = [{ name: "Listing", link: "/listing" }];
+const pagesAll = [{ Projectname: "Listing", link: "/listing" }];
 
 export default function ViewProperty() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [pages, setPages] = React.useState([]);
-  const { id } = useParams();
-  const [property, setProperty] = React.useState({});
+  const { idNo } = useParams();
+  const [project, setProperty] = React.useState({});
 
   React.useEffect(() => {
-    getAllProperties(id).then((res) => {
+    getAllProjects(idNo).then((res) => {
       console.log(res.data);
       setProperty(res.data);
     });
@@ -48,7 +48,7 @@ export default function ViewProperty() {
             alignSelf: "start",
           }}
         >
-          <ListingGallery property={property} />
+          <ListingGallery project={project} />
         </Box>
       </Container>
       <Container sx={{ paddingBottom: "50px" }}>

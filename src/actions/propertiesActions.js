@@ -5,18 +5,18 @@ export const actionTypes = {
   DELETE_PROPERTY: "DELETE_PROPERTY",
 };
 
-export function setProperties(properties) {
-  return { type: actionTypes.SET_PROPERTIES, properties };
+export function setProperties(projects) {
+  return { type: actionTypes.SET_PROPERTIES, projects };
 }
 
-export function addPropertyAction(property) {
-  return { type: actionTypes.ADD_PROPERTY, property };
+export function addPropertyAction(project) {
+  return { type: actionTypes.ADD_PROPERTY, project };
 }
 
-export function editPropertyAction(property) {
-  return { type: actionTypes.EDIT_PROPERTY, property };
+export function editPropertyAction(project) {
+  return { type: actionTypes.EDIT_PROPERTY, project };
 }
 
-export function deletePropertyAction(property) {
-  return { type: actionTypes.DELETE_PROPERTY, property };
+export function deletePropertyAction(project) {
+  return { type: actionTypes.DELETE_PROPERTY, project };
 }

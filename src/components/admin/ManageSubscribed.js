@@ -102,8 +102,8 @@ function DashboardContent() {
                       {vips
                         .filter((v) => v.email)
                         .map((row) => (
-                          <TableRow key={row.id}>
-                            <TableCell>{row.id}</TableCell>
+                          <TableRow key={row.idNo}>
+                            <TableCell>{row.idNo}</TableCell>
                             <TableCell>{row.email}</TableCell>
                           </TableRow>
                         ))}

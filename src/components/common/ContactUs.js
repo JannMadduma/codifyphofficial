@@ -34,17 +34,17 @@ export default function ContactUs({ open, setOpen }) {
             <Grid item xs={12} md={6}>
               <TextField
                 required
-                id="name"
+                idNo="Projectname"
                 label="Your Fullname"
                 fullWidth
-                autoComplete="cc-name"
+                autoComplete="cc-Projectname"
                 variant="standard"
               />
             </Grid>
             <Grid item xs={12} md={6}>
               <TextField
                 required
-                id="city"
+                idNo="city"
                 label="Your City"
                 fullWidth
                 autoComplete="cc-number"
@@ -54,7 +54,7 @@ export default function ContactUs({ open, setOpen }) {
             <Grid item xs={12} md={6}>
               <TextField
                 required
-                id="contactNumber"
+                idNo="contactNumber"
                 label="Your Contact Number"
                 fullWidth
                 autoComplete="cc-exp"
@@ -64,7 +64,7 @@ export default function ContactUs({ open, setOpen }) {
             <Grid item xs={12} md={6}>
               <TextField
                 required
-                id="inquiry"
+                idNo="inquiry"
                 label="Your Inquiry"
                 helperText="Please add your available time for call"
                 fullWidth
@@ -75,7 +75,11 @@ export default function ContactUs({ open, setOpen }) {
             <Grid item xs={12}>
               <FormControlLabel
                 control={
-                  <Checkbox color="secondary" name="saveCard" value="yes" />
+                  <Checkbox
+                    color="secondary"
+                    Projectname="saveCard"
+                    value="yes"
+                  />
                 }
                 label="Send me email receipt for this inquiry"
               />

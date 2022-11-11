@@ -29,7 +29,7 @@ const ComponentRoute = () => {
       <Route index element={<Home />} />
       <Route path="/home" element={<Home />} />
       <Route path="/listing" element={<Listing />} />
-      <Route path="/viewproperty/:id" element={<ViewProperty />} />
+      <Route path="/viewproperty/:idNo" element={<ViewProperty />} />
       <Route path="/aboutus" element={<AboutUs />} />
       <Route path="/contactus" element={<ContactUs />} />
       <Route path="/developers" element={<Developers />} />

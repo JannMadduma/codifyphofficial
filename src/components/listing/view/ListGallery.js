@@ -28,19 +28,19 @@ import CardActions from "@mui/material/CardActions";
 
 const itemData = [
   {
-    img: "https://www.bachelorsrealty.com.ph/uploads/property/PR1660975468PR2TY/images/0_1660975468.jpg",
+    img: "https://www.bachelorsrealty.com.ph/uploads/project/PR1660975468PR2TY/images/0_1660975468.jpg",
     title: "Bed",
   },
   {
-    img: "https://www.bachelorsrealty.com.ph/uploads/property/PR1660975468PR2TY/images//1_1660975469.jpg",
+    img: "https://www.bachelorsrealty.com.ph/uploads/project/PR1660975468PR2TY/images//1_1660975469.jpg",
     title: "Books",
   },
   {
-    img: "https://www.bachelorsrealty.com.ph/uploads/property/PR1660975468PR2TY/images//2_1660975469.jpg",
+    img: "https://www.bachelorsrealty.com.ph/uploads/project/PR1660975468PR2TY/images//2_1660975469.jpg",
     title: "Sink",
   },
   {
-    img: "https://www.bachelorsrealty.com.ph/uploads/property/PR1660975468PR2TY/images//0_1660975498.jpg",
+    img: "https://www.bachelorsrealty.com.ph/uploads/project/PR1660975468PR2TY/images//0_1660975498.jpg",
     title: "Kitchen",
   },
   {
@@ -79,7 +79,7 @@ const itemData = [
 
 const theme = createMuiTheme();
 
-export default function ListingGallery({ property }) {
+export default function ListingGallery({ project }) {
   const dispatch = useDispatch();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -141,9 +141,9 @@ export default function ListingGallery({ property }) {
             }}
           >
             <img
-              src={`${property?.img}`}
-              srcSet={`${property?.img}`}
-              alt={property?.propertyName}
+              src={`${project?.img}`}
+              srcSet={`${project?.img}`}
+              alt={project?.propertyName}
               loading="lazy"
               style={{ width: "100%" }}
             />
@@ -237,7 +237,7 @@ export default function ListingGallery({ property }) {
                   sx={{ textAlign: "left" }}
                 >
                   ₱{" "}
-                  {property?.tcp
+                  {project?.tcp
                     ?.toString()
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </Typography>
@@ -255,7 +255,7 @@ export default function ListingGallery({ property }) {
                     "-webkit-box-orient": "vertical",
                   }}
                 >
-                  {property?.propertyName}
+                  {project?.propertyName}
                 </Typography>
 
                 <hr />
@@ -272,7 +272,7 @@ export default function ListingGallery({ property }) {
                     "-webkit-box-orient": "vertical",
                   }}
                 >
-                  {property?.location}
+                  {project?.ClientName}
                 </Typography>
                 <hr />
                 <Typography
@@ -280,13 +280,13 @@ export default function ListingGallery({ property }) {
                   color="text.secondary"
                   sx={{ textAlign: "left" }}
                 >
-                  {property?.bedRooms}
+                  {project?.bedRooms}
                   <span> Bedrooms</span>
                   <br />
-                  {property?.bathRooms}
+                  {project?.bathRooms}
                   <span> Bathrooms</span>
                   <br />
-                  {property?.lotArea}
+                  {project?.lotArea}
                   <span> sqm Floor Area</span>
                 </Typography>
               </div>

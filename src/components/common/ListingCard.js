@@ -15,15 +15,15 @@ import HotelIcon from "@mui/icons-material/Hotel";
 import BathtubIcon from "@mui/icons-material/Bathtub";
 import SquareFootIcon from "@mui/icons-material/SquareFoot";
 
-const ListingCard = ({ property, loggedIn }) => {
+const ListingCard = ({ project, loggedIn }) => {
   const [copy, setCopy] = useState(false);
 
   const getStatus = () => {
-    if (property?.status === "Available") {
+    if (project?.status === "Available") {
       return "success.main";
-    } else if (property?.status === "Sold") {
+    } else if (project?.status === "Sold") {
       return "error.main";
-    } else if (property?.status === "Re-open") {
+    } else if (project?.status === "Re-open") {
       return "info.main";
     }
   };
@@ -32,7 +32,7 @@ const ListingCard = ({ property, loggedIn }) => {
     setCopy(true);
     e.stopPropagation();
     navigator.clipboard.writeText(
-      `${window.location.origin}/viewproperty/${property.id}`
+      `${window.ClientName.origin}/viewproperty/${project.idNo}`
     );
     setTimeout(() => {
       setCopy(false);
@@ -60,12 +60,12 @@ const ListingCard = ({ property, loggedIn }) => {
           left: 8,
           padding: "2px 5px",
           color: "white",
-          backgroundColor: getStatus(property?.status),
+          backgroundColor: getStatus(project?.status),
         }}
       >
-        {property?.status}
+        {project?.status}
       </Paper>
-      <CardMedia component="img" height="194" image={property?.img[0]} />
+      <CardMedia component="img" height="194" image={project?.img[0]} />
       <CardContent>
         <Typography
           gutterBottom
@@ -73,7 +73,7 @@ const ListingCard = ({ property, loggedIn }) => {
           component="div"
           sx={{ textAlign: "left" }}
         >
-          ₱ {property?.tcp?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          ₱ {project?.tcp?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         </Typography>
         <Typography
           variant="body2"
@@ -88,22 +88,22 @@ const ListingCard = ({ property, loggedIn }) => {
             "-webkit-box-orient": "vertical",
           }}
         >
-          {property?.propertyName}
+          {project?.propertyName}
         </Typography>
         <Typography
           variant="body2"
           color="text.secondary"
           sx={{ textAlign: "left", padding: "10px 0" }}
         >
-          {property?.bedRooms}
+          {project?.bedRooms}
           <IconButton aria-label="delete" size="small">
             <HotelIcon fontSize="inherit" />
           </IconButton>
-          {property?.bathRooms}
+          {project?.bathRooms}
           <IconButton aria-label="delete" size="small">
             <BathtubIcon fontSize="inherit" />
           </IconButton>
-          {property?.lotArea}
+          {project?.lotArea}
           <IconButton aria-label="delete" size="small">
             <SquareFootIcon fontSize="inherit" />
           </IconButton>
@@ -121,18 +121,18 @@ const ListingCard = ({ property, loggedIn }) => {
             "-webkit-box-orient": "vertical",
           }}
         >
-          {property?.location}
+          {project?.ClientName}
         </Typography>
 
         <hr />
-        {loggedIn?.id && (
+        {loggedIn?.idNo && (
           <CardActions disableSpacing>
             <IconButton aria-label="add to favorites" size="small">
               <FavoriteIcon fontSize="inherit" />
             </IconButton>
             <Tooltip title={copy ? "Copied" : "Copy Link"}>
               <Button aria-label="share" size="small" onClick={handleCopy}>
-                <Typography>Copy link property</Typography>
+                <Typography>Copy link project</Typography>
               </Button>
             </Tooltip>
           </CardActions>

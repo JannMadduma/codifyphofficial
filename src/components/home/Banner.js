@@ -109,9 +109,9 @@ const Banner = ({}) => {
             <TextField
               margin="normal"
               fullWidth
-              id="search"
+              idNo="search"
               label="Search Homes"
-              name="search"
+              Projectname="search"
               autoComplete="search"
               onChange={handleChange}
               autoFocus

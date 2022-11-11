@@ -17,9 +17,9 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-const pagesAll = [{ name: "Listing", link: "/listing" }];
+const pagesAll = [{ Projectname: "Listing", link: "/listing" }];
 
-export default function ViewModal({ open, setOpen, property }) {
+export default function ViewModal({ open, setOpen, project }) {
   const loggedIn = useSelector((state) => state.loggedIn);
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [pages, setPages] = React.useState([]);
@@ -62,7 +62,7 @@ export default function ViewModal({ open, setOpen, property }) {
           {/* 
         {pages.map((page) => (
           <Button
-            key={page.name}
+            key={page.Projectname}
             onClick={handleClose}
             sx={{
               padding: "0 30px",
@@ -74,7 +74,7 @@ export default function ViewModal({ open, setOpen, property }) {
             component={Link}
             to={page.link}
           >
-            {page.name}
+            {page.Projectname}
           </Button>
         ))}
       */}
@@ -116,7 +116,7 @@ export default function ViewModal({ open, setOpen, property }) {
             alignSelf: "start",
           }}
         >
-          <ListingGallery property={property} />
+          <ListingGallery project={project} />
         </Box>
       </Container>
       <Container sx={{ paddingBottom: "50px" }}>

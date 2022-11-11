@@ -13,10 +13,7 @@ import Container from "@mui/material/Container";
 import * as React from "react";
 import Typography from "@mui/material/Typography";
 import { useEffect } from "react";
-import {
-  getAllProperties,
-  searchProperty,
-} from "../../../service/propertyService";
+import { getAllProjects, searchProject } from "../../../service/projectService";
 import { setProperties } from "../../../actions/propertiesActions";
 import ListingCard from "../../common/ListingCard";
 import ViewModal from "../view/ViewModal";
@@ -24,12 +21,12 @@ import { useLocation } from "react-router-dom";
 
 export default function List() {
   const dispatch = useDispatch();
-  const properties = useSelector((state) => state.properties);
+  const projects = useSelector((state) => state.projects);
   const loggedIn = useSelector((state) => state.loggedIn);
-  const [name, setName] = React.useState("");
-  const [location, setLocation] = React.useState("");
+  const [Projectname, setName] = React.useState("");
+  const [ClientName, setLocation] = React.useState("");
   const [status, setStatus] = React.useState(0);
-  const [property, setProperty] = React.useState({});
+  const [project, setProperty] = React.useState({});
   const [openView, setOpenView] = React.useState(false);
   const [query, setQuery] = React.useState(useLocation().search);
 
@@ -41,11 +38,11 @@ export default function List() {
   // onChange <TextField>
   const handleInputChange = (e) => {
     setQuery("");
-    switch (e.target.name) {
-      case "name":
+    switch (e.target.Projectname) {
+      case "Projectname":
         setName(e.target.value);
         break;
-      case "location":
+      case "ClientName":
         setLocation(e.target.value);
         break;
       case "status":
@@ -57,26 +54,26 @@ export default function List() {
   };
   // Trigger effect once only - initial state --------
   // useEffect(() => {
-  //   getAllProperties().then((res) => {
+  //   getAllProjects().then((res) => {
   //     dispatch(setProperties(res.data));
   //   });
   // }, []);
 
   //  this is used for filtering----------
-  // Trigger effect when name, location, status is changed
+  // Trigger effect when Projectname, ClientName, status is changed
   useEffect(() => {
     console.log("trigger");
     if (query.split("=")[1]) {
-      searchProperty(query.split("=")[1]).then((res) => {
+      searchProject(query.split("=")[1]).then((res) => {
         dispatch(setProperties(res.data));
         window.history.pushState({}, document.title, "/listing");
       });
     } else {
-      getAllProperties(null, name, location, status).then((res) => {
+      getAllProjects(null, Projectname, ClientName, status).then((res) => {
         dispatch(setProperties(res.data));
       });
     }
-  }, [name, location, status]);
+  }, [Projectname, ClientName, status]);
 
   return (
     <Box>
@@ -131,25 +128,25 @@ export default function List() {
             label="Name"
             variant="outlined"
             sx={{ marginRight: "16px" }}
-            name="name"
+            Projectname="Projectname"
             onChange={handleInputChange}
-            value={name}
+            value={Projectname}
           />
           <TextField
             label="Location"
             variant="outlined"
             sx={{ marginRight: "16px" }}
-            name="location"
+            Projectname="ClientName"
             onChange={handleInputChange}
-            value={location}
+            value={ClientName}
           />
           <FormControl sx={{ width: "150px" }}>
-            <InputLabel id="demo-simple-select-label">Status</InputLabel>
+            <InputLabel idNo="demo-simple-select-label">Status</InputLabel>
             <Select
               labelId="demo-simple-select-label"
-              id="demo-simple-select"
+              idNo="demo-simple-select"
               label="Status"
-              name="status"
+              Projectname="status"
               onChange={handleInputChange}
               value={status}
             >
@@ -164,9 +161,9 @@ export default function List() {
 
       <Container>
         <Grid container columns={12}>
-          {properties.slice(0, 100).map((property) => (
+          {projects.slice(0, 100).map((project) => (
             <Grid
-              key={property.id}
+              key={project.idNo}
               item
               sm={6}
               md={4}
@@ -176,18 +173,18 @@ export default function List() {
             >
               <Box
                 onClick={() => {
-                  handleOpenView(property);
+                  handleOpenView(project);
                 }}
               >
-                <ListingCard property={property} loggedIn={loggedIn} />
+                <ListingCard project={project} loggedIn={loggedIn} />
               </Box>
             </Grid>
           ))}
         </Grid>
 
-        {!properties.length && <Alert severity="info">No results found</Alert>}
+        {!projects.length && <Alert severity="info">No results found</Alert>}
       </Container>
-      <ViewModal open={openView} setOpen={setOpenView} property={property} />
+      <ViewModal open={openView} setOpen={setOpenView} project={project} />
     </Box>
   );
 }
