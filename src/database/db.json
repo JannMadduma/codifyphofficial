@@ -1,54 +1,25 @@
 {
-  "users": [
+  "clients": [
     {
       "idNo": 1,
-      "Projectname": "admin",
-      "email": "admin@project.com",
-      "password": "admin",
-      "role": "admin"
-    },
+      "name": "client1",
+      "concerns": "website",
+      "contactNo": "1234",
+      "email": "client1@client.com",
+      "availableTime": "3",
+      "validId": "ok",
+      "isPending": "0"
+    }
+  ],
+  "freelancers": [
     {
-      "idNo": 2,
-      "Projectname": "admin2",
-      "email": "admin2@project.com",
-      "password": "admin2",
-      "role": "admin"
-    },
-    {
-      "idNo": 3,
-      "Projectname": "admin3",
-      "email": "admin3@project.com",
-      "password": "admin3",
-      "role": "admin"
-    },
-    {
-      "idNo": 4,
-      "Projectname": "user",
-      "email": "user@project.com",
-      "password": "user",
-      "role": "user"
-    },
-    {
-      "idNo": 5,
-      "Projectname": "user5",
-      "email": "user5@project.com",
-      "password": "user",
-      "role": "user"
-    },
-    {
-      "idNo": 6,
-      "Projectname": "user6",
-      "email": "user6@project.com",
-      "password": "user",
-      "role": "user"
-    },
-    {
-      "Projectname": "Admin",
-      "email": "admin@estatewindows.com",
-      "password": "admin",
-      "likes": [],
-      "role": "admin",
-      "idNo": 8
+      "idNo": 1,
+      "name": "client1",
+      "concerns": "website",
+      "contactNo": "1234",
+      "email": "client1@client.com",
+      "availableTime": "3",
+      "validId": "ok"
     }
   ],
   "projects": [
@@ -59,12 +30,6 @@
       "GanteChartPic": "active",
       "status": "active",
       "isPending": "0"
-    }
-  ],
-
-  "subscribed": [
-    {
-      "email": "vip@email.com"
     }
   ]
 }
