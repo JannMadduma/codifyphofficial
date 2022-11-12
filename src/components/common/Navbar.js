@@ -138,11 +138,12 @@ const ResponsiveAppBar = () => {
       component="nav"
       position="fixed"
       sx={{
-        height: "80px",
+        height: "100px",
         display: "grid",
         alignContent: "center",
         backgroundColor: "white",
         boxShadow: "none",
+        backgroundColor: "transparent",
       }}
     >
       <Container>
@@ -151,31 +152,77 @@ const ResponsiveAppBar = () => {
             sx={{
               flexGrow: 1,
               display: { xs: "none", sm: "block" },
-              // paddingLeft: "50px",
             }}
           >
             <img
               alt=""
-              src="img/herologo.png"
-              style={{ height: "80px", width: "200px" }}
+              src="img/codifylogo.png"
+              style={{
+                height: "100px",
+                width: "300px",
+                padding: "10px 0",
+                backgroundColor: "white",
+                borderRadius: "50px",
+                marginTop: "10px",
+              }}
             />
           </Box>
 
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
-            <a style={{ color: "#353C42", fontWeight: "bold" }} href="#home1">
-              Home
+          <Box
+            sx={{ display: { xs: "none", sm: "block" } }}
+            style={{ borderRadius: "50px" }}
+          >
+            <a
+              style={{
+                fontFamily: "Roboto",
+                padding: "1px 30px",
+                color: "#353C42",
+                fontWeight: "bold",
+                textDecoration: "none",
+                backgroundColor: "white",
+              }}
+              href="#home1"
+            >
+              HOME
             </a>
             <a
-              style={{ color: "#353C42", fontWeight: "bold" }}
+              style={{
+                fontFamily: "Roboto",
+                padding: "1px 30px",
+                color: "#353C42",
+                fontWeight: "bold",
+                textDecoration: "none",
+                backgroundColor: "white",
+              }}
               href="#portfolio"
             >
-              Portfolio
+              PORTFOLIO
             </a>
-            <a style={{ color: "#353C42", fontWeight: "bold" }} href="#pricing">
-              Pricing
+            <a
+              style={{
+                fontFamily: "Roboto",
+                padding: "1px 30px",
+                color: "#353C42",
+                fontWeight: "bold",
+                textDecoration: "none",
+                backgroundColor: "white",
+              }}
+              href="#pricing"
+            >
+              PRICING
             </a>
-            <a style={{ color: "#353C42", fontWeight: "bold" }} href="#aboutUs">
-              About Us
+            <a
+              style={{
+                fontFamily: "Roboto",
+                padding: "1px 30px",
+                color: "#353C42",
+                fontWeight: "bold",
+                textDecoration: "none",
+                backgroundColor: "white",
+              }}
+              href="#aboutUs"
+            >
+              ABOUT US
             </a>
           </Box>
           {/* {loggedIn?.idNo ? (
@@ -235,7 +282,11 @@ const ResponsiveAppBar = () => {
           <Button
             className="Button"
             variant="contained"
-            style={{ backgroundColor: "#82C8E1", boxShadow: "none" }}
+            style={{
+              backgroundColor: "#82C8E1",
+              boxShadow: "none",
+              marginLeft: "10px",
+            }}
             // onClick={() => handleClickOpen({})}
           >
             CONTACT US

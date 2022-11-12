@@ -105,53 +105,44 @@ export default function Hero({ isPending }) {
   return (
     <div
       style={{
-        backgroundImage: "url('img/heroimg.png')",
+        backgroundImage: "url('img/herobg.png')",
         backgroundSize: "cover",
         height: "100%",
       }}
     >
       <Box
         sx={{
-          height: "100%",
           marginTop: "100px",
         }}
       >
-        <Container sx={{ height: "100%" }}>
-          <Grid
-            container
-            spacing={2}
-            sx={{ height: "100%", alignContent: "center" }}
-          >
-            <Grid item xs={6}>
+        <Container sx={{}}>
+          <Grid container spacing={2}>
+            <Grid item xs={5}>
               <Box
                 sx={{
                   pt: 8,
                   pb: 6,
+                  paddingLeft: "30px",
                 }}
               >
                 <Box>
                   <Typography
-                    component="h34"
-                    variant="h4"
                     align="left"
                     color="text.primary"
                     sx={{
                       color: "#353C42",
-
                       fontWeight: "bold",
-                      fontFamily: "Poppins, sans-serif;",
+                      fontFamily: "Roboto",
+                      fontSize: "50px",
                     }}
                   >
-                    WEBSITE
+                    website
                   </Typography>
                   <Typography
-                    component="h2"
-                    variant="h2"
+                    variant="h1"
                     align="left"
-                    color="text.primary"
-                    gutterBottom
                     sx={{
-                      fontSize: "80px",
+                      fontSize: "100px",
                       color: "#82C8E1",
                       fontWeight: "bold",
                     }}
@@ -167,8 +158,8 @@ export default function Hero({ isPending }) {
                     color="text.secondary"
                     paragraph
                   >
-                    Allow us in advancing your business and feel the significant
-                    change in it.
+                    Allow us in advancing your business and feel a significant
+                    change in your business.
                   </Typography>
                   <Stack
                     sx={{ pt: 4 }}
@@ -202,14 +193,28 @@ export default function Hero({ isPending }) {
                 </Box>
               </Box>
             </Grid>
-            <Grid item xs={6} sx={{ display: "flex", alignItems: "center" }}>
+            <Grid
+              item
+              xs={7}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+              }}
+              style={{ padding: "0px" }}
+            >
               <Box
                 sx={{
                   alignItems: "center",
                   width: "100%",
                 }}
               >
-                <img alt="" style={{ width: "100%" }} src="img/hero.png" />
+                <img
+                  alt=""
+                  style={{
+                    width: "100%",
+                  }}
+                  src="img/heropic.png"
+                />
               </Box>
             </Grid>
           </Grid>

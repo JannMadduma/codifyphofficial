@@ -71,15 +71,14 @@ export default function Portfolio() {
   return (
     <div
       style={{
-        backgroundImage: "url('img/ABOUT US - MISION & VISION.png')",
-        backgroundSize: "cover",
-        height: "100%",
+        backgroundImage: "url('img/portfoliobg.png')",
+        backgroundSize: "90%",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
       }}
     >
       <Box
         sx={{
-          height: "100%",
-
           alignContent: "center",
           justifyContent: "center",
         }}
@@ -93,6 +92,7 @@ export default function Portfolio() {
               height: "100%",
               alignContent: "center",
               justifyContent: "center",
+              padding: "100px 0",
             }}
           >
             <Grid
@@ -113,6 +113,7 @@ export default function Portfolio() {
                   sx={{
                     fontWeight: "bold",
                     fontFamily: "Poppins, sans-serif;",
+                    paddingTop: "30px",
                   }}
                 >
                   OUR WORK
@@ -128,11 +129,16 @@ export default function Portfolio() {
                   Our Portfolio
                 </Typography>
                 <Typography
-                  sx={{ mx: "auto", width: 900, paddingBottom: "50px" }}
+                  sx={{
+                    mx: "auto",
+                    width: 900,
+                    paddingBottom: "50px",
+                  }}
                 >
                   Codify have full-stack developers with the love of a UI/UX
-                  designer. Listed skills include all things JavaScript, such as
-                  React, Next.js, Vue.js, Nuxt.js, and Ember.js, as well as
+                  designer. <br />
+                  Listed skills include all things JavaScript, such as React,
+                  Next.js, Vue.js, Nuxt.js, <br /> and Ember.js, as well as
                   UI/UX design through Figma and Adobe XD.
                 </Typography>
               </Box>

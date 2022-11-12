@@ -6,7 +6,10 @@ import Typography from "@mui/material/Typography";
 
 export default function TonProjects() {
   return (
-    <Card sx={{ maxWidth: 345, bgcolor: "#82C8E1 ", padding: "0 15px" }}>
+    <Card
+      sx={{ maxWidth: 345, bgcolor: "#82C8E1 ", padding: "0 15px" }}
+      style={{ borderRadius: "10px" }}
+    >
       <CardMedia height="140" sx={{ p: 1 }} />
       <video autoPlay muted style={{ width: "100%", borderRadius: "5px" }}>
         <source src="vid/cebueatz.mp4" type="video/mp4" />
@@ -19,7 +22,7 @@ export default function TonProjects() {
             fontWeight: "bold",
             fontFamily: "Poppins, sans-serif;",
             fontSize: "12px",
-            padding: "0px",
+            padding: "5px 3px",
           }}
         >
           CEBU EATZ

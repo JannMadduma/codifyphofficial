@@ -44,7 +44,7 @@ export default function PricingService() {
   return (
     <div
       style={{
-        backgroundImage: "url('/img/HOME - OUR SERVICES.png')",
+        backgroundImage: "url('img/ourservebg.png')",
         backgroundSize: "cover",
         height: "100%",
       }}
@@ -65,6 +65,7 @@ export default function PricingService() {
             sx={{
               fontWeight: "bold",
               fontFamily: "Poppins, sans-serif;",
+              paddingTop: "100px",
             }}
           >
             SERVICES
@@ -86,8 +87,11 @@ export default function PricingService() {
             align="center"
             color="text.secondary"
             paragraph
+            style={{ padding: " 10px 100px" }}
           >
-            We offer various services which are listed below.
+            We offer various services which are listed below. We offer various
+            services which are listed below. We offer various services which are
+            listed below.
           </Typography>
 
           <Grid container spacing={4} pt={4}>
@@ -106,8 +110,9 @@ export default function PricingService() {
                     alt=""
                     src={item.img}
                     style={{
-                      width: "100%",
-                      padding: "0 70px",
+                      width: "80%",
+                      padding: "0 50px",
+                      color: "white",
                     }}
                   />
                 </Container>
