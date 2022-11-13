@@ -7,35 +7,35 @@ import Container from "@mui/material/Container";
 
 const framework = [
   {
-    img: "https://img.icons8.com/dotty/480/000000/google-sites.png",
+    img: "img/icons8-webpages-66.png",
     title: "Webpages",
   },
   {
-    img: "https://img.icons8.com/wired/512/000000/box--v1.png",
+    img: "img/icons8-add-shopping-cart-64.png",
     title: "ECommerce",
   },
   {
-    img: "https://img.icons8.com/wired/512/000000/hand-cursor.png",
+    img: "img/icons8-shopify-128.png",
     title: "Shopify",
   },
   {
-    img: "https://img.icons8.com/wired/512/000000/uncheck-all.png",
+    img: "img/icons8-design-64.png",
     title: "Prototyping",
   },
   {
-    img: "https://img.icons8.com/wired/512/000000/news.png",
+    img: "img/icons8-search-64.png",
     title: "UX Research",
   },
   {
-    img: "https://img.icons8.com/wired/512/000000/checked-2.png",
+    img: "img/icons8-search-property-64.png",
     title: "UI/UX Audit",
   },
   {
-    img: "https://img.icons8.com/wired/512/000000/about.png",
+    img: "img/icons8-survey-64.png",
     title: "Consultation",
   },
   {
-    img: "https://img.icons8.com/wired/512/000000/binoculars.png",
+    img: "img/icons8-web-design-64.png",
     title: "Design Sprints",
   },
 ];
@@ -57,14 +57,20 @@ export default function PricingService() {
           pb: 6,
         }}
       >
-        <Container>
+        <Container
+          maxWidth={false}
+          style={{
+            maxWidth: "1000px",
+            paddingBottom: "50px",
+          }}
+        >
           <Typography
             component="h4"
             variant="h5"
             align="center"
             sx={{
               fontWeight: "bold",
-              fontFamily: "Poppins, sans-serif;",
+              fontFamily: "Roboto",
               paddingTop: "100px",
             }}
           >
@@ -77,24 +83,22 @@ export default function PricingService() {
             sx={{
               fontWeight: "bold",
               color: "white",
-              fontFamily: "Poppins, sans-serif;",
+              fontFamily: "Roboto",
             }}
           >
             Our Craft
           </Typography>
           <Typography
-            variant="h6"
             align="center"
-            color="text.secondary"
             paragraph
-            style={{ padding: " 10px 100px" }}
+            style={{ padding: " 10px 100px", fontFamily: "Roboto" }}
           >
             We offer various services which are listed below. We offer various
             services which are listed below. We offer various services which are
             listed below.
           </Typography>
 
-          <Grid container spacing={4} pt={4}>
+          <Grid container spacing={1}>
             {/* -----------------CARD 1 ---------------- */}
             {framework.map((item) => (
               <Grid
@@ -105,19 +109,22 @@ export default function PricingService() {
                   paddingTop: "50px",
                 }}
               >
-                <Container>
+                <Container
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    flexDirection: "column",
+                  }}
+                >
                   <img
                     alt=""
                     src={item.img}
                     style={{
-                      width: "80%",
-                      padding: "0 50px",
-                      color: "white",
+                      width: "40%",
+                      height: "40%",
                     }}
                   />
-                </Container>
 
-                <Box sx={{ flexGrow: 1, padding: "5%" }} align="center">
                   <Typography
                     variant="h6"
                     key={item}
@@ -125,13 +132,13 @@ export default function PricingService() {
                       fontWeight: "bold",
                       marginBottom: 2,
                       fontFamily: "Poppins, sans-serif;",
-                      textAlign: "center",
+
                       color: "white",
                     }}
                   >
                     {item.title}
                   </Typography>
-                </Box>
+                </Container>
               </Grid>
             ))}
           </Grid>

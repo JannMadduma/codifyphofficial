@@ -6,13 +6,14 @@ export default function FAQ() {
   return (
     <div
       style={{
-        backgroundImage: "url('img/ABOUT US - THE TEAM.png')",
+        backgroundImage: "url('img/faqbg.png')",
         backgroundSize: "cover",
+        backgroundPosition: "center",
         height: "100%",
       }}
     >
       <Container
-        sx={{ display: "flex", height: 780, marginY: 15, alignItems: "center" }}
+        sx={{ display: "flex", height: "800px", alignItems: "center" }}
       >
         <Container sx={{ margin: 0, padding: 0, width: 450 }}>
           <Typography
@@ -48,28 +49,6 @@ export default function FAQ() {
             Codify. Also, feel free to contact us for more clarifications and
             check out our facebook account for more info!
           </Typography>
-
-          {/* <Box
-            className="container mb-5 mx-0"
-            style={{
-              borderBottom: "1px solid rgba(135, 180, 235, 0.8)",
-              borderRadius: 25,
-              width: 380,
-            }}
-          ></Box> */}
-
-          {/* <Typography
-            variant="h6"
-            sx={{
-              fontStyle: "italic",
-              fontWeight: "light",
-              fontSize: 14,
-              marginTop: 0.5,
-              fontFamily: "Poppins, sans-serif;",
-            }}
-          >
-            Ask us anything!
-          </Typography> */}
         </Container>
 
         <Box

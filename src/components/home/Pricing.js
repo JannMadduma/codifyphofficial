@@ -11,17 +11,20 @@ import { CssBaseline } from "@mui/material";
 const tiers = [
   {
     title: [
-      "Webiste Development",
-      <br />,
-      <Box
-        style={{
-          fontWeight: "bold",
-          fontSize: "30px",
-          width: "100%",
-          fontStyle: "Poppins",
-        }}
-      >
-        $20,000
+      <Box style={{ display: "flex", flexDirection: "column" }}>
+        <Box style={{ height: "50px" }}>
+          <Typography style={{ fontWeight: "bold" }}>Website Making</Typography>
+        </Box>
+        <Box
+          style={{
+            fontWeight: "bold",
+            fontSize: "30px",
+            width: "100%",
+            fontStyle: "Poppins",
+          }}
+        >
+          $20,000
+        </Box>
       </Box>,
     ],
 
@@ -29,51 +32,69 @@ const tiers = [
   },
   {
     title: [
-      "Webiste Maintenance",
-      <br />,
-      <Box
-        style={{
-          fontWeight: "bold",
-          fontSize: "30px",
-          width: "100%",
-          fontStyle: "Poppins",
-        }}
-      >
-        $1,000
+      <Box style={{ display: "flex", flexDirection: "column" }}>
+        <Box style={{ height: "50px" }}>
+          <Typography style={{ fontWeight: "bold" }}>
+            Website Maintenance
+          </Typography>
+        </Box>
+
+        <Box
+          style={{
+            fontWeight: "bold",
+            fontSize: "30px",
+            width: "100%",
+            fontStyle: "Poppins",
+          }}
+        >
+          $1,000
+        </Box>
       </Box>,
     ],
     description: ["Evaluation", "Design", "Payment"],
   },
   {
     title: [
-      "Custom WebMaking",
-      <br />,
-      <Box
-        style={{
-          fontWeight: "bold",
-          fontSize: "30px",
-          width: "100%",
-          fontStyle: "Poppins",
-        }}
-      >
-        $10,000
+      <Box style={{ display: "flex", flexDirection: "column" }}>
+        <Box style={{ height: "50px" }}>
+          <Typography style={{ fontWeight: "bold" }}>
+            Custom Website Making
+          </Typography>
+        </Box>
+
+        <Box
+          style={{
+            fontWeight: "bold",
+            fontSize: "30px",
+            width: "100%",
+            fontStyle: "Poppins",
+          }}
+        >
+          $10,000
+        </Box>
       </Box>,
     ],
     description: ["Evaluation", "Design", "Payment"],
   },
   {
     title: [
-      "Website for Sale",
-      <br />,
-      <Box
-        style={{
-          fontWeight: "bold",
-          fontSize: "30px",
-          width: "100%",
-          fontStyle: "Poppins",
-        }}
-      >
-        $50,000
+      <Box style={{ display: "flex", flexDirection: "column" }}>
+        <Box style={{ height: "50px" }}>
+          <Typography style={{ fontWeight: "bold" }}>
+            Website for Sale
+          </Typography>{" "}
+        </Box>
+
+        <Box
+          style={{
+            fontWeight: "bold",
+            fontSize: "30px",
+            width: "100%",
+            fontStyle: "Poppins",
+          }}
+        >
+          $50,000
+        </Box>
       </Box>,
     ],
     description: ["Evaluation", "Design", "Payment"],
@@ -92,8 +113,7 @@ export default function Pricing() {
       <Box
         sx={{
           backgroundColor: "white",
-          pt: 8,
-          pb: 6,
+          margin: "150px",
         }}
       >
         <Container maxWidth="md">
@@ -150,14 +170,17 @@ export default function Pricing() {
                           fontSize: "15px",
                           backgroundColor: "#EAF5F7",
                           color: "black",
-                          paddingTop: "50px",
+                          paddingTop: "20px",
                           paddingBottom: "20px",
+                          borderRadius: "10px",
+                          width: "100%",
+                          height: "150px ",
                         }}
                       />
                     </Box>
 
                     <CardContent>
-                      <ul>
+                      <ul style={{ padding: "0px" }}>
                         {tier.description.map((line) => (
                           <Typography
                             component="li"

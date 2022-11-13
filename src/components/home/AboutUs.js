@@ -9,16 +9,17 @@ export default function AboutUs() {
       style={{
         backgroundImage: "url('img/ABOUT US - GOAL.png')",
         backgroundSize: "cover",
-        height: "100%",
+        height: "800px",
       }}
     >
       <Box
         sx={{
           height: "100%",
+          display: "flex",
         }}
         id="aboutUs"
       >
-        <Container maxWidth="lg" sx={{ height: "100%" }}>
+        <Container sx={{ maxWidth: "1000px" }} maxWidth={false}>
           <Grid
             container
             spacing={2}
@@ -88,7 +89,7 @@ export default function AboutUs() {
                   width: "100%",
                 }}
               >
-                <img alt="" style={{ width: "100%" }} src="../images/6.svg" />
+                <img style={{ width: "100%" }} src="img/aboutus.png" />
               </Box>
             </Grid>
           </Grid>

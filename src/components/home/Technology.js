@@ -24,14 +24,18 @@ export default function Technology() {
   return (
     <Box
       sx={{
-        backgroundImage: "url('img/ABOUT US - Framework.png')",
+        backgroundImage: "url('img/technologybg.png')",
         backgroundSize: "cover",
+        backgroundPosition: "center",
         pt: 8,
         pb: 6,
       }}
     >
       <CssBaseline />
-      <Container>
+      <Container
+        maxWidth={false}
+        style={{ maxWidth: "1100px", height: "500px" }}
+      >
         <Typography
           component="h4"
           variant="h5"

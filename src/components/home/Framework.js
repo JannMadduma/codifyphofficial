@@ -6,19 +6,19 @@ import Container from "@mui/material/Container";
 
 const framework = [
   {
-    img: "https://img.icons8.com/windows/512/000000/dev.png",
+    img: "img/icons8-business-group-100.png",
     title: "RIGHT TEAM",
     description:
       "We offer various website projects for you! We're just one contact away!",
   },
   {
-    img: "https://img.icons8.com/ios/100/000000/process.png",
+    img: "img/icons8-tree-structure-100.png",
     title: "RIGHT PROCESS",
     description:
       "We offer various website projects for you! We're just one contact away!",
   },
   {
-    img: "https://img.icons8.com/ios/500/000000/ableton.png",
+    img: "img/icons8-motherboard-100.png",
     title: "RIGHT TECHNOLOGY",
     description:
       "We offer various website projects for you! We're just one contact away!",
