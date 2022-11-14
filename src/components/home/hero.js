@@ -108,15 +108,12 @@ export default function Hero({ isPending }) {
         backgroundImage: "url('img/herobg.png')",
         backgroundSize: "cover",
         height: "100vh",
+        paddingTop: "1px",
       }}
     >
-      <Box
-        sx={{
-          marginTop: "100px",
-        }}
-      >
-        <Container sx={{}}>
-          <Grid container spacing={2}>
+      <Box>
+        <Container>
+          <Grid container spacing={2} sx={{ marginTop: "60px" }}>
             <Grid item xs={5}>
               <Box
                 sx={{

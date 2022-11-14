@@ -29,8 +29,8 @@ const Home = ({}) => {
   };
   return (
     <div id="home1">
-      <ResponsiveAppBar />
       <Fullpage>
+        <ResponsiveAppBar />
         <FullPageSections>
           <FullpageSection style={{ SectionStyle }}>
             <Hero />
