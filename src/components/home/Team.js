@@ -9,6 +9,8 @@ export default function Team() {
   return (
     <div
       style={{
+        backgroundImage: "url('img/teambg.png')",
+        backgroundSize: "cover",
         height: "100vh",
       }}
     >
@@ -71,7 +73,6 @@ export default function Team() {
                 </Typography>
               </Box>
             </Grid>
-
             <Grid item xs={12}>
               <Box
                 sx={{
@@ -79,6 +80,7 @@ export default function Team() {
                   width: "100%",
                   display: "flex",
                   flexDirection: "row",
+                  justifyContent: "center",
                 }}
               >
                 <Grid
@@ -92,7 +94,127 @@ export default function Team() {
                     <img
                       alt=""
                       style={{ width: "100%", padding: "0 20px" }}
-                      src="img/jann.jpg"
+                      src="img/rec.png"
+                    />
+                  </Box>
+                  <Box>
+                    <Typography
+                      component="div"
+                      align="center"
+                      sx={{
+                        fontWeight: "bold",
+                        fontFamily: "Poppins, sans-serif;",
+                        fontSize: "12px",
+                        paddingTop: "10px",
+                      }}
+                    >
+                      Rech Narada
+                    </Typography>
+                    <Typography
+                      color="text.secondary"
+                      align="center"
+                      sx={{
+                        fontFamily: "Poppins, sans-serif;",
+                        fontSize: "10px",
+                        padding: "0px",
+                      }}
+                    >
+                      UI/UX Designer
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid
+                  item
+                  xs={3}
+                  sx={{
+                    padding: "0 10px",
+                  }}
+                >
+                  <Box>
+                    <img
+                      alt=""
+                      style={{ width: "100%", padding: "0 20px" }}
+                      src="img/reve.png"
+                    />
+                  </Box>
+                  <Box>
+                    <Typography
+                      component="div"
+                      align="center"
+                      sx={{
+                        fontWeight: "bold",
+                        fontFamily: "Poppins, sans-serif;",
+                        fontSize: "12px",
+                        paddingTop: "10px",
+                      }}
+                    >
+                      Reeve Barloso
+                    </Typography>
+                    <Typography
+                      color="text.secondary"
+                      align="center"
+                      sx={{
+                        fontFamily: "Poppins, sans-serif;",
+                        fontSize: "10px",
+                        padding: "0px",
+                      }}
+                    >
+                      SMM / Copywriter
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid
+                  item
+                  xs={3}
+                  sx={{
+                    padding: "0 10px",
+                  }}
+                >
+                  <Box>
+                    <img
+                      alt=""
+                      style={{ width: "100%", padding: "0 20px" }}
+                      src="img/john.png"
+                    />
+                  </Box>
+                  <Box>
+                    <Typography
+                      component="div"
+                      align="center"
+                      sx={{
+                        fontWeight: "bold",
+                        fontFamily: "Poppins, sans-serif;",
+                        fontSize: "12px",
+                        paddingTop: "10px",
+                      }}
+                    >
+                      John Erick Madduma
+                    </Typography>
+                    <Typography
+                      color="text.secondary"
+                      align="center"
+                      sx={{
+                        fontFamily: "Poppins, sans-serif;",
+                        fontSize: "10px",
+                        padding: "0px",
+                      }}
+                    >
+                      Sr. Frontend Developer
+                    </Typography>
+                  </Box>
+                </Grid>
+                <Grid
+                  item
+                  xs={3}
+                  sx={{
+                    padding: "0 10px",
+                  }}
+                >
+                  <Box>
+                    <img
+                      alt=""
+                      style={{ width: "100%", padding: "0 20px" }}
+                      src="img/jan.png"
                     />
                   </Box>
                   <Box>
@@ -132,7 +254,7 @@ export default function Team() {
                     <img
                       alt=""
                       style={{ width: "100%", padding: "0 20px" }}
-                      src="img/ton.jpg"
+                      src="img/ton.png"
                     />
                   </Box>
                   <Box>
@@ -172,7 +294,7 @@ export default function Team() {
                     <img
                       alt=""
                       style={{ width: "100%", padding: "0 20px" }}
-                      src="img/russe.jpg"
+                      src="img/rus.png"
                     />
                   </Box>
                   <Box>
@@ -187,46 +309,6 @@ export default function Team() {
                       }}
                     >
                       Russel Jay Buan
-                    </Typography>
-                    <Typography
-                      color="text.secondary"
-                      align="center"
-                      sx={{
-                        fontFamily: "Poppins, sans-serif;",
-                        fontSize: "10px",
-                        padding: "0px",
-                      }}
-                    >
-                      FUllstack Web Developer
-                    </Typography>
-                  </Box>
-                </Grid>
-                <Grid
-                  item
-                  xs={3}
-                  sx={{
-                    padding: "0 10px",
-                  }}
-                >
-                  <Box>
-                    <img
-                      alt=""
-                      style={{ width: "100%", padding: "0 20px" }}
-                      src="img/phylip.jpg"
-                    />
-                  </Box>
-                  <Box>
-                    <Typography
-                      component="div"
-                      align="center"
-                      sx={{
-                        fontWeight: "bold",
-                        fontFamily: "Poppins, sans-serif;",
-                        fontSize: "12px",
-                        paddingTop: "10px",
-                      }}
-                    >
-                      Phyllip Sam Sabayle Salvador
                     </Typography>
                     <Typography
                       color="text.secondary"

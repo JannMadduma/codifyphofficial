@@ -7,8 +7,6 @@ export default function AboutUs() {
   return (
     <div
       style={{
-        backgroundImage: "url('img/ABOUT US - GOAL.png')",
-        backgroundSize: "cover",
         height: "800px",
       }}
     >

@@ -1,161 +1,225 @@
-// import * as React from "react";
-// import { useTheme } from "@mui/material/styles";
-// import Box from "@mui/material/Box";
-// import MobileStepper from "@mui/material/MobileStepper";
-// import Paper from "@mui/material/Paper";
-// import Typography from "@mui/material/Typography";
-// import Button from "@mui/material/Button";
-// import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
-// import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
-// import SwipeableViews from "react-swipeable-views";
-// import { autoPlay } from "react-swipeable-views-utils";
-// import { Container, Grid } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
+import React, { Component } from "react";
+import Slider from "react-slick";
 
-// const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
+const images = [
+  {
+    imgPath: "img/jan.png",
+    stars: "★★★★★",
+    name: "Name Lastname",
+    work: "SOCIAL MEDIA INFLUENCER",
+    testimonial:
+      " Lorem ipsum dolor sit amet. Ea doloribus eaque tenetur fugiat id neque quia et magnam quasi rem.",
+  },
+  {
+    imgPath: "img/john.png",
+    stars: "★★★★★",
+    name: "Name Lastname",
+    work: "SOCIAL MEDIA INFLUENCER",
+    testimonial:
+      " Lorem ipsum dolor sit amet. Ea doloribus eaque tenetur fugiat id neque quia et magnam quasi rem.",
+  },
+  {
+    imgPath: "img/rec.png",
+    stars: "★★★★★",
+    name: "Name Lastname",
+    work: "SOCIAL MEDIA INFLUENCER",
+    testimonial:
+      " Lorem ipsum dolor sit amet. Ea doloribus eaque tenetur fugiat id neque quia et magnam quasi rem.",
+  },
+  {
+    imgPath: "img/reve.png",
+    stars: "★★★★★",
+    name: "Name Lastname",
+    work: "SOCIAL MEDIA INFLUENCER",
+    testimonial:
+      " Lorem ipsum dolor sit amet. Ea doloribus eaque tenetur fugiat id neque quia et magnam quasi rem.",
+  },
+];
 
-// const images = [
-//   {
-//     imgPath: "img/testimonial.jpg",
-//   },
-//   {
-//     imgPath: "img/testimonial.jpg",
-//   },
-//   {
-//     imgPath: "img/testimonial.jpg",
-//   },
-//   {
-//     imgPath: "img/testimonial.jpg",
-//   },
-// ];
+function SampleNextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        height: "50px",
+        width: "50px",
+        marginRight: "80px",
 
-// function Feedbacks() {
-//   const theme = useTheme();
-//   const [activeStep, setActiveStep] = React.useState(0);
-//   const maxSteps = images.length;
+        display: "flex",
+        alignItems: "center",
+      }}
+      onClick={onClick}
+    />
+  );
+}
 
-//   const handleNext = () => {
-//     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-//   };
+function SamplePrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{
+        ...style,
+        height: "50px",
+        marginLeft: "80px",
+        width: "50px",
+        display: "flex",
+        alignItems: "center",
+      }}
+      onClick={onClick}
+    />
+  );
+}
 
-//   const handleBack = () => {
-//     setActiveStep((prevActiveStep) => prevActiveStep - 1);
-//   };
+export default class Responsive extends Component {
+  render() {
+    var settings = {
+      infinite: false,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 4,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      cssEase: "linear",
+      initialSlide: 0,
+      nextArrow: <SampleNextArrow />,
+      prevArrow: <SamplePrevArrow />,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true,
+          },
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+          },
+        },
+      ],
+    };
+    return (
+      <div
+        style={{
+          backgroundImage: "url('img/testimonialsbg.png')",
+          backgroundSize: "cover",
+          height: "100vh",
+        }}
+      >
+        <Box id="portfolio">
+          <Container
+            style={{
+              height: "100vh",
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "center",
+              justifyContent: "center",
+            }}
+          >
+            <div>
+              <div>
+                <Typography
+                  variant="h2"
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    fontWeight: "bold",
+                    color: "rgba(130, 200, 225)",
+                    fontFamily: "Poppins, sans-serif;",
+                  }}
+                >
+                  Client Testimonial
+                </Typography>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                <Slider
+                  {...settings}
+                  style={{
+                    height: "50vh",
+                    width: "70%",
+                    backgroundColor: "#B8DBE8",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                >
+                  {images.map((row) => (
+                    <div
+                      style={{
+                        width: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <Box
+                        key={row.src}
+                        sx={{
+                          width: "100%",
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
 
-//   const handleStepChange = (step) => {
-//     setActiveStep(step);
-//   };
-
-//   return (
-//     <div
-//       style={{
-//         backgroundImage: "url('img/ABOUT US - THE TEAM.png')",
-//         backgroundSize: "cover",
-//         height: "100vh",
-//       }}
-//     >
-//       <Box
-//         sx={{
-//           height: "100vh",
-//         }}
-//       >
-//         <Container sx={{ height: "100vh" }}>
-//           <Grid
-//             container
-//             spacing={2}
-//             sx={{ height: "100vh", alignContent: "center" }}
-//           >
-//             <Grid item xs={12} align="center">
-//               <Typography
-//                 variant="h2"
-//                 sx={{
-//                   fontWeight: "bold",
-//                   color: "#82C8E1 ",
-//                   fontFamily: "Poppins, sans-serif;",
-//                 }}
-//               >
-//                 Client Testimonials
-//               </Typography>
-//             </Grid>
-//             <Grid item xs={12} align="center">
-//               <Box sx={{ maxWidth: 400, flexGrow: 1 }} align="center">
-//                 <Paper
-//                   square
-//                   elevation={0}
-//                   sx={{
-//                     display: "flex",
-//                     alignItems: "center",
-//                     height: 50,
-//                     pl: 2,
-//                     bgcolor: "background.default",
-//                   }}
-//                 >
-//                   <Typography>{images[activeStep].label}</Typography>
-//                 </Paper>
-//                 <AutoPlaySwipeableViews
-//                   axis={theme.direction === "rtl" ? "x-reverse" : "x"}
-//                   index={activeStep}
-//                   onChangeIndex={handleStepChange}
-//                   enableMouseEvents
-//                 >
-//                   {images.map((step, index) => (
-//                     <div key={step.label}>
-//                       {Math.abs(activeStep - index) <= 2 ? (
-//                         <Box
-//                           component="img"
-//                           sx={{
-//                             height: 255,
-//                             display: "block",
-//                             maxWidth: 400,
-//                             overflow: "hidden",
-//                             width: "100%",
-//                           }}
-//                           src={step.imgPath}
-//                           alt={step.label}
-//                         />
-//                       ) : null}
-//                     </div>
-//                   ))}
-//                 </AutoPlaySwipeableViews>
-//                 <MobileStepper
-//                   steps={maxSteps}
-//                   position="static"
-//                   activeStep={activeStep}
-//                   nextButton={
-//                     <Button
-//                       size="small"
-//                       onClick={handleNext}
-//                       disabled={activeStep === maxSteps - 1}
-//                     >
-//                       Next
-//                       {theme.direction === "rtl" ? (
-//                         <KeyboardArrowLeft />
-//                       ) : (
-//                         <KeyboardArrowRight />
-//                       )}
-//                     </Button>
-//                   }
-//                   backButton={
-//                     <Button
-//                       size="small"
-//                       onClick={handleBack}
-//                       disabled={activeStep === 0}
-//                     >
-//                       {theme.direction === "rtl" ? (
-//                         <KeyboardArrowRight />
-//                       ) : (
-//                         <KeyboardArrowLeft />
-//                       )}
-//                       Back
-//                     </Button>
-//                   }
-//                 />
-//               </Box>
-//             </Grid>
-//           </Grid>
-//         </Container>
-//       </Box>
-//     </div>
-//   );
-// }
-
-// export default Feedbacks;
+                          alignItems: "center",
+                          p: {
+                            textAlign: "center",
+                          },
+                        }}
+                      >
+                        <img
+                          alt=""
+                          style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            height: "100px",
+                            width: "100px",
+                          }}
+                          src={row.imgPath}
+                        />
+                        <Typography>{row.stars}</Typography>
+                        <Typography
+                          style={{ fontWeight: "bold", fontSize: "25px" }}
+                        >
+                          {row.name}
+                        </Typography>
+                        <Typography
+                          style={{ fontWeight: "bold", fontSize: "30px" }}
+                        >
+                          {row.work}
+                        </Typography>
+                        <Typography style={{ width: "400px" }}>
+                          {row.testimonial}
+                        </Typography>
+                      </Box>
+                    </div>
+                  ))}
+                </Slider>
+              </div>
+            </div>
+          </Container>
+        </Box>
+      </div>
+    );
+  }
+}

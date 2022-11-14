@@ -30,7 +30,7 @@ export default function Framework() {
   return (
     <div
       style={{
-        backgroundImage: "url('img/frameworkbg.png')",
+        backgroundImage: "url('img/teambg.png')",
         backgroundSize: "cover",
         height: "100vh",
         display: "flex",

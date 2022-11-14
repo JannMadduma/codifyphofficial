@@ -15,8 +15,9 @@ import ResponsiveAppBar from "../common/Navbar";
 import Fullpage, {
   FullPageSections,
   FullpageSection,
-  FullpageNavigation,
 } from "@ap.cx/react-fullpage";
+import Feedbacks from "./Feedbacks";
+import ContactUs from "./ContactUs";
 
 const Home = ({}) => {
   const SectionStyle = {
@@ -71,20 +72,20 @@ const Home = ({}) => {
             <Goals />
           </FullpageSection>
 
-          {/* <FullpageSection style={{ SectionStyle }}>
-          <Feedbacks /> 
-         </FullpageSection> */}
+          <FullpageSection style={{ SectionStyle }}>
+            <Feedbacks />
+          </FullpageSection>
 
           <FullpageSection style={{ SectionStyle }}>
             <Team />
           </FullpageSection>
 
-          {/* <FullpageSection style={{ SectionStyle }}>
-         <ContactUs />
-         </FullpageSection> */}
+          <FullpageSection style={{ SectionStyle }}>
+            <ContactUs />
+            <Footer />
+          </FullpageSection>
         </FullPageSections>
       </Fullpage>
-      <Footer />
     </div>
   );
 };
