@@ -70,6 +70,7 @@ function FormRow() {
 export default function Portfolio() {
   return (
     <div
+      id="portfolio"
       style={{
         backgroundImage: "url('img/portfoliobg.png')",
         backgroundSize: "90%",
@@ -82,7 +83,6 @@ export default function Portfolio() {
           alignContent: "center",
           justifyContent: "center",
         }}
-        id="portfolio"
       >
         <Container sx={{ height: "100vh" }}>
           <Grid

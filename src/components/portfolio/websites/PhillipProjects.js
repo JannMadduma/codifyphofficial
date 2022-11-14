@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { Link } from "@mui/material";
 
 export default function PhillipProjects() {
   return (
@@ -29,7 +30,14 @@ export default function PhillipProjects() {
             padding: "5px 3px",
           }}
         >
-          LANGUAGE STORE
+          <Link
+            href="https://jannmadduma.github.io/language-store/"
+            underline="hover"
+            target="_blank"
+            color="black"
+          >
+            LANGUAGE STORE
+          </Link>
         </Typography>
         <Typography
           color="text.secondary"

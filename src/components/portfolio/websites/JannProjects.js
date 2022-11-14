@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { Link } from "@mui/material";
 
 export default function JannProjects() {
   return (
@@ -29,7 +30,14 @@ export default function JannProjects() {
             padding: "5px 3px",
           }}
         >
-          ESTATE WINDOWS
+          <Link
+            href="https://kodego-capstone-2.herokuapp.com/"
+            underline="hover"
+            target="_blank"
+            color="black"
+          >
+            ESTATE WINDOWS
+          </Link>
         </Typography>
         <Typography
           color="text.secondary"

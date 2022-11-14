@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
+import { Link } from "@mui/material";
 
 export default function RusselProjects() {
   return (
@@ -25,7 +26,14 @@ export default function RusselProjects() {
             padding: "5px 3px",
           }}
         >
-          ONLYPANS
+          <Link
+            href="https://sseljay.github.io/"
+            underline="hover"
+            target="_blank"
+            color="black"
+          >
+            ONLYPANS
+          </Link>
         </Typography>
         <Typography
           color="text.secondary"

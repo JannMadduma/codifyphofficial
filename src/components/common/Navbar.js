@@ -3,12 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -19,7 +15,6 @@ import {
   getFreelancerEmail,
   loginFreelancer,
 } from "../../service/freelancerService";
-import { AccountCircle } from "@mui/icons-material";
 import { Alert } from "@mui/material";
 import { setLoggedIn } from "../../actions/loggedInActions";
 import { Link } from "react-router-dom";
@@ -171,7 +166,8 @@ const ResponsiveAppBar = () => {
             sx={{ display: { xs: "none", sm: "block" } }}
             style={{ borderRadius: "50px" }}
           >
-            <a
+            <Link
+              to="/home"
               style={{
                 fontFamily: "Roboto",
                 padding: "1px 30px",
@@ -182,8 +178,9 @@ const ResponsiveAppBar = () => {
               href="#home1"
             >
               HOME
-            </a>
-            <a
+            </Link>
+            <Link
+              to="/portfolio"
               style={{
                 fontFamily: "Roboto",
                 padding: "1px 30px",
@@ -194,8 +191,9 @@ const ResponsiveAppBar = () => {
               href="#portfolio"
             >
               PORTFOLIO
-            </a>
-            <a
+            </Link>
+            <Link
+              to="/pricing"
               style={{
                 fontFamily: "Roboto",
                 padding: "1px 30px",
@@ -206,8 +204,9 @@ const ResponsiveAppBar = () => {
               href="#pricing"
             >
               PRICING
-            </a>
-            <a
+            </Link>
+            <Link
+              to="/aboutus"
               style={{
                 fontFamily: "Roboto",
                 padding: "1px 30px",
@@ -215,10 +214,9 @@ const ResponsiveAppBar = () => {
                 fontWeight: "bold",
                 textDecoration: "none",
               }}
-              href="#aboutUs"
             >
               ABOUT US
-            </a>
+            </Link>
           </Box>
           {/* {loggedIn?.idNo ? (
             <div>
