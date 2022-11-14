@@ -8,20 +8,20 @@ export default function Goals() {
     <div
       style={{
         backgroundImage: "url('img/herobackground.png')",
-        height: "100%",
+        height: "100vh",
       }}
     >
       <Box
         sx={{
           backgroundColor: "white",
-          height: "100%",
+          height: "100vh",
         }}
       >
-        <Container sx={{ height: "100%" }}>
+        <Container sx={{ height: "100vh" }}>
           <Grid
             container
             spacing={2}
-            sx={{ height: "100%", alignContent: "center" }}
+            sx={{ height: "100vh", alignContent: "center" }}
           >
             <Grid item xs={6} sx={{ display: "flex", alignItems: "center" }}>
               <Box

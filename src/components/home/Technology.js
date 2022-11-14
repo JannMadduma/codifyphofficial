@@ -22,77 +22,85 @@ const logos = [
 
 export default function Technology() {
   return (
-    <Box
-      sx={{
-        backgroundImage: "url('img/technologybg.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        pt: 8,
-        pb: 6,
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        width: "100%",
       }}
     >
-      <CssBaseline />
-      <Container
-        maxWidth={false}
-        style={{ maxWidth: "1100px", height: "500px" }}
+      <Box
+        sx={{
+          backgroundImage: "url('img/technologybg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          width: "100%",
+        }}
       >
-        <Typography
-          component="h4"
-          variant="h5"
-          align="center"
-          gutterBottom
-          sx={{
-            fontWeight: "bold",
-            fontFamily: "Poppins, sans-serif;",
-          }}
+        <CssBaseline />
+        <Container
+          maxWidth={false}
+          style={{ maxWidth: "1100px", height: "500px" }}
         >
-          TECH STACK
-        </Typography>
-        <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          gutterBottom
-          sx={{
-            fontWeight: "bold",
-            color: "#82C8E1 ",
-            fontFamily: "Poppins, sans-serif;",
-          }}
-        >
-          Our Technologies
-        </Typography>
-        <Typography
-          variant="h6"
-          align="center"
-          color="text.secondary"
-          paragraph
-        >
-          We possess numerous techstack skills to achieve the necessary
-          requirements.
-        </Typography>
+          <Typography
+            component="h4"
+            variant="h5"
+            align="center"
+            gutterBottom
+            sx={{
+              fontWeight: "bold",
+              fontFamily: "Poppins, sans-serif;",
+            }}
+          >
+            TECH STACK
+          </Typography>
+          <Typography
+            component="h1"
+            variant="h2"
+            align="center"
+            gutterBottom
+            sx={{
+              fontWeight: "bold",
+              color: "#82C8E1 ",
+              fontFamily: "Poppins, sans-serif;",
+            }}
+          >
+            Our Technologies
+          </Typography>
+          <Typography
+            variant="h6"
+            align="center"
+            color="text.secondary"
+            paragraph
+          >
+            We possess numerous techstack skills to achieve the necessary
+            requirements.
+          </Typography>
 
-        <Grid container spacing={4} pt={4}>
-          {/* -----------------CARD 1 ---------------- */}
-          {logos.map((item) => (
-            <Grid
-              item
-              xs={2}
-              key={item}
-              style={{
-                paddingTop: "50px",
-              }}
-            >
-              <Container>
-                <img
-                  alt=""
-                  src={item}
-                  style={{ width: "100%", padding: "0 10px" }}
-                />
-              </Container>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    </Box>
+          <Grid container spacing={4} pt={4}>
+            {/* -----------------CARD 1 ---------------- */}
+            {logos.map((item) => (
+              <Grid
+                item
+                xs={2}
+                key={item}
+                style={{
+                  paddingTop: "50px",
+                }}
+              >
+                <Container>
+                  <img
+                    alt=""
+                    src={item}
+                    style={{ width: "100%", padding: "0 10px" }}
+                  />
+                </Container>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </Box>{" "}
+    </div>
   );
 }

@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import CssBaseline from "@mui/material/CssBaseline";
 
 const framework = [
   {
@@ -29,123 +30,102 @@ export default function Framework() {
   return (
     <div
       style={{
-        backgroundImage: "url('img/ABOUT US - MISION & VISION.png')",
+        backgroundImage: "url('img/frameworkbg.png')",
         backgroundSize: "cover",
-        height: "100%",
-        padding: "0",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
       }}
     >
+      <CssBaseline />
       <Box
         sx={{
-          height: "100%",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          width: "100%",
         }}
       >
-        <Container sx={{ height: "100%" }}>
-          <Grid
-            container
-            spacing={2}
+        <Container
+          maxWidth={false}
+          style={{
+            maxWidth: "1000px",
+            paddingBottom: "50px",
+          }}
+        >
+          <Typography
+            component="h4"
+            variant="h5"
+            align="center"
             sx={{
-              height: "100%",
-              alignContent: "center",
-              justifyContent: "center",
+              fontWeight: "bold",
+              fontFamily: "Roboto",
+              paddingTop: "100px",
             }}
           >
-            <Grid
-              item
-              xs={12}
-              sx={{
-                display: "flex",
-                flexDirection: "row",
-                justifyContent: "center",
-              }}
-            >
-              <Box paddingBottom={"30px"}>
-                <Typography
-                  component="h4"
-                  variant="h5"
-                  align="center"
-                  gutterBottom
-                  sx={{
-                    fontWeight: "bold",
-                    fontFamily: "Poppins, sans-serif;",
-                  }}
-                >
-                  THE FRAMEWORK
-                </Typography>
-                <Typography
-                  component="h1"
-                  variant="h2"
-                  align="center"
-                  gutterBottom
-                  sx={{
-                    fontWeight: "bold",
-                    color: "#82C8E1 ",
-                    fontFamily: "Poppins, sans-serif;",
-                  }}
-                >
-                  Building a Great Product
-                </Typography>
-                <Typography
-                  variant="h6"
-                  align="center"
-                  color="text.secondary"
-                  paragraph
-                >
-                  Our product making went through proper procedures and
-                  management to attain best possible results.
-                </Typography>
-              </Box>
-            </Grid>
+            THE FRAMEWORK
+          </Typography>
+          <Typography
+            component="h1"
+            variant="h2"
+            align="center"
+            sx={{
+              fontWeight: "bold",
+              color: "rgba(50, 180, 235, 0.8)",
+              fontFamily: "Roboto",
+            }}
+          >
+            Building a Great Product
+          </Typography>
+          <Typography
+            align="center"
+            paragraph
+            style={{ padding: " 10px 100px", fontFamily: "Roboto" }}
+          >
+            Our product making went through proper procedures and management to
+            attain best possible results.
+          </Typography>
 
-            <Grid item xs={12}>
-              <Box
-                sx={{
-                  alignItems: "center",
-                  display: "flex",
-                  flexDirection: "row",
-                }}
-                padding="0 0 50px 0"
-              >
-                {framework.map((item) => (
-                  <Grid item xs={4} key={item} sx={{ padding: "40px" }}>
-                    <img
-                      alt=""
-                      src={item.img}
-                      style={{
-                        width: "100%",
-                        padding: "10px 100px ",
-                      }}
-                    />
-                    <Box sx={{ flexGrow: 1 }} align="center">
-                      <Typography
-                        variant="h6"
-                        key={item}
-                        sx={{
-                          fontWeight: "bold",
-                          marginBottom: 2,
-                          fontFamily: "Poppins, sans-serif;",
-                          textAlign: "center",
-                          color: "rgba(50, 180, 235, 0.8)",
-                        }}
-                      >
-                        {item.title}
-                      </Typography>
-                      <Typography
-                        variant="h7"
-                        sx={{
-                          fontWeight: "medium",
-                          marginBottom: 2,
-                          fontFamily: "Poppins, sans-serif;",
-                          textAlign: "center",
-                        }}
-                      >
-                        {item.description}
-                      </Typography>
-                    </Box>
-                  </Grid>
-                ))}
-              </Box>
-            </Grid>
+          <Grid container spacing={1}>
+            {framework.map((item) => (
+              <Grid item xs={4} key={item} sx={{ padding: "40px" }}>
+                <img
+                  alt=""
+                  src={item.img}
+                  style={{
+                    width: "100%",
+                    padding: "10px 100px ",
+                  }}
+                />
+                <Box sx={{ flexGrow: 1 }} align="center">
+                  <Typography
+                    variant="h6"
+                    key={item}
+                    sx={{
+                      fontWeight: "bold",
+                      marginBottom: 2,
+                      fontFamily: "Poppins, sans-serif;",
+                      textAlign: "center",
+                      color: "rgba(50, 180, 235, 0.8)",
+                    }}
+                  >
+                    {item.title}
+                  </Typography>
+                  <Typography
+                    variant="h7"
+                    sx={{
+                      fontWeight: "medium",
+                      marginBottom: 2,
+                      fontFamily: "Poppins, sans-serif;",
+                      textAlign: "center",
+                    }}
+                  >
+                    {item.description}
+                  </Typography>
+                </Box>
+              </Grid>
+            ))}
           </Grid>
         </Container>
       </Box>

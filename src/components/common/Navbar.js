@@ -141,7 +141,7 @@ const ResponsiveAppBar = () => {
         height: "100px",
         display: "grid",
         alignContent: "center",
-        backgroundColor: "white",
+
         boxShadow: "none",
         backgroundColor: "transparent",
       }}
@@ -161,7 +161,6 @@ const ResponsiveAppBar = () => {
                 height: "100px",
                 width: "300px",
                 padding: "10px 0",
-                backgroundColor: "white",
                 borderRadius: "50px",
                 marginTop: "10px",
               }}
@@ -179,7 +178,6 @@ const ResponsiveAppBar = () => {
                 color: "#353C42",
                 fontWeight: "bold",
                 textDecoration: "none",
-                backgroundColor: "white",
               }}
               href="#home1"
             >
@@ -192,7 +190,6 @@ const ResponsiveAppBar = () => {
                 color: "#353C42",
                 fontWeight: "bold",
                 textDecoration: "none",
-                backgroundColor: "white",
               }}
               href="#portfolio"
             >
@@ -205,7 +202,6 @@ const ResponsiveAppBar = () => {
                 color: "#353C42",
                 fontWeight: "bold",
                 textDecoration: "none",
-                backgroundColor: "white",
               }}
               href="#pricing"
             >
@@ -218,7 +214,6 @@ const ResponsiveAppBar = () => {
                 color: "#353C42",
                 fontWeight: "bold",
                 textDecoration: "none",
-                backgroundColor: "white",
               }}
               href="#aboutUs"
             >

@@ -84,12 +84,12 @@ export default function Portfolio() {
         }}
         id="portfolio"
       >
-        <Container sx={{ height: "100%" }}>
+        <Container sx={{ height: "100vh" }}>
           <Grid
             container
             spacing={2}
             sx={{
-              height: "100%",
+              height: "100vh",
               alignContent: "center",
               justifyContent: "center",
               padding: "100px 0",

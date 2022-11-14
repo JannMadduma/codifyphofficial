@@ -46,15 +46,13 @@ export default function PricingService() {
       style={{
         backgroundImage: "url('img/ourservebg.png')",
         backgroundSize: "cover",
-        height: "100%",
+        height: "100vh",
       }}
     >
       <CssBaseline />
       <Box
         sx={{
-          height: "100%",
-          pt: 8,
-          pb: 6,
+          height: "100vh",
         }}
       >
         <Container

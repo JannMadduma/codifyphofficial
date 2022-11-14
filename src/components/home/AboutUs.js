@@ -14,7 +14,7 @@ export default function AboutUs() {
     >
       <Box
         sx={{
-          height: "100%",
+          height: "100vh",
           display: "flex",
         }}
         id="aboutUs"
@@ -23,7 +23,7 @@ export default function AboutUs() {
           <Grid
             container
             spacing={2}
-            sx={{ height: "100%", alignContent: "center" }}
+            sx={{ height: "100vh", alignContent: "center" }}
           >
             <Grid item xs={6} sx={{ display: "flex", alignItems: "center" }}>
               <Box>

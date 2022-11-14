@@ -9,7 +9,7 @@ export default function FAQ() {
         backgroundImage: "url('img/faqbg.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
-        height: "100%",
+        height: "100vh",
       }}
     >
       <Container

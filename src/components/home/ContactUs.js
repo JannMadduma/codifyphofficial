@@ -122,15 +122,15 @@
 //         sx={{
 //           backgroundImage: "url('img/FOOTER.png')",
 //           backgroundSize: "cover",
-//           height: "100%",
+//           height: "100vh",
 //         }}
 //         id="contactUs"
 //       >
-//         <Container sx={{ height: "100%" }}>
+//         <Container sx={{ height: "100vh" }}>
 //           <Grid
 //             container
 //             spacing={2}
-//             sx={{ height: "100%", alignContent: "center" }}
+//             sx={{ height: "100vh", alignContent: "center" }}
 //           >
 //             <Grid item xs={12} sx={{ display: "flex", alignItems: "center" }}>
 //               <Box

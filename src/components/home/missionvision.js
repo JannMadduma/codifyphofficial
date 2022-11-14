@@ -2,12 +2,13 @@ import { Box, Container } from "@mui/system";
 import React from "react";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
+import CssBaseline from "@mui/material/CssBaseline";
 
 export default function Missionvision() {
   const styles = {
     paperContainer: {
       height: 300,
-      backgroundImage: `linear-gradient(to top, rgba(130, 200, 225, 0.8), rgba(255, 255, 255, 0)),url(${"../images/10.png"})`,
+      backgroundImage: "url('img/missionvision1.png')",
       width: 500,
       backgroundSize: "cover",
       backgroundPosition: "center",
@@ -16,7 +17,7 @@ export default function Missionvision() {
   const stylesone = {
     paperContainer: {
       height: 300,
-      backgroundImage: `linear-gradient(to top, rgba(130, 200, 225, 0.8), rgba(255, 255, 255, 0)),url(${"../images/5.png"})`,
+      backgroundImage: "url('img/misionvision2.png')",
       width: 500,
       backgroundSize: "cover",
       backgroundPosition: "center",
@@ -26,17 +27,30 @@ export default function Missionvision() {
   return (
     <div
       style={{
-        backgroundImage: "url('img/herobackground.png')",
-        height: "100%",
+        backgroundImage: "url('img/missionvisionbg.png')",
+        backgroundSize: "cover",
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
       }}
     >
+      <CssBaseline />
       <Box
         sx={{
-          backgroundColor: "white",
-          height: "100%",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          width: "100%",
         }}
       >
-        <Container maxWidth="lg" sx={{ height: "100%" }}>
+        <Container
+          maxWidth={false}
+          style={{
+            maxWidth: "1000px",
+            paddingBottom: "50px",
+          }}
+        >
           <Grid
             container
             spacing={2}

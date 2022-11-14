@@ -50,19 +50,19 @@
 //       style={{
 //         backgroundImage: "url('img/ABOUT US - THE TEAM.png')",
 //         backgroundSize: "cover",
-//         height: "100%",
+//         height: "100vh",
 //       }}
 //     >
 //       <Box
 //         sx={{
-//           height: "100%",
+//           height: "100vh",
 //         }}
 //       >
-//         <Container sx={{ height: "100%" }}>
+//         <Container sx={{ height: "100vh" }}>
 //           <Grid
 //             container
 //             spacing={2}
-//             sx={{ height: "100%", alignContent: "center" }}
+//             sx={{ height: "100vh", alignContent: "center" }}
 //           >
 //             <Grid item xs={12} align="center">
 //               <Typography

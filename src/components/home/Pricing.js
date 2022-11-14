@@ -105,99 +105,97 @@ export default function Pricing() {
   return (
     <div
       style={{
-        height: "100%",
+        height: "100vh",
       }}
       id="pricing"
     >
       <CssBaseline />
       <Box
         sx={{
-          backgroundColor: "white",
-          margin: "150px",
+          height: "100vh",
         }}
       >
-        <Container maxWidth="md">
-          <Box>
-            <Typography
-              component="h4"
-              variant="h5"
-              align="center"
-              sx={{
-                fontWeight: "bold",
-                fontFamily: "Poppins, sans-serif;",
-              }}
-            >
-              SERVICES
-            </Typography>
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              gutterBottom
-              sx={{
-                fontWeight: "bold",
-                color: "#82C8E1 ",
-                fontFamily: "Poppins, sans-serif;",
-              }}
-            >
-              Packages & Pricing
-            </Typography>
-            <Typography variant="h5" align="center" paragraph>
-              We make sure that clients are not intimidated by price.
-            </Typography>
-          </Box>
-
-          <Box
+        <Container
+          maxWidth={false}
+          style={{
+            maxWidth: "1000px",
+            paddingBottom: "50px",
+          }}
+        >
+          <Typography
+            component="h4"
+            variant="h5"
+            align="center"
             sx={{
-              paddingTop: "50px",
+              fontWeight: "bold",
+              fontFamily: "Poppins, sans-serif;",
+              paddingTop: "100px",
             }}
           >
-            <Grid container spacing={5}>
-              {tiers.map((tier) => (
-                <Grid item key={tier.title} xs={12} md={3}>
-                  <Card
-                    sx={{
-                      backgroundColor: "#B7DBE7",
-                      color: "black",
-                      height: "100%",
-                    }}
-                  >
-                    <Box>
-                      <CardHeader
-                        title={tier.title}
-                        titleTypographyProps={{
-                          align: "center",
-                          fontSize: "15px",
-                          backgroundColor: "#EAF5F7",
-                          color: "black",
-                          paddingTop: "20px",
-                          paddingBottom: "20px",
-                          borderRadius: "10px",
-                          width: "100%",
-                          height: "150px ",
-                        }}
-                      />
-                    </Box>
+            SERVICES
+          </Typography>
+          <Typography
+            component="h1"
+            variant="h2"
+            align="center"
+            gutterBottom
+            sx={{
+              fontWeight: "bold",
+              color: "#82C8E1 ",
+              fontFamily: "Poppins, sans-serif;",
+            }}
+          >
+            Packages & Pricing
+          </Typography>
+          <Typography variant="h5" align="center" paragraph>
+            We make sure that clients are not intimidated by price.
+          </Typography>
 
-                    <CardContent>
-                      <ul style={{ padding: "0px" }}>
-                        {tier.description.map((line) => (
-                          <Typography
-                            component="li"
-                            variant="subtitle1"
-                            align="left"
-                            key={line}
-                          >
-                            {line}
-                          </Typography>
-                        ))}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
+          <Grid container spacing={5}>
+            {tiers.map((tier) => (
+              <Grid item key={tier.title} xs={12} md={3}>
+                <Card
+                  sx={{
+                    backgroundColor: "#B7DBE7",
+                    color: "black",
+                    height: "100%",
+                  }}
+                >
+                  <Box>
+                    <CardHeader
+                      title={tier.title}
+                      titleTypographyProps={{
+                        align: "center",
+                        fontSize: "15px",
+                        backgroundColor: "#EAF5F7",
+                        color: "black",
+                        paddingTop: "20px",
+                        paddingBottom: "20px",
+                        borderRadius: "10px",
+                        width: "100%",
+                        height: "150px ",
+                      }}
+                    />
+                  </Box>
+
+                  <CardContent>
+                    <ul style={{ padding: "0px" }}>
+                      {tier.description.map((line) => (
+                        <Typography
+                          component="li"
+                          variant="subtitle1"
+                          align="left"
+                          key={line}
+                        >
+                          {line}
+                        </Typography>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
         </Container>
       </Box>
     </div>

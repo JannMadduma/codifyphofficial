@@ -12,24 +12,78 @@ import PricingService from "./PricingService";
 import Pricing from "./Pricing";
 import Footer from "../common/Footer";
 import ResponsiveAppBar from "../common/Navbar";
+import Fullpage, {
+  FullPageSections,
+  FullpageSection,
+  FullpageNavigation,
+} from "@ap.cx/react-fullpage";
 
 const Home = ({}) => {
+  const SectionStyle = {
+    height: "100vh",
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  };
   return (
     <div id="home1">
       <ResponsiveAppBar />
-      <Hero />
-      <Portfolio />
-      <PricingService />
-      <Pricing />
-      <Technology />
-      <FAQ />
-      <AboutUs />
-      <Framework />
-      <Missionvision />
-      <Goals />
-      {/* <Feedbacks /> */}
-      <Team />
-      {/* <ContactUs /> */}
+      <Fullpage>
+        <FullPageSections>
+          <FullpageSection style={{ SectionStyle }}>
+            <Hero />
+          </FullpageSection>
+
+          <FullpageSection style={{ SectionStyle }}>
+            <Portfolio />
+          </FullpageSection>
+
+          <FullpageSection style={{ SectionStyle }}>
+            <PricingService />
+          </FullpageSection>
+
+          <FullpageSection style={{ SectionStyle }}>
+            <Pricing />
+          </FullpageSection>
+
+          <FullpageSection style={{ SectionStyle }}>
+            <Technology />
+          </FullpageSection>
+
+          <FullpageSection style={{ SectionStyle }}>
+            <FAQ />
+          </FullpageSection>
+
+          <FullpageSection style={{ SectionStyle }}>
+            <AboutUs />
+          </FullpageSection>
+
+          <FullpageSection style={{ SectionStyle }}>
+            <Framework />
+          </FullpageSection>
+
+          <FullpageSection style={{ SectionStyle }}>
+            <Missionvision />
+          </FullpageSection>
+
+          <FullpageSection style={{ SectionStyle }}>
+            <Goals />
+          </FullpageSection>
+
+          {/* <FullpageSection style={{ SectionStyle }}>
+          <Feedbacks /> 
+         </FullpageSection> */}
+
+          <FullpageSection style={{ SectionStyle }}>
+            <Team />
+          </FullpageSection>
+
+          {/* <FullpageSection style={{ SectionStyle }}>
+         <ContactUs />
+         </FullpageSection> */}
+        </FullPageSections>
+      </Fullpage>
       <Footer />
     </div>
   );

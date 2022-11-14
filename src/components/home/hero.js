@@ -107,7 +107,7 @@ export default function Hero({ isPending }) {
       style={{
         backgroundImage: "url('img/herobg.png')",
         backgroundSize: "cover",
-        height: "100%",
+        height: "100vh",
       }}
     >
       <Box
@@ -220,6 +220,7 @@ export default function Hero({ isPending }) {
           </Grid>
         </Container>
       </Box>
+
       <Dialog
         maxWidth="sm"
         fullWidth
