@@ -99,7 +99,7 @@ export default function Subscribed() {
           (res) => {
             dispatch(
               editFreelancerAction({
-                ...res.data.Freelancers,
+                ...res.data,
                 idNo: freelancerDetails.idNo,
               })
             );
@@ -124,7 +124,7 @@ export default function Subscribed() {
 
   React.useEffect(() => {
     getAllFreelancers().then((res) => {
-      dispatch(setFreelancers(res.data.freelancers));
+      dispatch(setFreelancers(res.data));
     });
   }, []);
 

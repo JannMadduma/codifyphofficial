@@ -119,7 +119,7 @@ export default function Projects({ isPending }) {
         editProjects(projectDetails.idNo, editedProjectDetails).then((res) => {
           dispatch(
             editProjectAction({
-              ...res.data.project,
+              ...res.data,
               idNo: projectDetails.idNo,
             })
           );
@@ -135,7 +135,7 @@ export default function Projects({ isPending }) {
         };
 
         addProjects(projectToAdd).then((res) => {
-          dispatch(addProjectAction(res.data.project));
+          dispatch(addProjectAction(res.data));
         });
         handleClose();
       }
@@ -183,13 +183,6 @@ export default function Projects({ isPending }) {
     setProjectDetails(i);
     setOpenConfirm(true);
   };
-
-  React.useEffect(() => {
-    getAllClients().then((res) => {
-      console.log(res.data.clients.filter((c) => c.isPending === 0));
-      dispatch(setClients(res.data.clients.filter((c) => c.isPending === 0)));
-    });
-  }, []);
 
   React.useEffect(() => {
     getAllProjects().then((res) => {

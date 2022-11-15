@@ -109,9 +109,7 @@ export default function Clients({ isPending }) {
         delete editedClientDetails.updated_at;
 
         editClients(clientDetails.idNo, editedClientDetails).then((res) => {
-          dispatch(
-            editClientAction({ ...res.data.client, idNo: clientDetails.idNo })
-          );
+          dispatch(editClientAction({ ...res.data, idNo: clientDetails.idNo }));
         });
         handleClose();
       } else {
@@ -122,7 +120,7 @@ export default function Clients({ isPending }) {
         };
 
         addClients(clientToAdd).then((res) => {
-          dispatch(addClientAction(res.data.client));
+          dispatch(addClientAction(res.data));
         });
         handleClose();
       }

@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { Link } from "react-router-dom";
 
 export default function AdminHeader(props) {
   const { window } = props;
@@ -22,7 +23,9 @@ export default function AdminHeader(props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            CODIFYPH
+            <Link to="/home" style={{ textDecoration: "none", color: "white" }}>
+              CODIFYPH{" "}
+            </Link>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             <Button sx={{ color: "#fff" }}>LOGOUT</Button>

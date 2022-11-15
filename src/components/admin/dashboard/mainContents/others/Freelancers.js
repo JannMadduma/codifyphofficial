@@ -101,7 +101,7 @@ export default function Freelancers() {
           (res) => {
             dispatch(
               editFreelancerAction({
-                ...res.data.freelancer,
+                ...res.data,
                 idNo: freelancerDetails.idNo,
               })
             );
@@ -114,7 +114,7 @@ export default function Freelancers() {
         };
 
         addFreelancer(freelancerToAdd).then((res) => {
-          dispatch(addFreelancerAction(res.data.freelancer));
+          dispatch(addFreelancerAction(res.data));
         });
         handleClose();
       }
@@ -142,7 +142,7 @@ export default function Freelancers() {
   React.useEffect(() => {
     getAllFreelancers().then((res) => {
       console.log(res);
-      dispatch(setFreelancers(res.data.freelancers));
+      dispatch(setFreelancers(res.data));
     });
   }, []);
 
