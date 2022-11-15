@@ -44,7 +44,7 @@ import {
   setFreelancers,
 } from "../../../../../actions/FreelancersAction";
 import { SidebarContents } from "../../sidebarContents/SidebarContents";
-import AdminHeader from "../../../../common/AdminHeader";
+import AdminHeader from "../../../AdminHeader";
 
 const mdTheme = createTheme();
 

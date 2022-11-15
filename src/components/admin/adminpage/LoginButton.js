@@ -2,8 +2,6 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
 import {
-  AppBar,
-  Avatar,
   Checkbox,
   Container,
   createTheme,
@@ -15,10 +13,8 @@ import {
   Link,
   TextField,
   ThemeProvider,
-  Toolbar,
   Typography,
 } from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setFreelancers } from "../../../actions/FreelancersAction";

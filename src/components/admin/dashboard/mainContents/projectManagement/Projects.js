@@ -48,9 +48,9 @@ import {
   setProjects,
 } from "../../../../../actions/ProjectActions";
 import { SidebarContents } from "../../sidebarContents/SidebarContents";
-import AdminHeader from "../../../../common/AdminHeader";
 import { getAllClients } from "../../../../../service/ClientService";
 import { setClients } from "../../../../../actions/ClientActions";
+import AdminHeader from "../../../AdminHeader";
 
 const mdTheme = createTheme();
 
