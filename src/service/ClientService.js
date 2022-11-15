@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const clientSURL = "http://localhost:5000/clients";
+const clientSURL = "https://codify-api.herokuapp.com/clients";
 
 export const getAllClients = async (id) => {
   id = id || "";
