@@ -16,13 +16,11 @@ export default function FreelancersReducer(state = freelancersState, action) {
     case actionTypes.ADD_FREELANCER:
       return [
         ...state,
-        { ...action.freelancerDetails, idNo: action.freelancerDetails.id },
+        { ...action.freelancerDetails, id: action.freelancerDetails.id },
       ];
     // EDIT
     case actionTypes.EDIT_FREELANCER:
-      index = state.findIndex(
-        (mod) => mod.idNo === action.freelancerDetails.idNo
-      );
+      index = state.findIndex((mod) => mod.id === action.freelancerDetails.id);
 
       return [
         ...state.slice(0, index), // everything before current item
@@ -31,9 +29,7 @@ export default function FreelancersReducer(state = freelancersState, action) {
       ];
     // DELETE
     case actionTypes.DELETE_FREELANCER:
-      index = state.findIndex(
-        (mod) => mod.idNo === action.freelancerDetails.idNo
-      );
+      index = state.findIndex((mod) => mod.id === action.freelancerDetails.id);
 
       return [
         ...state.slice(0, index), // everything before current item

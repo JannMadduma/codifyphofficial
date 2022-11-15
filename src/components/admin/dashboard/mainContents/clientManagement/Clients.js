@@ -98,7 +98,7 @@ export default function Clients({ isPending }) {
     ) {
       setError(true);
     } else {
-      if (clientDetails.idNo) {
+      if (clientDetails.id) {
         const editedClientDetails = {
           ...clientDetails,
           validId: clientDetails.validId,
@@ -108,8 +108,8 @@ export default function Clients({ isPending }) {
         delete editedClientDetails.created_at;
         delete editedClientDetails.updated_at;
 
-        editClients(clientDetails.idNo, editedClientDetails).then((res) => {
-          dispatch(editClientAction({ ...res.data, idNo: clientDetails.idNo }));
+        editClients(clientDetails.id, editedClientDetails).then((res) => {
+          dispatch(editClientAction({ ...res.data, id: clientDetails.id }));
         });
         handleClose();
       } else {
@@ -128,8 +128,8 @@ export default function Clients({ isPending }) {
   };
 
   const handleClientDelete = () => {
-    deleteClients(clientDetails.idNo).then(() => {
-      dispatch(deleteClientAction({ idNo: clientDetails.idNo }));
+    deleteClients(clientDetails.id).then(() => {
+      dispatch(deleteClientAction({ id: clientDetails.id }));
     });
     handleCloseConfirmDelete();
   };
@@ -144,8 +144,8 @@ export default function Clients({ isPending }) {
     delete editedClientDetails.created_at;
     delete editedClientDetails.updated_at;
 
-    editClients(clientDetails.idNo, editedClientDetails).then((res) => {
-      dispatch(approveClientAction({ idNo: clientDetails.idNo }));
+    editClients(clientDetails.id, editedClientDetails).then((res) => {
+      dispatch(approveClientAction({ id: clientDetails.id }));
     });
     handleCloseConfirmApprove();
   };
@@ -242,8 +242,8 @@ export default function Clients({ isPending }) {
                     </TableHead>
                     <TableBody>
                       {clients?.map((row) => (
-                        <TableRow key={row?.idNo}>
-                          <TableCell>{row?.idNo}</TableCell>
+                        <TableRow key={row?.id}>
+                          <TableCell>{row?.id}</TableCell>
                           <TableCell>{row?.name}</TableCell>
                           <TableCell>{row?.concerns}</TableCell>
                           <TableCell>{row?.contactNo}</TableCell>
@@ -330,7 +330,7 @@ export default function Clients({ isPending }) {
         aria-labelledby="draggable-dialog-title"
       >
         <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
-          {clientDetails.idNo ? "Edit" : "Add"} Client
+          {clientDetails.id ? "Edit" : "Add"} Client
         </DialogTitle>
         <DialogContent>
           {error && <Alert severity="error">Please fill-up all fields</Alert>}

@@ -76,7 +76,7 @@ export default function Subscribed() {
     setError(false);
 
     if (
-      !freelancers.idNo ||
+      !freelancers.id ||
       !freelancers.name ||
       !freelancers.email ||
       !freelancers.role ||
@@ -85,7 +85,7 @@ export default function Subscribed() {
     ) {
       setError(true);
     } else {
-      if (freelancerDetails.idNo) {
+      if (freelancerDetails.id) {
         const editedFreelancerDetails = {
           ...freelancerDetails,
           validId: freelancerDetails.validId,
@@ -95,12 +95,12 @@ export default function Subscribed() {
         delete editedFreelancerDetails.created_at;
         delete editedFreelancerDetails.updated_at;
 
-        editFreelancer(freelancerDetails.idNo, editedFreelancerDetails).then(
+        editFreelancer(freelancerDetails.id, editedFreelancerDetails).then(
           (res) => {
             dispatch(
               editFreelancerAction({
                 ...res.data,
-                idNo: freelancerDetails.idNo,
+                id: freelancerDetails.id,
               })
             );
           }
@@ -131,9 +131,9 @@ export default function Subscribed() {
   // to delete Client
   const handleFreelancerDelete = () => {
     // "deleteClients" is from service, ClientsService
-    deleteFreelancer(freelancers.idNo).then((res) => {
+    deleteFreelancer(freelancers.id).then((res) => {
       // "deleteClientsAction" is from actions, ClientsAction
-      dispatch(deleteFreelancerAction({ idNo: freelancers.idNo }));
+      dispatch(deleteFreelancerAction({ id: freelancers.id }));
     });
     handleCloseConfirmDelete();
   };
@@ -214,8 +214,8 @@ export default function Subscribed() {
                     </TableHead>
                     <TableBody>
                       {freelancers.map((row) => (
-                        <TableRow key={row?.idNo}>
-                          <TableCell>{row?.idNo}</TableCell>
+                        <TableRow key={row?.id}>
+                          <TableCell>{row?.id}</TableCell>
                           <TableCell>{row?.name}</TableCell>
                           <TableCell>{row?.email}</TableCell>
                           <TableCell>{row?.role}</TableCell>

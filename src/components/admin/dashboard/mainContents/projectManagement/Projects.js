@@ -67,7 +67,7 @@ export default function Projects({ isPending }) {
   const getClientName = (id) => {
     console.log(id);
     console.log(clients);
-    return clients?.find((c) => parseInt(c.idNo) === parseInt(id))?.name || id;
+    return clients?.find((c) => parseInt(c.id) === parseInt(id))?.name || id;
   };
 
   const handleInputChange = (e) => {
@@ -106,7 +106,7 @@ export default function Projects({ isPending }) {
     ) {
       setError(true);
     } else {
-      if (projectDetails.idNo) {
+      if (projectDetails.id) {
         const editedProjectDetails = {
           ...projectDetails,
           GanteChartPic: projectDetails.GanteChartPic,
@@ -116,11 +116,11 @@ export default function Projects({ isPending }) {
         delete editedProjectDetails.created_at;
         delete editedProjectDetails.updated_at;
 
-        editProjects(projectDetails.idNo, editedProjectDetails).then((res) => {
+        editProjects(projectDetails.id, editedProjectDetails).then((res) => {
           dispatch(
             editProjectAction({
               ...res.data,
-              idNo: projectDetails.idNo,
+              id: projectDetails.id,
             })
           );
         });
@@ -143,8 +143,8 @@ export default function Projects({ isPending }) {
   };
 
   const handleProjectDelete = () => {
-    deleteProjects(projectDetails.idNo).then(() => {
-      dispatch(deleteProjectAction({ idNo: projectDetails.idNo }));
+    deleteProjects(projectDetails.id).then(() => {
+      dispatch(deleteProjectAction({ id: projectDetails.id }));
     });
     handleCloseConfirmDelete();
   };
@@ -159,8 +159,8 @@ export default function Projects({ isPending }) {
     delete editedProjectDetails.created_at;
     delete editedProjectDetails.updated_at;
 
-    editProjects(projectDetails.idNo, editedProjectDetails).then((res) => {
-      dispatch(approveProjecAction({ idNo: projectDetails.idNo }));
+    editProjects(projectDetails.id, editedProjectDetails).then((res) => {
+      dispatch(approveProjecAction({ id: projectDetails.id }));
     });
     handleCloseConfirmApprove();
   };
@@ -183,6 +183,13 @@ export default function Projects({ isPending }) {
     setProjectDetails(i);
     setOpenConfirm(true);
   };
+
+  React.useEffect(() => {
+    getAllClients().then((res) => {
+      console.log(res.data.filter((c) => parseInt(c.isPending) === 0));
+      dispatch(setClients(res.data.filter((c) => parseInt(c.isPending) === 0)));
+    });
+  }, []);
 
   React.useEffect(() => {
     getAllProjects().then((res) => {
@@ -253,8 +260,8 @@ export default function Projects({ isPending }) {
                     </TableHead>
                     <TableBody>
                       {projects?.map((row) => (
-                        <TableRow key={row?.idNo}>
-                          <TableCell>{row?.idNo}</TableCell>
+                        <TableRow key={row?.id}>
+                          <TableCell>{row?.id}</TableCell>
                           <TableCell>{row?.Projectname}</TableCell>
                           <TableCell>
                             {getClientName(row?.ClientName)}
@@ -343,7 +350,7 @@ export default function Projects({ isPending }) {
         aria-labelledby="draggable-dialog-title"
       >
         <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
-          {projectDetails.idNo ? "Edit" : "Add"} Project
+          {projectDetails.id ? "Edit" : "Add"} Project
         </DialogTitle>
         <DialogContent>
           {error && <Alert severity="error">Please fill-up all fields</Alert>}
@@ -378,7 +385,7 @@ export default function Projects({ isPending }) {
               name="ClientName"
             >
               {clients.map((c) => (
-                <MenuItem value={c.idNo}>{c.name}</MenuItem>
+                <MenuItem value={c.id}>{c.name}</MenuItem>
               ))}
             </Select>
           </FormControl>

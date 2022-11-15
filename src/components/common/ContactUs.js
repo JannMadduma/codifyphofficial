@@ -34,7 +34,7 @@ export default function ContactUs({ open, setOpen }) {
             <Grid item xs={12} md={6}>
               <TextField
                 required
-                idNo="Projectname"
+                id="Projectname"
                 label="Your Fullname"
                 fullWidth
                 autoComplete="cc-Projectname"
@@ -44,7 +44,7 @@ export default function ContactUs({ open, setOpen }) {
             <Grid item xs={12} md={6}>
               <TextField
                 required
-                idNo="city"
+                id="city"
                 label="Your City"
                 fullWidth
                 autoComplete="cc-number"
@@ -54,7 +54,7 @@ export default function ContactUs({ open, setOpen }) {
             <Grid item xs={12} md={6}>
               <TextField
                 required
-                idNo="contactNumber"
+                id="contactNumber"
                 label="Your Contact Number"
                 fullWidth
                 autoComplete="cc-exp"
@@ -64,7 +64,7 @@ export default function ContactUs({ open, setOpen }) {
             <Grid item xs={12} md={6}>
               <TextField
                 required
-                idNo="inquiry"
+                id="inquiry"
                 label="Your Inquiry"
                 helperText="Please add your available time for call"
                 fullWidth

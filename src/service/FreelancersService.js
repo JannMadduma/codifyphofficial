@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const urlFreelancers = "https://codify-api.herokuapp.com/freelancers";
+const urlFreelancers = "http://localhost:5000/freelancers";
 
 export const loginUser = async (email, password) => {
   return await axios.get(

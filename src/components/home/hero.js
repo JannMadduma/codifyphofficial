@@ -62,7 +62,7 @@ export default function Hero({ isPending }) {
     ) {
       setError(true);
     } else {
-      if (clientDetails.idNo) {
+      if (clientDetails.id) {
         const editedClientDetails = {
           ...clientDetails,
           validId: clientDetails.validId,
@@ -72,9 +72,9 @@ export default function Hero({ isPending }) {
         delete editedClientDetails.created_at;
         delete editedClientDetails.updated_at;
 
-        // editClients(clientDetails.idNo, editedClientDetails).then((res) => {
+        // editClients(clientDetails.id, editedClientDetails).then((res) => {
         //   dispatch(
-        //     editClientAction({ ...res.data.client, idNo: clientDetails.idNo })
+        //     editClientAction({ ...res.data.client, id: clientDetails.id })
         //   );
         // });
         handleClose();

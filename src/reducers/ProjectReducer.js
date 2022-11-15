@@ -9,11 +9,11 @@ export default function ProjectsReducer(state = projectsState, action) {
       return action.projects;
     case actionTypes.ADD_PROJECT:
       return [
-        { ...action.projectDetails, idNo: action.projectDetails.id },
+        { ...action.projectDetails, id: action.projectDetails.id },
         ...state,
       ];
     case actionTypes.EDIT_PROJECT:
-      index = state.findIndex((mod) => mod.idNo === action.projectDetails.idNo);
+      index = state.findIndex((mod) => mod.id === action.projectDetails.id);
 
       return [
         ...state.slice(0, index), // everything before current item
@@ -21,15 +21,15 @@ export default function ProjectsReducer(state = projectsState, action) {
         ...state.slice(index + 1), // everything after current item
       ];
     case actionTypes.DELETE_PROJECT:
-      index = state.findIndex((mod) => mod.idNo === action.projectDetails.idNo);
+      index = state.findIndex((mod) => mod.id === action.projectDetails.id);
 
       return [
         ...state.slice(0, index), // everything before current item
         ...state.slice(index + 1), // everything after current item
       ];
     case actionTypes.APPROVE_PROJECT:
-      index = state.findIndex((mod) => mod.idNo === action.projectDetails.idNo);
-      index = state.findIndex((mod) => mod.idNo === action.projectDetails.idNo);
+      index = state.findIndex((mod) => mod.id === action.projectDetails.id);
+      index = state.findIndex((mod) => mod.id === action.projectDetails.id);
 
       return [
         ...state.slice(0, index), // everything before current item

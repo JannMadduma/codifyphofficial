@@ -14,11 +14,11 @@ export default function ClientsReducer(state = clientsState, action) {
     case actionTypes.ADD_CLIENTS:
       return [
         ...state,
-        { ...action.clientDetails, idNo: action.clientDetails.id },
+        { ...action.clientDetails, id: action.clientDetails.id },
       ];
     // EDIT
     case actionTypes.EDIT_CLIENTS:
-      index = state.findIndex((mod) => mod.idNo === action.clientDetails.idNo);
+      index = state.findIndex((mod) => mod.id === action.clientDetails.id);
 
       return [
         ...state.slice(0, index), // everything before current item
@@ -27,7 +27,7 @@ export default function ClientsReducer(state = clientsState, action) {
       ];
     // DELETE
     case actionTypes.DELETE_CLIENTS:
-      index = state.findIndex((mod) => mod.idNo === action.clientDetails.idNo);
+      index = state.findIndex((mod) => mod.id === action.clientDetails.id);
 
       return [
         ...state.slice(0, index), // everything before current item
@@ -35,7 +35,7 @@ export default function ClientsReducer(state = clientsState, action) {
       ];
     // APPROVE
     case actionTypes.APPROVE_CLIENTS:
-      index = state.findIndex((mod) => mod.idNo === action.clientDetails.idNo);
+      index = state.findIndex((mod) => mod.id === action.clientDetails.id);
 
       return [
         ...state.slice(0, index), // everything before current item

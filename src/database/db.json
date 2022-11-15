@@ -1,7 +1,7 @@
 {
   "clients": [
     {
-      "idNo": 1,
+      "id": 1,
       "name": "client1",
       "concerns": "website",
       "contactNo": "1234",
@@ -11,7 +11,7 @@
       "isPending": 0
     },
     {
-      "idNo": 1,
+      "id": 1,
       "name": "client1",
       "concerns": "website",
       "contactNo": "1234",
@@ -23,7 +23,7 @@
   ],
   "freelancers": [
     {
-      "idNo": 1,
+      "id": 1,
       "name": "client1",
       "concerns": "website",
       "contactNo": "1234",
@@ -34,7 +34,7 @@
   ],
   "projects": [
     {
-      "idNo": 1,
+      "id": 1,
       "Projectname": "project1",
       "ClientName": "client1",
       "GanteChartPic": "active",

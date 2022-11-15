@@ -88,7 +88,7 @@ export default function Freelancers() {
     ) {
       setError(true);
     } else {
-      if (freelancerDetails.idNo) {
+      if (freelancerDetails.id) {
         const editedFreelancerDetails = {
           ...freelancerDetails,
         };
@@ -97,12 +97,12 @@ export default function Freelancers() {
         delete editedFreelancerDetails.created_at;
         delete editedFreelancerDetails.updated_at;
 
-        editFreelancer(freelancerDetails.idNo, editedFreelancerDetails).then(
+        editFreelancer(freelancerDetails.id, editedFreelancerDetails).then(
           (res) => {
             dispatch(
               editFreelancerAction({
                 ...res.data,
-                idNo: freelancerDetails.idNo,
+                id: freelancerDetails.id,
               })
             );
           }
@@ -123,9 +123,9 @@ export default function Freelancers() {
 
   const handleFreelancerDelete = () => {
     console.log("ASDFD");
-    console.log(freelancerDetails.idNo);
-    deleteFreelancer(freelancerDetails.idNo).then((res) => {
-      dispatch(deleteFreelancerAction({ idNo: freelancerDetails.idNo }));
+    console.log(freelancerDetails.id);
+    deleteFreelancer(freelancerDetails.id).then((res) => {
+      dispatch(deleteFreelancerAction({ id: freelancerDetails.id }));
     });
     handleCloseConfirmDelete();
   };
@@ -212,8 +212,8 @@ export default function Freelancers() {
                     </TableHead>
                     <TableBody>
                       {freelancers.map((row) => (
-                        <TableRow key={row?.idNo}>
-                          <TableCell>{row?.idNo}</TableCell>
+                        <TableRow key={row?.id}>
+                          <TableCell>{row?.id}</TableCell>
                           <TableCell>{row?.name}</TableCell>
                           <TableCell>{row?.email}</TableCell>
                           <TableCell>{row?.role}</TableCell>

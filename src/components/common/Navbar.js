@@ -218,7 +218,7 @@ const ResponsiveAppBar = () => {
               ABOUT US
             </Link>
           </Box>
-          {/* {loggedIn?.idNo ? (
+          {/* {loggedIn?.id ? (
             <div>
               <IconButton
                 size="large"

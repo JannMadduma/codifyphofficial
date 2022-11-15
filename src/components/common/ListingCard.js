@@ -32,7 +32,7 @@ const ListingCard = ({ project, loggedIn }) => {
     setCopy(true);
     e.stopPropagation();
     navigator.clipboard.writeText(
-      `${window.ClientName.origin}/viewproject/${project.idNo}`
+      `${window.ClientName.origin}/viewproject/${project.id}`
     );
     setTimeout(() => {
       setCopy(false);
@@ -125,7 +125,7 @@ const ListingCard = ({ project, loggedIn }) => {
         </Typography>
 
         <hr />
-        {loggedIn?.idNo && (
+        {loggedIn?.id && (
           <CardActions disableSpacing>
             <IconButton aria-label="add to favorites" size="small">
               <FavoriteIcon fontSize="inherit" />
