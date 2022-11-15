@@ -10,14 +10,14 @@ import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+
+import { Alert } from "@mui/material";
+
+import { Link } from "react-router-dom";
 import {
   addFreelancer,
   getFreelancerEmail,
-  loginFreelancer,
-} from "../../service/freelancerService";
-import { Alert } from "@mui/material";
-import { setLoggedIn } from "../../actions/loggedInActions";
-import { Link } from "react-router-dom";
+} from "../../service/FreelancersService";
 
 const pagesAll = [{ name: "Listing", link: "/listing" }];
 const pagesAdmin = [{ name: "Manage", link: "/manageproperties" }];
@@ -66,32 +66,32 @@ const ResponsiveAppBar = () => {
     }
   };
 
-  const handleSignin = (e) => {
-    e.preventDefault();
+  // const handleSignin = (e) => {
+  //   e.preventDefault();
 
-    setError("");
-    if (!freelancer.email || !freelancer.password) {
-      setError("Please fill up necessary fields");
-    } else {
-      loginFreelancer(freelancer.email, freelancer.password)
-        .then((res) => {
-          console.log(res);
-          if (!res?.data?.length) {
-            setError("Incorrect email or password");
-          } else {
-            dispatch(setLoggedIn(res.data[0]));
-            handleDialogClose();
-          }
-        })
-        .catch((err) => {
-          setError("Something went wrong. Please try later");
-        });
-    }
-  };
+  //   setError("");
+  //   if (!freelancer.email || !freelancer.password) {
+  //     setError("Please fill up necessary fields");
+  //   } else {
+  //     loginFreelancer(freelancer.email, freelancer.password)
+  //       .then((res) => {
+  //         console.log(res);
+  //         if (!res?.data?.length) {
+  //           setError("Incorrect email or password");
+  //         } else {
+  //           dispatch(setLoggedIn(res.data[0]));
+  //           handleDialogClose();
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         setError("Something went wrong. Please try later");
+  //       });
+  //   }
+  // };
 
   const handleLogout = () => {
     handleUserMenuClose();
-    dispatch(setLoggedIn({}));
+    // dispatch(setLoggedIn({}));
   };
 
   const handleOpenNavMenu = (event) => {
@@ -288,7 +288,8 @@ const ResponsiveAppBar = () => {
       </Container>
 
       <Dialog open={open} onClose={handleDialogClose}>
-        <form onSubmit={signUpIn === "up" ? handleSignup : handleSignin}>
+        <form>
+          {/* onSubmit={signUpIn === "up" ? handleSignup : handleSignin} */}
           <DialogTitle>{signUpIn === "up" ? "Sign Up" : "Sign In"}</DialogTitle>
           <DialogContent>
             {error && <Alert severity="error">{error}</Alert>}
@@ -329,7 +330,7 @@ const ResponsiveAppBar = () => {
             <Button onClick={handleDialogClose}>Cancel</Button>
             <Button
               type={"submit"}
-              onClick={signUpIn === "up" ? handleSignup : handleSignin}
+              // onClick={signUpIn === "up" ? handleSignup : handleSignin}
               disabled={
                 (signUpIn === "up" &&
                   (!freelancer.name ||

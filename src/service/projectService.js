@@ -1,50 +1,28 @@
 import axios from "axios";
 
-const urlProjects = "https://codify-api.herokuapp.com/projects";
+const projectURL = "http://127.0.0.1:8000/api/project";
+const projectAddURL = "http://127.0.0.1:8000/api/add-project";
+const projectDeleteURL = "http://127.0.0.1:8000/api/delete-project";
+const projectEditURL = "http://127.0.0.1:8000/api/update-project";
+const projectApproveURL = "http://127.0.0.1:8000/api/update-project";
 
-export const getAllProjects = async (
-  idNo,
-  Projectname,
-  ClientName,
-  status,
-  isPending
-) => {
-  idNo = idNo || "";
-  let nameFilter = "";
-  let locationFilter = "";
-  let statusFilter = "";
-  let isPendingFilter = "";
-
-  if (Projectname) {
-    nameFilter = `&projectName_like=${Projectname}`;
-  }
-  if (ClientName) {
-    locationFilter += `&location_like=${ClientName}`;
-  }
-  if (status) {
-    statusFilter += `&status_like=${status}`;
-  }
-  if (isPending) {
-    isPendingFilter += `&status_like=${isPending}`;
-  }
-
-  return await axios.get(
-    `${urlProjects}/${idNo}?_sort=idNo&_order=desc${nameFilter}${locationFilter}${statusFilter}${isPendingFilter}`
-  );
+export const getAllProjects = async (id) => {
+  id = id || "";
+  return await axios.get(`${projectURL}/${id}`);
 };
 
-export const searchProject = async (search) => {
-  return await axios.get(`${urlProjects}?q=${search}`);
+export const addProjects = async (projectsDetails) => {
+  return await axios.post(projectAddURL, projectsDetails);
 };
 
-export const addProject = async (project) => {
-  return await axios.post(urlProjects, project);
+export const editProjects = async (id, projectsDetails) => {
+  return await axios.put(`${projectEditURL}/${id}`, projectsDetails);
 };
 
-export const editProject = async (idNo, project) => {
-  return await axios.put(`${urlProjects}/${idNo}`, project);
+export const deleteProjects = async (id) => {
+  return await axios.delete(`${projectDeleteURL}/${id}`);
 };
 
-export const deleteProject = async (idNo) => {
-  return await axios.delete(`${urlProjects}/${idNo}`);
+export const approveProjects = async (id) => {
+  return await axios.approve(`${projectApproveURL}/${id}`);
 };

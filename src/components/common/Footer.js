@@ -28,7 +28,7 @@ const myStyle = {
     fontFamily: "Poppins, sans-serif;",
     display: "flex",
     flexDirection: "column",
-    padding: "2%",
+    padding: "0 2%",
 
     flex: "25%",
   },
@@ -40,6 +40,7 @@ const myStyle = {
     padding: "0 1%",
     paddingBottom: "0px",
     flex: "25%",
+    paddingTop: "5px",
   },
   linksText: {
     fontFamily: "Poppins, sans-serif;",
