@@ -195,7 +195,7 @@ export default function Projects({ isPending }) {
     getAllProjects().then((res) => {
       const toFilter = isPending ? 1 : 0;
       dispatch(
-        setProjects(res.data.projects.filter((c) => c.isPending === toFilter))
+        setProjects(res.data.filter((c) => parseInt(c.isPending) === toFilter))
       );
     });
   }, []);

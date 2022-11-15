@@ -7,6 +7,7 @@ export default function ClientsReducer(state = clientsState, action) {
   switch (action.type) {
     // SET
     case actionTypes.SET_CLIENTSS:
+      console.log(action.clients);
       return action.clients;
 
     // ADD

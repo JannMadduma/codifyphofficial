@@ -52,7 +52,6 @@ const mdTheme = createTheme();
 
 export default function Clients({ isPending }) {
   const dispatch = useDispatch();
-
   const clients = useSelector((state) => state.clients);
   const [clientDetails, setClientDetails] = React.useState({});
   const [openConfirm, setOpenConfirm] = React.useState(false);
@@ -176,7 +175,7 @@ export default function Clients({ isPending }) {
     getAllClients().then((res) => {
       const toFilter = isPending ? 1 : 0;
       dispatch(
-        setClients(res.data.clients.filter((c) => c.isPending === toFilter))
+        setClients(res.data.filter((c) => parseInt(c.isPending) === toFilter))
       );
     });
   }, []);

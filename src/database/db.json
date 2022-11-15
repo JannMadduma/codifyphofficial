@@ -8,7 +8,17 @@
       "email": "client1@client.com",
       "availableTime": "3",
       "validId": "ok",
-      "isPending": "0"
+      "isPending": 0
+    },
+    {
+      "idNo": 1,
+      "name": "client1",
+      "concerns": "website",
+      "contactNo": "1234",
+      "email": "client1@client.com",
+      "availableTime": "3",
+      "validId": "ok",
+      "isPending": 1
     }
   ],
   "freelancers": [
