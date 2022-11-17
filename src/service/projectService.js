@@ -1,10 +1,6 @@
 import axios from "axios";
 
-const projectURL = "http://127.0.0.1:8000/api/project";
-const projectAddURL = "http://127.0.0.1:8000/api/add-project";
-const projectDeleteURL = "http://127.0.0.1:8000/api/delete-project";
-const projectEditURL = "http://127.0.0.1:8000/api/update-project";
-const projectApproveURL = "http://127.0.0.1:8000/api/update-project";
+const projectURL = "https://codify-api.herokuapp.com/projects";
 
 export const getAllProjects = async (id) => {
   id = id || "";
@@ -12,17 +8,17 @@ export const getAllProjects = async (id) => {
 };
 
 export const addProjects = async (projectsDetails) => {
-  return await axios.post(projectAddURL, projectsDetails);
+  return await axios.post(projectURL, projectsDetails);
 };
 
 export const editProjects = async (id, projectsDetails) => {
-  return await axios.put(`${projectEditURL}/${id}`, projectsDetails);
+  return await axios.put(`${projectURL}/${id}`, projectsDetails);
 };
 
 export const deleteProjects = async (id) => {
-  return await axios.delete(`${projectDeleteURL}/${id}`);
+  return await axios.delete(`${projectURL}/${id}`);
 };
 
 export const approveProjects = async (id) => {
-  return await axios.approve(`${projectApproveURL}/${id}`);
+  return await axios.approve(`${projectURL}/${id}`);
 };

@@ -15,23 +15,31 @@ import {
   TextField,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  addClients,
+  deleteClients,
+  editClients,
+  getAllClients,
+} from "../../service/ClientService";
+import {
+  addClientAction,
+  approveClientAction,
+  deleteClientAction,
+  editClientAction,
+  setClients,
+} from "../../actions/ClientActions";
 
 export default function Hero({ isPending }) {
   const dispatch = useDispatch();
-  // const clients = useSelector((state) => state.clients);
+  const clients = useSelector((state) => state.clients);
   const [clientDetails, setClientDetails] = React.useState({});
+  const [openConfirm, setOpenConfirm] = React.useState(false);
+  const [openConfirmDelete, setOpenConfirmDelete] = React.useState(false);
   const [editOpen, setEditOpen] = React.useState(false);
   const [error, setError] = React.useState(false);
 
   const handleInputChange = (e) => {
     setClientDetails({ ...clientDetails, [e.target.name]: e.target.value });
-  };
-
-  const handleClickOpen = (i) => {
-    console.log(i);
-    setError(false);
-    setClientDetails(i);
-    setEditOpen(true);
   };
 
   const handleImgChange = (e) => {
@@ -42,6 +50,13 @@ export default function Hero({ isPending }) {
     reader.onloadend = function (e) {
       setClientDetails({ ...clientDetails, validId: reader.result });
     };
+  };
+
+  const handleClickOpen = (i) => {
+    console.log(i);
+    setError(false);
+    setClientDetails(i);
+    setEditOpen(true);
   };
 
   const handleClose = () => {
@@ -72,11 +87,9 @@ export default function Hero({ isPending }) {
         delete editedClientDetails.created_at;
         delete editedClientDetails.updated_at;
 
-        // editClients(clientDetails.id, editedClientDetails).then((res) => {
-        //   dispatch(
-        //     editClientAction({ ...res.data.client, id: clientDetails.id })
-        //   );
-        // });
+        editClients(clientDetails.id, editedClientDetails).then((res) => {
+          dispatch(editClientAction({ ...res.data, id: clientDetails.id }));
+        });
         handleClose();
       } else {
         const clientToAdd = {
@@ -85,22 +98,64 @@ export default function Hero({ isPending }) {
           validId: clientDetails?.validId?.length ? clientDetails?.validId : [],
         };
 
-        // addClients(clientToAdd).then((res) => {
-        //   dispatch(addClientAction(res.data.client));
-        // });
+        addClients(clientToAdd).then((res) => {
+          dispatch(addClientAction(res.data));
+        });
         handleClose();
       }
     }
   };
 
-  // React.useEffect(() => {
-  //   getAllClients().then((res) => {
-  //     const toFilter = isPending ? 1 : 0;
-  //     dispatch(
-  //       setClients(res.data.clients.filter((c) => c.isPending === toFilter))
-  //     );
-  //   });
-  // }, []);
+  const handleClientDelete = () => {
+    deleteClients(clientDetails.id).then(() => {
+      dispatch(deleteClientAction({ id: clientDetails.id }));
+    });
+    handleCloseConfirmDelete();
+  };
+
+  const handleClientApprove = () => {
+    const editedClientDetails = {
+      ...clientDetails,
+      isPending: 0,
+    };
+
+    delete editedClientDetails.id;
+    delete editedClientDetails.created_at;
+    delete editedClientDetails.updated_at;
+
+    editClients(clientDetails.id, editedClientDetails).then((res) => {
+      dispatch(approveClientAction({ id: clientDetails.id }));
+    });
+    handleCloseConfirmApprove();
+  };
+
+  const handleOpenConfirmDelete = (i) => {
+    setClientDetails(i);
+    console.log("here");
+    setOpenConfirmDelete(true);
+  };
+
+  const handleOpenConfirmapprove = (i) => {
+    setClientDetails(i);
+    setOpenConfirm(true);
+  };
+
+  const handleCloseConfirmDelete = () => {
+    setOpenConfirmDelete(false);
+  };
+
+  const handleCloseConfirmApprove = () => {
+    setOpenConfirm(false);
+  };
+
+  React.useEffect(() => {
+    getAllClients().then((res) => {
+      const toFilter = isPending ? 1 : 0;
+      dispatch(
+        setClients(res.data.filter((c) => parseInt(c.isPending) === toFilter))
+      );
+    });
+  }, []);
 
   return (
     <div
@@ -226,7 +281,7 @@ export default function Hero({ isPending }) {
         aria-labelledby="draggable-dialog-title"
       >
         <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
-          Contact Us
+          {clientDetails.id ? "Edit" : "Add"} Client
         </DialogTitle>
         <DialogContent>
           {error && <Alert severity="error">Please fill-up all fields</Alert>}
@@ -302,7 +357,6 @@ export default function Hero({ isPending }) {
 
           {!!clientDetails?.validId && (
             <img
-              alt=""
               src={clientDetails.validId}
               style={{ width: "100%", marginTop: 8 }}
             />

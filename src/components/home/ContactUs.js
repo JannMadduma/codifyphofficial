@@ -5,104 +5,157 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
-import { Grid } from "@mui/material";
-import { useDispatch } from "react-redux";
-// import {
-//   addClients,
-//   editClients,
-//   getAllClients,
-// } from "../../service/ClientService";
-// import {
-//   addClientAction,
-//   editClientAction,
-//   setClients,
-// } from "../../actions/ClientActions";
+import {
+  Alert,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Grid,
+  TextField,
+} from "@mui/material";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addClients,
+  deleteClients,
+  editClients,
+  getAllClients,
+} from "../../service/ClientService";
+import {
+  addClientAction,
+  approveClientAction,
+  deleteClientAction,
+  editClientAction,
+  setClients,
+} from "../../actions/ClientActions";
 
 export default function ContactUs({ isPending }) {
   const dispatch = useDispatch();
-  // const clients = useSelector((state) => state.clients);
-  //   const [clientDetails, setClientDetails] = React.useState({});
-  //   const [editOpen, setEditOpen] = React.useState(false);
-  //   const [error, setError] = React.useState(false);
+  const clients = useSelector((state) => state.clients);
+  const [clientDetails, setClientDetails] = React.useState({});
+  const [openConfirm, setOpenConfirm] = React.useState(false);
+  const [openConfirmDelete, setOpenConfirmDelete] = React.useState(false);
+  const [editOpen, setEditOpen] = React.useState(false);
+  const [error, setError] = React.useState(false);
 
-  //   const handleInputChange = (e) => {
-  //     setClientDetails({ ...clientDetails, [e.target.name]: e.target.value });
-  //   };
+  const handleInputChange = (e) => {
+    setClientDetails({ ...clientDetails, [e.target.name]: e.target.value });
+  };
 
-  //   const handleClickOpen = (i) => {
-  //     console.log(i);
-  //     setError(false);
-  //     setClientDetails(i);
-  //     setEditOpen(true);
-  //   };
+  const handleImgChange = (e) => {
+    var file = e.target.files[0];
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
 
-  //   const handleImgChange = (e) => {
-  //     var file = e.target.files[0];
-  //     var reader = new FileReader();
-  //     reader.readAsDataURL(file);
+    reader.onloadend = function (e) {
+      setClientDetails({ ...clientDetails, validId: reader.result });
+    };
+  };
 
-  //     reader.onloadend = function (e) {
-  //       setClientDetails({ ...clientDetails, validId: reader.result });
-  //     };
-  //   };
+  const handleClickOpen = (i) => {
+    console.log(i);
+    setError(false);
+    setClientDetails(i);
+    setEditOpen(true);
+  };
 
-  //   const handleClose = () => {
-  //     setEditOpen(false);
-  //   };
+  const handleClose = () => {
+    setEditOpen(false);
+  };
 
-  //   const handleEdit = () => {
-  //     setError(false);
+  const handleEdit = () => {
+    setError(false);
 
-  //     if (
-  //       !clientDetails.name ||
-  //       !clientDetails.concerns ||
-  //       !clientDetails.contactNo ||
-  //       !clientDetails.email ||
-  //       !clientDetails.availableTime ||
-  //       !clientDetails.validId ||
-  //       !clientDetails.status
-  //     ) {
-  //       setError(true);
-  //     } else {
-  //       if (clientDetails.id) {
-  //         const editedClientDetails = {
-  //           ...clientDetails,
-  //           validId: clientDetails.validId,
-  //         };
+    if (
+      !clientDetails.name ||
+      !clientDetails.concerns ||
+      !clientDetails.contactNo ||
+      !clientDetails.email ||
+      !clientDetails.availableTime ||
+      !clientDetails.validId ||
+      !clientDetails.status
+    ) {
+      setError(true);
+    } else {
+      if (clientDetails.id) {
+        const editedClientDetails = {
+          ...clientDetails,
+          validId: clientDetails.validId,
+        };
 
-  //         delete editedClientDetails.id;
-  //         delete editedClientDetails.created_at;
-  //         delete editedClientDetails.updated_at;
+        delete editedClientDetails.id;
+        delete editedClientDetails.created_at;
+        delete editedClientDetails.updated_at;
 
-  //         editClients(clientDetails.id, editedClientDetails).then((res) => {
-  //           dispatch(
-  //             editClientAction({ ...res.data.client, id: clientDetails.id })
-  //           );
-  //         });
-  //         handleClose();
-  //       } else {
-  //         const clientToAdd = {
-  //           ...clientDetails,
-  //           isPending: 1,
-  //           validId: clientDetails?.validId?.length ? clientDetails?.validId : [],
-  //         };
+        editClients(clientDetails.id, editedClientDetails).then((res) => {
+          dispatch(editClientAction({ ...res.data, id: clientDetails.id }));
+        });
+        handleClose();
+      } else {
+        const clientToAdd = {
+          ...clientDetails,
+          isPending: 1,
+          validId: clientDetails?.validId?.length ? clientDetails?.validId : [],
+        };
 
-  //         addClients(clientToAdd).then((res) => {
-  //           dispatch(addClientAction(res.data.client));
-  //         });
-  //         handleClose();
-  //       }
-  //     }
-  //   };
+        addClients(clientToAdd).then((res) => {
+          dispatch(addClientAction(res.data));
+        });
+        handleClose();
+      }
+    }
+  };
 
-  //   React.useEffect(() => {
-  //     getAllClients().then((res) => {
-  //       const toFilter = isPending ? 1 : 0;
-  //       dispatch(
-  //         setClients(res.data.clients.filter((c) => c.isPending === toFilter))
-  //       );
-  //     });
-  //   }, []);
+  const handleClientDelete = () => {
+    deleteClients(clientDetails.id).then(() => {
+      dispatch(deleteClientAction({ id: clientDetails.id }));
+    });
+    handleCloseConfirmDelete();
+  };
+
+  const handleClientApprove = () => {
+    const editedClientDetails = {
+      ...clientDetails,
+      isPending: 0,
+    };
+
+    delete editedClientDetails.id;
+    delete editedClientDetails.created_at;
+    delete editedClientDetails.updated_at;
+
+    editClients(clientDetails.id, editedClientDetails).then((res) => {
+      dispatch(approveClientAction({ id: clientDetails.id }));
+    });
+    handleCloseConfirmApprove();
+  };
+
+  const handleOpenConfirmDelete = (i) => {
+    setClientDetails(i);
+    console.log("here");
+    setOpenConfirmDelete(true);
+  };
+
+  const handleOpenConfirmapprove = (i) => {
+    setClientDetails(i);
+    setOpenConfirm(true);
+  };
+
+  const handleCloseConfirmDelete = () => {
+    setOpenConfirmDelete(false);
+  };
+
+  const handleCloseConfirmApprove = () => {
+    setOpenConfirm(false);
+  };
+
+  React.useEffect(() => {
+    getAllClients().then((res) => {
+      const toFilter = isPending ? 1 : 0;
+      dispatch(
+        setClients(res.data.filter((c) => parseInt(c.isPending) === toFilter))
+      );
+    });
+  }, []);
 
   return (
     <div
@@ -186,7 +239,7 @@ export default function ContactUs({ isPending }) {
                         py: 1,
                         mx: 5,
                       }}
-                      //   onClick={() => handleClickOpen({})}
+                      onClick={() => handleClickOpen({})}
                     >
                       Subscribe {">"}
                     </Button>
@@ -200,7 +253,7 @@ export default function ContactUs({ isPending }) {
                         py: 1,
                         mx: 5,
                       }}
-                      //   onClick={() => handleClickOpen({})}
+                      onClick={() => handleClickOpen({})}
                     >
                       Inquire now
                     </Button>
@@ -211,7 +264,7 @@ export default function ContactUs({ isPending }) {
           </Grid>
         </Container>
       </Box>
-      {/* <Dialog
+      <Dialog
         maxWidth="sm"
         fullWidth
         open={editOpen}
@@ -219,7 +272,7 @@ export default function ContactUs({ isPending }) {
         aria-labelledby="draggable-dialog-title"
       >
         <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
-          Inquire now
+          {clientDetails.id ? "Edit" : "Add"} Client
         </DialogTitle>
         <DialogContent>
           {error && <Alert severity="error">Please fill-up all fields</Alert>}
@@ -295,7 +348,6 @@ export default function ContactUs({ isPending }) {
 
           {!!clientDetails?.validId && (
             <img
-              alt=""
               src={clientDetails.validId}
               style={{ width: "100%", marginTop: 8 }}
             />
@@ -307,7 +359,7 @@ export default function ContactUs({ isPending }) {
           </Button>
           <Button onClick={handleEdit}>Save</Button>
         </DialogActions>
-      </Dialog> */}
+      </Dialog>
     </div>
   );
 }
