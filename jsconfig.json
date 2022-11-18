@@ -8,7 +8,7 @@
       "@/database/*": ["database/*"],
       "@/reducers/*": ["reducers/*"],
       "@/service/*": ["service/*"],
-      "@/store/*": ["store/*"],
+      "@/store/*": ["store/*"]
     }
   }
 }
