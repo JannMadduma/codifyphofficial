@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { Link } from "@mui/material";
 
 export default function Team() {
   return (
@@ -97,18 +98,20 @@ export default function Team() {
                     />
                   </Box>
                   <Box>
-                    <Typography
-                      component="div"
-                      align="center"
-                      sx={{
-                        fontWeight: "bold",
-                        fontFamily: "Poppins, sans-serif;",
-                        fontSize: "12px",
-                        paddingTop: "10px",
-                      }}
-                    >
-                      Rech Narada
-                    </Typography>
+                    <Link href="https://jannmadduma.github.io/rechcreatives/">
+                      <Typography
+                        component="div"
+                        align="center"
+                        sx={{
+                          fontWeight: "bold",
+                          fontFamily: "Poppins, sans-serif;",
+                          fontSize: "12px",
+                          paddingTop: "10px",
+                        }}
+                      >
+                        Rech Narada
+                      </Typography>
+                    </Link>
                     <Typography
                       color="text.secondary"
                       align="center"
@@ -177,18 +180,20 @@ export default function Team() {
                     />
                   </Box>
                   <Box>
-                    <Typography
-                      component="div"
-                      align="center"
-                      sx={{
-                        fontWeight: "bold",
-                        fontFamily: "Poppins, sans-serif;",
-                        fontSize: "12px",
-                        paddingTop: "10px",
-                      }}
-                    >
-                      John Erick Madduma
-                    </Typography>
+                    <Link href="https://maddumajohnerick.github.io/">
+                      <Typography
+                        component="div"
+                        align="center"
+                        sx={{
+                          fontWeight: "bold",
+                          fontFamily: "Poppins, sans-serif;",
+                          fontSize: "12px",
+                          paddingTop: "10px",
+                        }}
+                      >
+                        John Erick Madduma
+                      </Typography>
+                    </Link>
                     <Typography
                       color="text.secondary"
                       align="center"
