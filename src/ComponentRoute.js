@@ -10,7 +10,7 @@ import PendingClients from "./components/admin/dashboard/mainContents/clientMana
 import Freelancers from "./components/admin/dashboard/mainContents/others/Freelancers";
 import Subscribed from "./components/admin/dashboard/mainContents/others/Subscribed";
 import PendingProjects from "components/admin/dashboard/mainContents/projectManagement/PendingProjects";
-import Projects from "components/admin/dashboard/mainContents/projectManagement/Projects";
+import Projects from "@/components/admin/dashboard/mainContents/projectManagement/Projectss";
 
 const ComponentRoute = () => {
   return (
