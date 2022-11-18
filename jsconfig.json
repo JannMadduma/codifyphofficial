@@ -3,7 +3,7 @@
       "baseUrl": "./src",
       "paths": {
         "@/components/*": ["components/*"],
-        "@/components/admin/dashboard/projectManagement/*": ["projectManagement/*"],
+        // "@/components/*": ["projectManagement/*"],
         "@/actions/*": ["actions/*"],
         "@/assets/*": ["assets/*"],
         "@/database/*": ["database/*"],
