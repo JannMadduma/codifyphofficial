@@ -262,18 +262,20 @@ export default function Team() {
                     />
                   </Box>
                   <Box>
-                    <Typography
-                      component="div"
-                      align="center"
-                      sx={{
-                        fontWeight: "bold",
-                        fontFamily: "Poppins, sans-serif;",
-                        fontSize: "12px",
-                        paddingTop: "10px",
-                      }}
-                    >
-                      Jose Anthony Salingua
-                    </Typography>
+                    <Link href="https://ton-salingua.github.io/">
+                      <Typography
+                        component="div"
+                        align="center"
+                        sx={{
+                          fontWeight: "bold",
+                          fontFamily: "Poppins, sans-serif;",
+                          fontSize: "12px",
+                          paddingTop: "10px",
+                        }}
+                      >
+                        Jose Anthony Salingua
+                      </Typography>
+                    </Link>
                     <Typography
                       color="text.secondary"
                       align="center"
@@ -302,18 +304,20 @@ export default function Team() {
                     />
                   </Box>
                   <Box>
-                    <Typography
-                      component="div"
-                      align="center"
-                      sx={{
-                        fontWeight: "bold",
-                        fontFamily: "Poppins, sans-serif;",
-                        fontSize: "12px",
-                        paddingTop: "10px",
-                      }}
-                    >
-                      Russel Jay Buan
-                    </Typography>
+                    <Link href="https://sseljay.github.io/portfolio/">
+                      <Typography
+                        component="div"
+                        align="center"
+                        sx={{
+                          fontWeight: "bold",
+                          fontFamily: "Poppins, sans-serif;",
+                          fontSize: "12px",
+                          paddingTop: "10px",
+                        }}
+                      >
+                        Russel Jay Buan
+                      </Typography>
+                    </Link>
                     <Typography
                       color="text.secondary"
                       align="center"
