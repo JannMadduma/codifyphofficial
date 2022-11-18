@@ -10,7 +10,6 @@ import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Alert,
-  Avatar,
   Button,
   ButtonGroup,
   Dialog,
@@ -18,7 +17,6 @@ import {
   DialogContent,
   DialogTitle,
   Divider,
-  Drawer,
   IconButton,
   Input,
   List,
@@ -36,15 +34,15 @@ import {
   deleteFreelancer,
   editFreelancer,
   getAllFreelancers,
-} from "../../../../../service/FreelancersService";
+} from "service/FreelancersService";
 import {
   addFreelancerAction,
   deleteFreelancerAction,
   editFreelancerAction,
   setFreelancers,
-} from "../../../../../actions/FreelancersAction";
-import { SidebarContents } from "../../sidebarContents/SidebarContents";
-import AdminHeader from "../../../AdminHeader";
+} from "actions/FreelancersAction";
+import { SidebarContents } from "components/admin/dashboard/sidebarContents/SidebarContents";
+import AdminHeader from "components/admin/AdminHeader";
 
 const mdTheme = createTheme();
 

@@ -1,4 +1,4 @@
-import { actionTypes } from "../actions/ClientActions";
+import { actionTypes } from "actions/ClientActions";
 
 const clientsState = [];
 let index;

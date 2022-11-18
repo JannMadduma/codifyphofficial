@@ -34,23 +34,24 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import {
-  addProjects,
-  deleteProjects,
-  editProjects,
-  getAllProjects,
-} from "../../../../../service/ProjectService";
+
 import {
   addProjectAction,
   approveProjecAction,
   deleteProjectAction,
   editProjectAction,
   setProjects,
-} from "../../../../../actions/ProjectActions";
-import { SidebarContents } from "../../sidebarContents/SidebarContents";
-import { getAllClients } from "../../../../../service/ClientService";
-import { setClients } from "../../../../../actions/ClientActions";
-import AdminHeader from "../../../AdminHeader";
+} from "actions/ProjectActions";
+import { SidebarContents } from "components/admin/dashboard/sidebarContents/SidebarContents";
+import { getAllClients } from "service/ClientService";
+import { setClients } from "actions/ClientActions";
+import AdminHeader from "components/admin/AdminHeader";
+import {
+  addProjects,
+  deleteProjects,
+  editProjects,
+  getAllProjects,
+} from "service/ProjectService";
 
 const mdTheme = createTheme();
 

@@ -19,14 +19,14 @@ import {
   deleteClients,
   editClients,
   getAllClients,
-} from "../../service/ClientService";
+} from "service/ClientService";
 import {
   addClientAction,
   approveClientAction,
   deleteClientAction,
   editClientAction,
   setClients,
-} from "../../actions/ClientActions";
+} from "actions/ClientActions";
 
 const ResponsiveAppBar = ({ isPending }) => {
   const dispatch = useDispatch();

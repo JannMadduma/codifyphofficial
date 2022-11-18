@@ -2,7 +2,6 @@ import { Box, Container } from "@mui/system";
 import React from "react";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
-import CssBaseline from "@mui/material/CssBaseline";
 
 export default function Missionvision() {
   return (

@@ -7,7 +7,6 @@ import PeopleOutlineIcon from "@mui/icons-material/PeopleOutline";
 import { Link } from "react-router-dom";
 import WorkIcon from "@mui/icons-material/Work";
 import WorkOutlineIcon from "@mui/icons-material/WorkOutline";
-import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import Diversity3Icon from "@mui/icons-material/Diversity3";
 import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";

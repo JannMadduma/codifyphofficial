@@ -17,8 +17,8 @@ import {
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 
-import { setFreelancers } from "../../../actions/FreelancersAction";
-import { loginUser } from "../../../service/FreelancersService";
+import { setFreelancers } from "actions/FreelancersAction";
+import { loginUser } from "service/FreelancersService";
 import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {

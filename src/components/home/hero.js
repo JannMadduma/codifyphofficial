@@ -20,14 +20,14 @@ import {
   deleteClients,
   editClients,
   getAllClients,
-} from "../../service/ClientService";
+} from "service/ClientService";
 import {
   addClientAction,
   approveClientAction,
   deleteClientAction,
   editClientAction,
   setClients,
-} from "../../actions/ClientActions";
+} from "actions/ClientActions";
 
 export default function Hero({ isPending }) {
   const dispatch = useDispatch();

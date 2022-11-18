@@ -1,4 +1,4 @@
-import { actionTypes } from "../actions/FreelancersAction";
+import { actionTypes } from "actions/FreelancersAction";
 
 const freelancersState = [];
 let index;

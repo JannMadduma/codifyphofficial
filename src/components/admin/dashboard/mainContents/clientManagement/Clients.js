@@ -19,9 +19,7 @@ import {
   DialogContent,
   DialogTitle,
   Divider,
-  Drawer,
   IconButton,
-  Input,
   List,
   Table,
   TableBody,
@@ -37,16 +35,16 @@ import {
   deleteClients,
   editClients,
   getAllClients,
-} from "../../../../../service/ClientService";
+} from "service/ClientService";
 import {
   addClientAction,
   approveClientAction,
   deleteClientAction,
   editClientAction,
   setClients,
-} from "../../../../../actions/ClientActions";
-import { SidebarContents } from "../../sidebarContents/SidebarContents";
-import AdminHeader from "../../../AdminHeader";
+} from "actions/ClientActions";
+import { SidebarContents } from "components/admin/dashboard/sidebarContents/SidebarContents";
+import AdminHeader from "components/admin/AdminHeader";
 
 const mdTheme = createTheme();
 
