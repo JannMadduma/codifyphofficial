@@ -6,81 +6,126 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 
 import {
-  Alert,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Grid,
-  TextField,
+    Alert,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogTitle,
+    Grid,
+    TextField,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addClients,
-  deleteClients,
-  editClients,
-  getAllClients,
+    addClients,
+    deleteClients,
+    editClients,
+    getAllClients,
 } from "service/ClientService";
 import {
-  addClientAction,
-  approveClientAction,
-  deleteClientAction,
-  editClientAction,
-  setClients,
+    addClientAction,
+    approveClientAction,
+    deleteClientAction,
+    editClientAction,
+    setClients,
 } from "actions/ClientActions";
 
 export default function ContactUs({ isPending }) {
-  const dispatch = useDispatch();
-  const clients = useSelector((state) => state.clients);
-  const [clientDetails, setClientDetails] = React.useState({});
-  const [openConfirm, setOpenConfirm] = React.useState(false);
-  const [openConfirmDelete, setOpenConfirmDelete] = React.useState(false);
-  const [editOpen, setEditOpen] = React.useState(false);
-  const [error, setError] = React.useState(false);
+    const dispatch = useDispatch();
+    const clients = useSelector((state) => state.clients);
+    const [clientDetails, setClientDetails] = React.useState({});
+    const [openConfirm, setOpenConfirm] = React.useState(false);
+    const [openConfirmDelete, setOpenConfirmDelete] = React.useState(false);
+    const [editOpen, setEditOpen] = React.useState(false);
+    const [error, setError] = React.useState(false);
 
-  const handleInputChange = (e) => {
-    setClientDetails({ ...clientDetails, [e.target.name]: e.target.value });
-  };
-
-  const handleImgChange = (e) => {
-    var file = e.target.files[0];
-    var reader = new FileReader();
-    reader.readAsDataURL(file);
-
-    reader.onloadend = function (e) {
-      setClientDetails({ ...clientDetails, validId: reader.result });
+    const handleInputChange = (e) => {
+        setClientDetails({ ...clientDetails, [e.target.name]: e.target.value });
     };
-  };
 
-  const handleClickOpen = (i) => {
-    console.log(i);
-    setError(false);
-    setClientDetails(i);
-    setEditOpen(true);
-  };
+    const handleImgChange = (e) => {
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
 
-  const handleClose = () => {
-    setEditOpen(false);
-  };
+        reader.onloadend = function (e) {
+            setClientDetails({ ...clientDetails, validId: reader.result });
+        };
+    };
 
-  const handleEdit = () => {
-    setError(false);
+    const handleClickOpen = (i) => {
+        console.log(i);
+        setError(false);
+        setClientDetails(i);
+        setEditOpen(true);
+    };
 
-    if (
-      !clientDetails.name ||
-      !clientDetails.concerns ||
-      !clientDetails.contactNo ||
-      !clientDetails.email ||
-      !clientDetails.availableTime ||
-      !clientDetails.validId ||
-      !clientDetails.status
-    ) {
-      setError(true);
-    } else {
-      if (clientDetails.id) {
+    const handleClose = () => {
+        setEditOpen(false);
+    };
+
+    const handleEdit = () => {
+        setError(false);
+
+        if (
+            !clientDetails.name ||
+            !clientDetails.concerns ||
+            !clientDetails.contactNo ||
+            !clientDetails.email ||
+            !clientDetails.availableTime ||
+            !clientDetails.validId ||
+            !clientDetails.status
+        ) {
+            setError(true);
+        } else {
+            if (clientDetails.id) {
+                const editedClientDetails = {
+                    ...clientDetails,
+                    validId: clientDetails.validId,
+                };
+
+                delete editedClientDetails.id;
+                delete editedClientDetails.created_at;
+                delete editedClientDetails.updated_at;
+
+                editClients(clientDetails.id, editedClientDetails).then(
+                    (res) => {
+                        dispatch(
+                            editClientAction({
+                                ...res.data,
+                                id: clientDetails.id,
+                            }),
+                        );
+                    },
+                );
+                handleClose();
+            } else {
+                const clientToAdd = {
+                    ...clientDetails,
+                    isPending: 1,
+                    validId: clientDetails?.validId?.length
+                        ? clientDetails?.validId
+                        : [],
+                };
+
+                addClients(clientToAdd).then((res) => {
+                    dispatch(addClientAction(res.data));
+                });
+                handleClose();
+            }
+        }
+    };
+
+    const handleClientDelete = () => {
+        deleteClients(clientDetails.id).then(() => {
+            dispatch(deleteClientAction({ id: clientDetails.id }));
+        });
+        handleCloseConfirmDelete();
+    };
+
+    const handleClientApprove = () => {
         const editedClientDetails = {
-          ...clientDetails,
-          validId: clientDetails.validId,
+            ...clientDetails,
+            isPending: 0,
         };
 
         delete editedClientDetails.id;
@@ -88,278 +133,261 @@ export default function ContactUs({ isPending }) {
         delete editedClientDetails.updated_at;
 
         editClients(clientDetails.id, editedClientDetails).then((res) => {
-          dispatch(editClientAction({ ...res.data, id: clientDetails.id }));
+            dispatch(approveClientAction({ id: clientDetails.id }));
         });
-        handleClose();
-      } else {
-        const clientToAdd = {
-          ...clientDetails,
-          isPending: 1,
-          validId: clientDetails?.validId?.length ? clientDetails?.validId : [],
-        };
-
-        addClients(clientToAdd).then((res) => {
-          dispatch(addClientAction(res.data));
-        });
-        handleClose();
-      }
-    }
-  };
-
-  const handleClientDelete = () => {
-    deleteClients(clientDetails.id).then(() => {
-      dispatch(deleteClientAction({ id: clientDetails.id }));
-    });
-    handleCloseConfirmDelete();
-  };
-
-  const handleClientApprove = () => {
-    const editedClientDetails = {
-      ...clientDetails,
-      isPending: 0,
+        handleCloseConfirmApprove();
     };
 
-    delete editedClientDetails.id;
-    delete editedClientDetails.created_at;
-    delete editedClientDetails.updated_at;
+    const handleOpenConfirmDelete = (i) => {
+        setClientDetails(i);
+        console.log("here");
+        setOpenConfirmDelete(true);
+    };
 
-    editClients(clientDetails.id, editedClientDetails).then((res) => {
-      dispatch(approveClientAction({ id: clientDetails.id }));
-    });
-    handleCloseConfirmApprove();
-  };
+    const handleOpenConfirmapprove = (i) => {
+        setClientDetails(i);
+        setOpenConfirm(true);
+    };
 
-  const handleOpenConfirmDelete = (i) => {
-    setClientDetails(i);
-    console.log("here");
-    setOpenConfirmDelete(true);
-  };
+    const handleCloseConfirmDelete = () => {
+        setOpenConfirmDelete(false);
+    };
 
-  const handleOpenConfirmapprove = (i) => {
-    setClientDetails(i);
-    setOpenConfirm(true);
-  };
+    const handleCloseConfirmApprove = () => {
+        setOpenConfirm(false);
+    };
 
-  const handleCloseConfirmDelete = () => {
-    setOpenConfirmDelete(false);
-  };
+    React.useEffect(() => {
+        getAllClients().then((res) => {
+            const toFilter = isPending ? 1 : 0;
+            dispatch(
+                setClients(
+                    res.data.filter((c) => parseInt(c.isPending) === toFilter),
+                ),
+            );
+        });
+    }, []);
 
-  const handleCloseConfirmApprove = () => {
-    setOpenConfirm(false);
-  };
-
-  React.useEffect(() => {
-    getAllClients().then((res) => {
-      const toFilter = isPending ? 1 : 0;
-      dispatch(
-        setClients(res.data.filter((c) => parseInt(c.isPending) === toFilter))
-      );
-    });
-  }, []);
-
-  return (
-    <div
-      style={{
-        height: "60vh",
-      }}
-    >
-      <Box
-        sx={{
-          backgroundImage: "url('img/contactusbg.png')",
-          backgroundSize: "cover",
-          height: "60vh",
-        }}
-        id="contactUs"
-      >
-        <Container sx={{ height: "60vh" }}>
-          <Grid
-            container
-            spacing={2}
-            sx={{ height: "60vh", alignContent: "center", paddingTop: "40px" }}
-          >
-            <Grid item xs={12} sx={{ display: "flex", alignItems: "center" }}>
-              <Box
+    return (
+        <div
+            style={{
+                height: "60vh",
+            }}
+        >
+            <Box
                 sx={{
-                  alignItems: "center",
-                  width: "100%",
+                    backgroundImage: "url('/img/contactusbg.png')",
+                    backgroundSize: "cover",
+                    height: "60vh",
                 }}
-              >
-                <Box>
-                  <Typography
-                    variant="h5"
-                    align="center"
-                    color="text.primary"
-                    gutterBottom
-                    sx={{
-                      fontWeight: "bold",
-                      fontFamily: "Poppins, sans-serif;",
-                    }}
-                  >
-                    CONTACT US
-                  </Typography>
-                  <Typography
-                    component="h1"
-                    variant="h2"
-                    align="center"
-                    color="text.primary"
-                    gutterBottom
-                    sx={{
-                      fontWeight: "bold",
-                      color: "#82C8E1 ",
-                      fontFamily: "Poppins, sans-serif;",
-                    }}
-                  >
-                    Let's Collaborate
-                  </Typography>
-                  <Typography
-                    align="center"
-                    paragraph
-                    sx={{
-                      fontWeight: "bold",
-                      fontFamily: "Poppins, sans-serif;",
-                    }}
-                  >
-                    Need something built for your business?
-                    <br />
-                    Talk to us about it.
-                  </Typography>
-                  <Stack
-                    sx={{ pt: 4, mx: 5 }}
-                    direction="row"
-                    spacing={5}
-                    justifyContent="center"
-                  >
-                    <Button
-                      variant="contained"
-                      sx={{
-                        fontWeight: "bold",
-                        fontFamily: "Poppins, sans-serif;",
-                        bgcolor: "#82C8E1 ",
-                        px: 3,
-                        py: 1,
-                        mx: 5,
-                      }}
-                      onClick={() => handleClickOpen({})}
+                id="contactUs"
+            >
+                <Container sx={{ height: "60vh" }}>
+                    <Grid
+                        container
+                        spacing={2}
+                        sx={{
+                            height: "60vh",
+                            alignContent: "center",
+                            paddingTop: "40px",
+                        }}
                     >
-                      Subscribe {">"}
+                        <Grid
+                            item
+                            xs={12}
+                            sx={{ display: "flex", alignItems: "center" }}
+                        >
+                            <Box
+                                sx={{
+                                    alignItems: "center",
+                                    width: "100%",
+                                }}
+                            >
+                                <Box>
+                                    <Typography
+                                        variant="h5"
+                                        align="center"
+                                        color="text.primary"
+                                        gutterBottom
+                                        sx={{
+                                            fontWeight: "bold",
+                                            fontFamily: "Poppins, sans-serif;",
+                                        }}
+                                    >
+                                        CONTACT US
+                                    </Typography>
+                                    <Typography
+                                        component="h1"
+                                        variant="h2"
+                                        align="center"
+                                        color="text.primary"
+                                        gutterBottom
+                                        sx={{
+                                            fontWeight: "bold",
+                                            color: "#82C8E1 ",
+                                            fontFamily: "Poppins, sans-serif;",
+                                        }}
+                                    >
+                                        Let's Collaborate
+                                    </Typography>
+                                    <Typography
+                                        align="center"
+                                        paragraph
+                                        sx={{
+                                            fontWeight: "bold",
+                                            fontFamily: "Poppins, sans-serif;",
+                                        }}
+                                    >
+                                        Need something built for your business?
+                                        <br />
+                                        Talk to us about it.
+                                    </Typography>
+                                    <Stack
+                                        sx={{ pt: 4, mx: 5 }}
+                                        direction="row"
+                                        spacing={5}
+                                        justifyContent="center"
+                                    >
+                                        <Button
+                                            variant="contained"
+                                            sx={{
+                                                fontWeight: "bold",
+                                                fontFamily:
+                                                    "Poppins, sans-serif;",
+                                                bgcolor: "#82C8E1 ",
+                                                px: 3,
+                                                py: 1,
+                                                mx: 5,
+                                            }}
+                                            onClick={() => handleClickOpen({})}
+                                        >
+                                            Subscribe {">"}
+                                        </Button>
+                                        <Button
+                                            variant="contained"
+                                            sx={{
+                                                fontWeight: "bold",
+                                                fontFamily:
+                                                    "Poppins, sans-serif;",
+                                                bgcolor: "#82C8E1 ",
+                                                px: 3,
+                                                py: 1,
+                                                mx: 5,
+                                            }}
+                                            onClick={() => handleClickOpen({})}
+                                        >
+                                            Inquire now
+                                        </Button>
+                                    </Stack>
+                                </Box>
+                            </Box>
+                        </Grid>
+                    </Grid>
+                </Container>
+            </Box>
+            <Dialog
+                maxWidth="sm"
+                fullWidth
+                open={editOpen}
+                onClose={handleClose}
+                aria-labelledby="draggable-dialog-title"
+            >
+                <DialogTitle
+                    style={{ cursor: "move" }}
+                    id="draggable-dialog-title"
+                >
+                    {clientDetails.id ? "Edit" : "Add"} Client
+                </DialogTitle>
+                <DialogContent>
+                    {error && (
+                        <Alert severity="error">
+                            Please fill-up all fields
+                        </Alert>
+                    )}
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        value={clientDetails?.name}
+                        type="text"
+                        fullWidth
+                        variant="outlined"
+                        name="name"
+                        label="Name"
+                        onChange={handleInputChange}
+                    />
+                    <TextField
+                        margin="dense"
+                        value={clientDetails?.concerns}
+                        type="text"
+                        fullWidth
+                        variant="outlined"
+                        name="concerns"
+                        label="Concerns"
+                        onChange={handleInputChange}
+                    />
+                    <TextField
+                        margin="dense"
+                        value={clientDetails?.contactNo}
+                        type="text"
+                        fullWidth
+                        variant="outlined"
+                        name="contactNo"
+                        label="Contact No"
+                        onChange={handleInputChange}
+                    />
+                    <TextField
+                        margin="dense"
+                        value={clientDetails?.email}
+                        type="text"
+                        fullWidth
+                        variant="outlined"
+                        name="email"
+                        label="Email"
+                        onChange={handleInputChange}
+                    />
+                    <TextField
+                        margin="dense"
+                        value={clientDetails?.availableTime}
+                        type="datetime-local"
+                        fullWidth
+                        variant="outlined"
+                        name="availableTime"
+                        onChange={handleInputChange}
+                    />
+                    <TextField
+                        margin="dense"
+                        value={clientDetails?.status}
+                        type="text"
+                        fullWidth
+                        variant="outlined"
+                        name="status"
+                        label="Status"
+                        onChange={handleInputChange}
+                    />
+                    <Button component="label" variant="outlined" sx={{ mt: 1 }}>
+                        Upload ID
+                        <input
+                            type="file"
+                            accept="image/*"
+                            hidden
+                            onChange={handleImgChange}
+                        />
                     </Button>
-                    <Button
-                      variant="contained"
-                      sx={{
-                        fontWeight: "bold",
-                        fontFamily: "Poppins, sans-serif;",
-                        bgcolor: "#82C8E1 ",
-                        px: 3,
-                        py: 1,
-                        mx: 5,
-                      }}
-                      onClick={() => handleClickOpen({})}
-                    >
-                      Inquire now
-                    </Button>
-                  </Stack>
-                </Box>
-              </Box>
-            </Grid>
-          </Grid>
-        </Container>
-      </Box>
-      <Dialog
-        maxWidth="sm"
-        fullWidth
-        open={editOpen}
-        onClose={handleClose}
-        aria-labelledby="draggable-dialog-title"
-      >
-        <DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
-          {clientDetails.id ? "Edit" : "Add"} Client
-        </DialogTitle>
-        <DialogContent>
-          {error && <Alert severity="error">Please fill-up all fields</Alert>}
-          <TextField
-            autoFocus
-            margin="dense"
-            value={clientDetails?.name}
-            type="text"
-            fullWidth
-            variant="outlined"
-            name="name"
-            label="Name"
-            onChange={handleInputChange}
-          />
-          <TextField
-            margin="dense"
-            value={clientDetails?.concerns}
-            type="text"
-            fullWidth
-            variant="outlined"
-            name="concerns"
-            label="Concerns"
-            onChange={handleInputChange}
-          />
-          <TextField
-            margin="dense"
-            value={clientDetails?.contactNo}
-            type="text"
-            fullWidth
-            variant="outlined"
-            name="contactNo"
-            label="Contact No"
-            onChange={handleInputChange}
-          />
-          <TextField
-            margin="dense"
-            value={clientDetails?.email}
-            type="text"
-            fullWidth
-            variant="outlined"
-            name="email"
-            label="Email"
-            onChange={handleInputChange}
-          />
-          <TextField
-            margin="dense"
-            value={clientDetails?.availableTime}
-            type="datetime-local"
-            fullWidth
-            variant="outlined"
-            name="availableTime"
-            onChange={handleInputChange}
-          />
-          <TextField
-            margin="dense"
-            value={clientDetails?.status}
-            type="text"
-            fullWidth
-            variant="outlined"
-            name="status"
-            label="Status"
-            onChange={handleInputChange}
-          />
-          <Button component="label" variant="outlined" sx={{ mt: 1 }}>
-            Upload ID
-            <input
-              type="file"
-              accept="image/*"
-              hidden
-              onChange={handleImgChange}
-            />
-          </Button>
 
-          {!!clientDetails?.validId && (
-            <img
-              src={clientDetails.validId}
-              style={{ width: "100%", marginTop: 8 }}
-            />
-          )}
-        </DialogContent>
-        <DialogActions>
-          <Button autoFocus onClick={handleClose}>
-            Cancel
-          </Button>
-          <Button onClick={handleEdit}>Save</Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-  );
+                    {!!clientDetails?.validId && (
+                        <img
+                            src={clientDetails.validId}
+                            style={{ width: "100%", marginTop: 8 }}
+                        />
+                    )}
+                </DialogContent>
+                <DialogActions>
+                    <Button autoFocus onClick={handleClose}>
+                        Cancel
+                    </Button>
+                    <Button onClick={handleEdit}>Save</Button>
+                </DialogActions>
+            </Dialog>
+        </div>
+    );
 }
