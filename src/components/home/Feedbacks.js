@@ -4,7 +4,7 @@ import Slider from "react-slick";
 
 const images = [
     {
-        imgPath: "/img/jan.png",
+        imgPath: "img/jan.png",
         stars: "★★★★★",
         name: "Name Lastname",
         work: "SOCIAL MEDIA INFLUENCER",
@@ -12,7 +12,7 @@ const images = [
             " Lorem ipsum dolor sit amet. Ea doloribus eaque tenetur fugiat id neque quia et magnam quasi rem.",
     },
     {
-        imgPath: "/img/john.png",
+        imgPath: "img/john.png",
         stars: "★★★★★",
         name: "Name Lastname",
         work: "SOCIAL MEDIA INFLUENCER",
@@ -20,7 +20,7 @@ const images = [
             " Lorem ipsum dolor sit amet. Ea doloribus eaque tenetur fugiat id neque quia et magnam quasi rem.",
     },
     {
-        imgPath: "/img/rec.png",
+        imgPath: "img/rec.png",
         stars: "★★★★★",
         name: "Name Lastname",
         work: "SOCIAL MEDIA INFLUENCER",
@@ -28,7 +28,7 @@ const images = [
             " Lorem ipsum dolor sit amet. Ea doloribus eaque tenetur fugiat id neque quia et magnam quasi rem.",
     },
     {
-        imgPath: "/img/reve.png",
+        imgPath: "img/reve.png",
         stars: "★★★★★",
         name: "Name Lastname",
         work: "SOCIAL MEDIA INFLUENCER",
@@ -117,7 +117,7 @@ export default class Responsive extends Component {
         return (
             <div
                 style={{
-                    backgroundImage: "url('/img/testimonialsbg.png')",
+                    backgroundImage: "url('img/testimonialsbg.png')",
                     backgroundSize: "cover",
                     height: "100vh",
                 }}

@@ -171,7 +171,7 @@ export default function Hero({ isPending }) {
     return (
         <div
             style={{
-                backgroundImage: "url('/img/herobg.png')",
+                backgroundImage: "url('img/herobg.png')",
                 backgroundSize: "cover",
                 height: "100vh",
                 paddingTop: "1px",
@@ -280,7 +280,7 @@ export default function Hero({ isPending }) {
                                     style={{
                                         width: "100%",
                                     }}
-                                    src="/img/heropic.png"
+                                    src="img/heropic.png"
                                 />
                             </Box>
                         </Grid>

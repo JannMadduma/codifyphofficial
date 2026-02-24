@@ -72,7 +72,7 @@ export default function Portfolio() {
         <div
             id="portfolio"
             style={{
-                backgroundImage: "url('/img/portfoliobg.png')",
+                backgroundImage: "url('img/portfoliobg.png')",
                 backgroundSize: "90%",
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",

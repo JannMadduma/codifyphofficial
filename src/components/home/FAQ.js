@@ -6,7 +6,7 @@ export default function FAQ() {
     return (
         <div
             style={{
-                backgroundImage: "url('/img/faqbg.png')",
+                backgroundImage: "url('img/faqbg.png')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 height: "100vh",

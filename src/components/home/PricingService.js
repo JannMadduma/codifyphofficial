@@ -7,35 +7,35 @@ import Container from "@mui/material/Container";
 
 const framework = [
     {
-        img: "/img/icons8-webpages-66.png",
+        img: "img/icons8-webpages-66.png",
         title: "Webpages",
     },
     {
-        img: "/img/icons8-add-shopping-cart-64.png",
+        img: "img/icons8-add-shopping-cart-64.png",
         title: "ECommerce",
     },
     {
-        img: "/img/icons8-shopify-128.png",
+        img: "img/icons8-shopify-128.png",
         title: "Shopify",
     },
     {
-        img: "/img/icons8-design-64.png",
+        img: "img/icons8-design-64.png",
         title: "Prototyping",
     },
     {
-        img: "/img/icons8-search-64.png",
+        img: "img/icons8-search-64.png",
         title: "UX Research",
     },
     {
-        img: "/img/icons8-search-property-64.png",
+        img: "img/icons8-search-property-64.png",
         title: "UI/UX Audit",
     },
     {
-        img: "/img/icons8-survey-64.png",
+        img: "img/icons8-survey-64.png",
         title: "Consultation",
     },
     {
-        img: "/img/icons8-web-design-64.png",
+        img: "img/icons8-web-design-64.png",
         title: "Design Sprints",
     },
 ];
@@ -44,7 +44,7 @@ export default function PricingService() {
     return (
         <div
             style={{
-                backgroundImage: "url('/img/ourservebg.png')",
+                backgroundImage: "url('img/ourservebg.png')",
                 backgroundSize: "cover",
                 height: "100vh",
             }}

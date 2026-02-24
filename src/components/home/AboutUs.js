@@ -100,7 +100,7 @@ export default function AboutUs() {
                             >
                                 <img
                                     style={{ width: "100%" }}
-                                    src="/img/aboutus.png"
+                                    src="img/aboutus.png"
                                 />
                             </Box>
                         </Grid>

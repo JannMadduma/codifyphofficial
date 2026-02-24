@@ -14,7 +14,7 @@ export default function Developers() {
                     <Link to={"/"}>
                         <Avatar
                             alt="Photo"
-                            src="//img/logo.png"
+                            src="/img/logo.png"
                             variant="square"
                         />
                     </Link>

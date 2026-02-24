@@ -7,7 +7,7 @@ export default function Missionvision() {
     return (
         <div
             style={{
-                backgroundImage: "url('/img/missionvisionbg.png')",
+                backgroundImage: "url('img/missionvisionbg.png')",
                 backgroundSize: "cover",
                 height: "100vh",
                 display: "flex",
@@ -36,7 +36,7 @@ export default function Missionvision() {
                         <Grid item xs={6}>
                             <img
                                 style={{ width: "100%", paddingRight: "50px" }}
-                                src="/img/missionvision1.png"
+                                src="img/missionvision1.png"
                             />
                         </Grid>
                         <Grid item xs={6}>
@@ -143,7 +143,7 @@ export default function Missionvision() {
                         <Grid item xs={6}>
                             <img
                                 style={{ width: "100%", paddingLeft: "50px" }}
-                                src="/img/misionvision2.png"
+                                src="img/misionvision2.png"
                             />
                         </Grid>
                     </Grid>

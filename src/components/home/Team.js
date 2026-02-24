@@ -9,7 +9,7 @@ export default function Team() {
     return (
         <div
             style={{
-                backgroundImage: "url('/img/teambg.png')",
+                backgroundImage: "url('img/teambg.png')",
                 backgroundSize: "cover",
                 height: "100vh",
             }}
@@ -101,7 +101,7 @@ export default function Team() {
                                                 width: "100%",
                                                 padding: "0 20px",
                                             }}
-                                            src="/img/rec.png"
+                                            src="img/rec.png"
                                         />
                                     </Box>
                                     <Box>
@@ -148,7 +148,7 @@ export default function Team() {
                                                 width: "100%",
                                                 padding: "0 20px",
                                             }}
-                                            src="/img/reve.png"
+                                            src="img/reve.png"
                                         />
                                     </Box>
                                     <Box>
@@ -193,7 +193,7 @@ export default function Team() {
                                                 width: "100%",
                                                 padding: "0 20px",
                                             }}
-                                            src="/img/john.png"
+                                            src="img/john.png"
                                         />
                                     </Box>
                                     <Box>
@@ -240,7 +240,7 @@ export default function Team() {
                                                 width: "100%",
                                                 padding: "0 20px",
                                             }}
-                                            src="/img/jan.png"
+                                            src="img/jan.png"
                                         />
                                     </Box>
                                     <Box>
@@ -285,7 +285,7 @@ export default function Team() {
                                                 width: "100%",
                                                 padding: "0 20px",
                                             }}
-                                            src="/img/ton.png"
+                                            src="img/ton.png"
                                         />
                                     </Box>
                                     <Box>
@@ -332,7 +332,7 @@ export default function Team() {
                                                 width: "100%",
                                                 padding: "0 20px",
                                             }}
-                                            src="/img/rus.png"
+                                            src="img/rus.png"
                                         />
                                     </Box>
                                     <Box>

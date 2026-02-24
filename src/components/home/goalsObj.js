@@ -15,7 +15,7 @@ export default function Goals() {
         >
             <Box
                 sx={{
-                    backgroundImage: "url('/img/technologybg.png')",
+                    backgroundImage: "url('img/technologybg.png')",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     width: "100%",
@@ -47,7 +47,7 @@ export default function Goals() {
                             >
                                 <img
                                     style={{ width: "350px" }}
-                                    src="/img/goal.png"
+                                    src="img/goal.png"
                                 />
                             </Box>
                         </Grid>

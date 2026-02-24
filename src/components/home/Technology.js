@@ -32,7 +32,7 @@ export default function Technology() {
         >
             <Box
                 sx={{
-                    backgroundImage: "url('/img/technologybg.png')",
+                    backgroundImage: "url('img/technologybg.png')",
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                     width: "100%",

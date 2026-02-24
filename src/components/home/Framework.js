@@ -7,19 +7,19 @@ import CssBaseline from "@mui/material/CssBaseline";
 
 const framework = [
     {
-        img: "/img/icons8-business-group-100.png",
+        img: "img/icons8-business-group-100.png",
         title: "RIGHT TEAM",
         description:
             "We offer various website projects for you! We're just one contact away!",
     },
     {
-        img: "/img/icons8-tree-structure-100.png",
+        img: "img/icons8-tree-structure-100.png",
         title: "RIGHT PROCESS",
         description:
             "We offer various website projects for you! We're just one contact away!",
     },
     {
-        img: "/img/icons8-motherboard-100.png",
+        img: "img/icons8-motherboard-100.png",
         title: "RIGHT TECHNOLOGY",
         description:
             "We offer various website projects for you! We're just one contact away!",
@@ -30,7 +30,7 @@ export default function Framework() {
     return (
         <div
             style={{
-                backgroundImage: "url('/img/teambg.png')",
+                backgroundImage: "url('img/teambg.png')",
                 backgroundSize: "cover",
                 height: "100vh",
                 display: "flex",

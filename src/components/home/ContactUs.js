@@ -176,7 +176,7 @@ export default function ContactUs({ isPending }) {
         >
             <Box
                 sx={{
-                    backgroundImage: "url('/img/contactusbg.png')",
+                    backgroundImage: "url('img/contactusbg.png')",
                     backgroundSize: "cover",
                     height: "60vh",
                 }}

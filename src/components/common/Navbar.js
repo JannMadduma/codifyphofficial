@@ -190,7 +190,7 @@ const ResponsiveAppBar = ({ isPending }) => {
                         <Link>
                             <img
                                 alt=""
-                                src="/img/codifylogo.png"
+                                src="img/codifylogo.png"
                                 style={{
                                     height: "100px",
                                     width: "300px",
